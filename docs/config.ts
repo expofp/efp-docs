@@ -1,7 +1,7 @@
 // https://vitepress.dev/guide/getting-started#the-config-file
 // https://github.com/vuejs/vitepress/blob/main/docs/.vitepress/config.ts
 export default {
-    // site-level options
+    base: '/efp-docs/',
     title: 'ExpoFP Documentation',
     description: 'ExpoFP Documentation',
 
