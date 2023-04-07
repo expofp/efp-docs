@@ -1,0 +1,35 @@
+{
+  "name": "efp-docs",
+  "version": "1.0.0",
+  "description": "ExpoFP Documentation",
+  "directories": {
+    "doc": "docs"
+  },
+  "dependencies": {
+    "vitepress": "1.0.0-alpha.65"
+  },
+  "devDependencies": {
+    "gh-pages": "5.0.0"
+  },
+  "scripts": {
+    "serve": "vitepress dev docs",
+    "build": "vitepress build docs",
+    "preview": "vitepress preview docs",
+    "deploy": "gh-pages -d docs/.vitepress/dist",
+    "test": "exit 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/expofp/efp-docs.git"
+  },
+  "keywords": [
+    "expofp",
+    "docs"
+  ],
+  "author": "Alexander Shagin <alexsh@expofp.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/expofp/efp-docs/issues"
+  },
+  "homepage": "https://github.com/expofp/efp-docs#readme"
+}
