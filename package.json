@@ -5,10 +5,12 @@
   "directories": {
     "doc": "docs"
   },
+  "type": "module",
   "dependencies": {
-    "vitepress": "1.0.0-alpha.65"
+    "vitepress": "1.0.0-alpha.71"
   },
   "devDependencies": {
+    "@types/node": "18.15.11",
     "gh-pages": "5.0.0"
   },
   "scripts": {
@@ -26,7 +28,7 @@
     "expofp",
     "docs"
   ],
-  "author": "Alexander Shagin <alexsh@expofp.com>",
+  "author": "ExpoFP Dev Team <dev-team@expofp.com>",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/expofp/efp-docs/issues"
