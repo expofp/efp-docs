@@ -51,6 +51,7 @@ export default defineConfig({
       provider: "local",
     },
   },
+
 });
 
 function nav() {
@@ -89,18 +90,24 @@ function sidebarGuide() {
 
 function sidebarExamples() {
   return [
-    { text: "Simple Floor Plan", link: "/examples/simple-floor-flan" },
-    { text: "No Overlay", link: "/examples/no-overlay" },
-    { text: "Wayfinding", link: "/examples/wayfinding" },
-    { text: "Android App (Java)", link: "/examples/android-java" },
-    { text: "iOS App (SwiftUI)", link: "/examples/ios-swift" },
+    { text: "Simple Floor Plan", link: "https://developer.expofp.com/examples/simple.html" }, // /examples/simple-floor-flan
+    { text: "No Overlay", link: "https://developer.expofp.com/examples/no-overlay.html" }, // /examples/no-overlay
+    { text: "Wayfinding", link: "https://developer.expofp.com/examples/wayfinding.html?route%3Aundefined%3A414" }, // /examples/wayfinding
+    { text: "Android App (Java)", link: "https://github.com/expofp/expofp-example-android" }, // /examples/android-java
+    { text: "iOS App (SwiftUI)", link: "https://github.com/expofp/expofp-swiftui-example" }, // /examples/ios-swift
   ];
 }
 
 function sidebarSdk() {
   return [
-    { text: "Android SDK (Java)", link: "/sdk/android-sdk-java" },
-    { text: "GPS SDK (JS)", link: "/sdk/gps-sdk-js" },
-    { text: "iOS SDK (SWIFT)", link: "/sdk/ios-sdk-swift" },
+    {
+      text: "Android SDK (Java)",
+      link: "https://expofp.github.io/expofp-mobile-sdk/android-sdk/",
+    },
+    { text: "GPS SDK (JS)", link: "https://github.com/expofp/gps-efp-app" },
+    {
+      text: "iOS SDK (SWIFT)",
+      link: "https://expofp.github.io/expofp-mobile-sdk/ios-sdk/",
+    },
   ];
 }
