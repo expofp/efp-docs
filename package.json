@@ -11,10 +11,12 @@
   },
   "devDependencies": {
     "@types/node": "18.15.11",
-    "gh-pages": "5.0.0"
+    "gh-pages": "5.0.0",
+    "cross-env": "7.0.3"
   },
   "scripts": {
-    "serve": "vitepress dev docs",
+    "start": "vitepress dev docs",
+    "serve": "cross-env NODE_ENV=development npm run start",
     "build": "vitepress build docs",
     "preview": "vitepress preview docs",
     "deploy": "gh-pages -d docs/.vitepress/dist",

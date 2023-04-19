@@ -1,3 +1,3 @@
 # data.js Schema
 
- [View data.js JSON schema](https://developer.expofp.com/data.schema.json)
+[View data.js JSON schema](pathname:///data.schema.json)

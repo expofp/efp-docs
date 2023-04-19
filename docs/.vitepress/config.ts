@@ -1,10 +1,13 @@
 import { defineConfig } from "vitepress";
 
+const base = process.env.BASE_PATH || "/";
+
+const year = new Date().getFullYear();
 // https://vitepress.dev/guide/getting-started#the-config-file
 // https://github.com/vuejs/vitepress/blob/main/docs/.vitepress/config.ts
 export default defineConfig({
   // https://vitepress.dev/reference/site-config#base
-  base: process.env.BASE_PATH || "/efp-docs/",
+  base,
 
   lang: "en-US",
   title: "Documentation",
@@ -43,7 +46,7 @@ export default defineConfig({
 
     // https://vitepress.dev/reference/default-theme-footer#footer
     footer: {
-      copyright: `© 2023 <a href='http://expofp.com/'>ExpoFP.com</a> • <a href='https://expofp.com/#contact'>Support</a>`,
+      copyright: `© ${year} <a href='http://expofp.com/'>ExpoFP.com</a> • <a href='https://expofp.com/#contact'>Support</a>`,
     },
 
     // https://vitepress.dev/reference/default-theme-search#local-search
@@ -51,7 +54,10 @@ export default defineConfig({
       provider: "local",
     },
   },
-
+  // https://vitepress.dev/reference/site-config#markdown
+  markdown: {
+    lineNumbers: true,
+  },
 });
 
 function nav() {
@@ -76,8 +82,8 @@ function nav() {
 
 function sidebarGuide() {
   return [
-    { text: "Examples", collapsed: false, items: sidebarExamples() },
-    { text: "SDK", collapsed: false, items: sidebarSdk() },
+    { text: "Examples", collapsed: true, items: sidebarExamples() },
+    { text: "SDK", collapsed: true, items: sidebarSdk() },
     { text: "JSON API", link: "/guide/json-api" },
     { text: "Webhooks", link: "/guide/webhooks" },
     { text: "data.js Schema", link: "/guide/data-js-schema" },
@@ -90,11 +96,27 @@ function sidebarGuide() {
 
 function sidebarExamples() {
   return [
-    { text: "Simple Floor Plan", link: "https://developer.expofp.com/examples/simple.html" }, // /examples/simple-floor-flan
-    { text: "No Overlay", link: "https://developer.expofp.com/examples/no-overlay.html" }, // /examples/no-overlay
-    { text: "Wayfinding", link: "https://developer.expofp.com/examples/wayfinding.html?route%3Aundefined%3A414" }, // /examples/wayfinding
-    { text: "Android App (Java)", link: "https://github.com/expofp/expofp-example-android" }, // /examples/android-java
-    { text: "iOS App (SwiftUI)", link: "https://github.com/expofp/expofp-swiftui-example" }, // /examples/ios-swift
+    {
+      text: "Simple Floor Plan",
+      // https://vitepress.dev/guide/asset-handling#the-public-directory
+      link: `pathname://${base}examples/simple.html`,
+    },
+    {
+      text: "No Overlay",
+      link: `pathname://${base}examples/no-overlay.html`,
+    },
+    {
+      text: "Wayfinding",
+      link: `pathname://${base}examples/wayfinding.html?route%3Aundefined%3A414`,
+    },
+    {
+      text: "Android App (Java)",
+      link: "https://github.com/expofp/expofp-example-android",
+    },
+    {
+      text: "iOS App (SwiftUI)",
+      link: "https://github.com/expofp/expofp-swiftui-example",
+    },
   ];
 }
 

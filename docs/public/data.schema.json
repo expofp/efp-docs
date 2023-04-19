@@ -1,0 +1,402 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://expofp.com/floorplans/datajs.schema.json",
+  "title": "ExpoFP data.js Schema",
+  "type": "object",
+  "required": [
+    "title",
+    "homeUrl",
+    "logo",
+    "booths",
+    "exhibitors",
+    "categories"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "free": {
+      "type": "boolean",
+      "description": "Obsolete. Now equals to noFetured=true, showFpAd=true"
+    },
+    "noFeatured": {
+      "type": "boolean"
+    },
+    "expoFpAd": {
+      "type": "boolean"
+    },
+    "title": {
+      "type": "string"
+    },
+    "subtitle": {
+      "type": "string"
+    },
+    "homeUrl": {
+      "type": "string",
+      "format": "uri"
+    },
+    "registerUrl": {
+      "type": "string",
+      "format": "uri"
+    },
+    "logo": {
+      "type": "string"
+    },
+    "gtag": {
+      "type": "string",
+      "description": "Google Analytics or Tag Manager ID"
+    },
+    "trackerUrl": {
+      "type": "string",
+      "format": "uri",
+      "description": "Endpoint URL to send user events. E.g. https://expofp.com/api/track?type=view-exhibitor&value=123"
+    },
+    "reserveInstructions": {
+      "type": "string"
+    },
+    "sendLoginLinkUrl": {
+      "type": "string",
+      "format": "uri",
+      "description": "Endpoint URL to send intructions to exhibitors to edit their data. Should accept `{id: number}` JSON payloads."
+    },
+    "boothTerm": {
+      "type": "string",
+      "description": "Booth term (typically 'booth' or 'stand')"
+    },
+    "levelTerm": {
+      "type": "string",
+      "description": "Level term (typically 'lvl' or 'floor')"
+    },
+    "reserveButtonTerm": {
+      "type": "string",
+      "description": "Term for Reserve button"
+    },
+    "locale": {
+      "type": "string",
+      "description": "Locale to choose translation resouce file"
+    },
+    "hideWayInformation": {
+      "type": "boolean",
+      "description": "Hide Way information"
+    },
+    "dimensionless": {
+      "type": "boolean",
+      "description": "Hide booth size"
+    },
+    "hideEventHomeLink": {
+      "type": "boolean",
+      "description": "Hide the 'Event Home' link"
+    },
+    "hideRegisterToAttendLink": {
+      "type": "boolean",
+      "description": "Hide the 'Register to Attend' link"
+    },
+    "hideBookmarksLink": {
+      "type": "boolean",
+      "description": "Hide the 'Bookmarks' link"
+    },
+    "hideDownloadPdfLink": {
+      "type": "boolean",
+      "description": "Hide the 'Download PDF' link"
+    },
+    "hideCategoriesLink": {
+      "type": "boolean",
+      "description": "Hide the 'Categories' link"
+    },
+    "hideDirections": {
+      "type": "boolean",
+      "description": "Hide wayfinding features"
+    },
+    "hideExhibitorBoothNumber": {
+      "type": "boolean",
+      "description": "Hide number if booth has exhibitor"
+    },
+    "booths": {
+      "type": "array",
+      "items": {
+        "anyOf": [
+          {
+            "type": "object",
+            "description": "Regular booth (with exhibitor)",
+            "required": ["id", "name", "exhibitors"],
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "number"
+              },
+              "name": {
+                "type": "string"
+              },
+              "externalId": {
+                "type": "string"
+              },
+              "exhibitors": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                }
+              }
+            }
+          },
+          {
+            "type": "object",
+            "description": "Regular booth (without exhibitor, unavailable for reserve because `onHold` or `reserved` is set)",
+            "required": ["id", "name"],
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "number"
+              },
+              "name": {
+                "type": "string"
+              },
+              "externalId": {
+                "type": "string"
+              },
+              "status": {
+                "type": "string",
+                "enum": ["onhold", "reserved"]
+              },
+              "reserved": {
+                "type": "boolean",
+                "description": "Show booth as reserved (hide company from it)"
+              }
+            }
+          },
+          {
+            "type": "object",
+            "description": "Regular booth (without exhibitor, available for reserve)",
+            "required": ["id", "name"],
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "number"
+              },
+              "name": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string"
+              },
+              "price": {
+                "type": "string"
+              },
+              "size": {
+                "type": "string"
+              },
+              "buyUrl": {
+                "type": "string"
+              },
+              "reserveUrl": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string",
+                "description": "HTML, if set, overrides reserveInstructions"
+              },
+              "externalId": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "type": "object",
+            "description": "Special booth",
+            "required": ["id", "name"],
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "number"
+              },
+              "name": {
+                "type": "string"
+              },
+              "special": {
+                "type": "boolean",
+                "description": "Always true"
+              },
+              "title": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string",
+                "description": "HTML"
+              },
+              "externalId": {
+                "type": "string"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "exhibitors": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name"],
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "name": {
+            "type": "string"
+          },
+          "externalId": {
+            "type": "string"
+          },
+          "categories": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          },
+          "featured": {
+            "type": "boolean"
+          },
+          "advertise": {
+            "type": "boolean"
+          },
+          "description": {
+            "type": "string"
+          },
+          "logo": {
+            "type": "string"
+          },
+          "logoInBooth": {
+            "type": "boolean"
+          },
+          "gallery": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "marketMaterials": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["fileName", "path"],
+              "additionalProperties": false,
+              "properties": {
+                "fileName": {
+                  "type": "string"
+                },
+                "path": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "address": {
+            "type": "string"
+          },
+          "address2": {
+            "type": "string"
+          },
+          "city": {
+            "type": "string"
+          },
+          "state": {
+            "type": "string"
+          },
+          "zip": {
+            "type": "string"
+          },
+          "country": {
+            "type": "string"
+          },
+          "phone1": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string",
+            "format": "email"
+          },
+          "privateEmail": {
+            "type": "string",
+            "description": "Presentation of private email of exhibitor - with hidden characters in it - hard to guess"
+          },
+          "customButtonTitle": {
+            "type": "string"
+          },
+          "customButtonUrl": {
+            "type": "string"
+          },
+          "customButton2Title": {
+            "type": "string"
+          },
+          "customButton2Url": {
+            "type": "string"
+          },
+          "customButton3Title": {
+            "type": "string"
+          },
+          "customButton3Url": {
+            "type": "string"
+          },
+          "leadingImageUrl": {
+            "type": "string"
+          },
+          "leadingImageLinkUrl": {
+            "type": "string"
+          },
+          "website": {
+            "type": "string",
+            "format": "uri"
+          },
+          "facebook": {
+            "type": "string",
+            "format": "uri"
+          },
+          "instagram": {
+            "type": "string",
+            "format": "uri"
+          },
+          "linkedin": {
+            "type": "string",
+            "format": "uri"
+          },
+          "twitter": {
+            "type": "string",
+            "format": "uri"
+          },
+          "googlePlus": {
+            "type": "string",
+            "format": "uri"
+          },
+          "xing": {
+            "type": "string",
+            "format": "uri"
+          },
+          "youtube": {
+            "type": "string",
+            "format": "uri"
+          },
+          "videoUrl": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      }
+    },
+    "categories": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name"],
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "name": {
+            "type": "string"
+          },
+          "sponsorship": {
+            "type": "boolean"
+          }
+        }
+      }
+    }
+  }
+}
