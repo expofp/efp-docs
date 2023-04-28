@@ -113,6 +113,10 @@ function sidebarExamples() {
       link: `pathname://${base}examples/wayfinding.html?route%3Aundefined%3A414`,
     },
     {
+      text: "Insert in container",
+      link: `pathname://${base}examples/insert-in-container.html`,
+    },
+    {
       text: "Android App (Java)",
       link: "https://github.com/expofp/expofp-example-android",
     },
