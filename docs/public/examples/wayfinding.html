@@ -32,16 +32,7 @@
                 eventId: "demo",
                 noOverlay: false,
                 onBoothClick: (e) => console.info(`Booth clicked: ${e.target.name}`),
-                onFpConfigured: () => fp.selectRoute("414", "1157"),
-                onDirection: (e) => {
-                    if (!e.lines || !e.lines.length) fp.selectCurrentPosition(null);
-                    else {
-                        let middleLine = e.lines[Math.floor(e.lines.length / 2)];
-                        const x = (middleLine.p0.x + middleLine.p1.x) / 2;
-                        const y = (middleLine.p0.y + middleLine.p1.y) / 2;
-                        fp.selectCurrentPosition({ x: x, y: y }, false);
-                    }
-                },
+				onFpConfigured: () => fp.selectRoute("414", "500"),
             });
         </script>
     </body>
