@@ -4,6 +4,24 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, width=device-width" />
+        <style>
+            html,
+            body {
+                touch-action: none;
+                margin: 0;
+                padding: 0;
+                height: 100%;
+                width: 100%;
+                background: #ebebeb;
+                position: fixed;
+                overflow: hidden;
+            }
+            @media (max-width: 820px) and (min-width: 500px) {
+                html {
+                    font-size: 13px;
+                }
+            }
+        </style>
     </head>
     <body>
         <div id="floorplan">Loading...</div>
@@ -14,16 +32,7 @@
                 eventId: "demo",
                 noOverlay: false,
                 onBoothClick: (e) => console.info(`Booth clicked: ${e.target.name}`),
-                onFpConfigured: () => fp.selectRoute("414", "1157"),
-                onDirection: (e) => {
-                    if (!e.lines || !e.lines.length) fp.selectCurrentPosition(null);
-                    else {
-                        let middleLine = e.lines[Math.floor(e.lines.length / 2)];
-                        const x = (middleLine.p0.x + middleLine.p1.x) / 2;
-                        const y = (middleLine.p0.y + middleLine.p1.y) / 2;
-                        fp.selectCurrentPosition({ x: x, y: y }, false);
-                    }
-                },
+				onFpConfigured: () => fp.selectRoute("414", "500"),
             });
         </script>
     </body>
