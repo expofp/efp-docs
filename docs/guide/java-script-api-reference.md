@@ -1,3 +1,4 @@
+```ts
 class FloorPlan {
     constructor(options?: FloorPlanOptions);
 
@@ -113,3 +114,4 @@ interface FloorPlanCategory {
 const ExpoFP: {
     FloorPlan: FloorPlanOptions;
 };
+```
