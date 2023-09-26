@@ -1,8 +1,3 @@
-# JavaScript API Reference
-
-See type definitions (TypeScript):
-
-```ts
 class FloorPlan {
     constructor(options?: FloorPlanOptions);
 
@@ -38,7 +33,11 @@ class FloorPlan {
 
     selectRoute(from: string, to: string, onlyAccessible: boolean): void;
 
-    getData(): ExpoData;
+    exhibitorsList(): FloorPlanExhibitor[];
+
+    boothsList(): FloorPlanBooth[];
+
+    categoriesList(): FloorPlanCategory[];
 
     unstable_destroy(): void;
 }
@@ -111,16 +110,6 @@ interface FloorPlanCategory {
     exhibitors: number[];
 }
 
-interface ExpoData {
-    booths: FloorPlanBooth[];
-    exhibitors: FloorPlanExhibitor[];
-    categories: FloorPlanCategory[];
-}
-
 const ExpoFP: {
     FloorPlan: FloorPlanOptions;
 };
-
-```
-
-[View Example](pathname:///examples/no-overlay.html)
