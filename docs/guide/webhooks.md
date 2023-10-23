@@ -13,6 +13,67 @@ Example payload:
 ```json
 {
     "type": "booth_reserved",
+    "exhibitorId": 123,
+    "expoId": 123
+}
+```
+
+### booth_onhold
+
+Example payload:
+
+```json
+{
+    "type": "booth_onhold",    
+    "expoId": 123,
+    "boothId": 123,
+    "isOnHold": true
+}
+```
+### booth_assigned
+
+Example payload:
+
+```json
+{
+    "type": "booth_assigned",
+    "exhibitorId": 123,
+    "expoId": 123,
+    "boothId": 123,
+    "isOnHold": true
+}
+```
+### booth_unassigned
+
+Example payload:
+
+```json
+{
+    "type": "booth_unassigned",
+    "exhibitorId": 123,
+    "expoId": 123,
+    "boothId": 123,
+    "isOnHold": false
+}
+```
+### exhibitor_upserted
+
+Example payload:
+
+```json
+{
+    "type": "exhibitor_upserted",
     "exhibitorId": 123
+}
+```
+### exhibitor_deleted
+
+Example payload:
+
+```json
+{
+    "type": "exhibitor_deleted",
+    "exhibitorId": 123,
+    "externalid": "text"
 }
 ```
