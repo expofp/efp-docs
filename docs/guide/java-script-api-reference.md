@@ -58,7 +58,7 @@ interface FloorPlanOptions {
     onDirection?: (e: FloorPlanDirectionEvent) => void;
     onDetails?: (e: FloorPlanDetailsEvent) => void;
     onExhibitorCustomButtonClick?: (e: FloorPlanCustomButtonEvent) => void;
-    onGetCoordsClick: (e: FloorPlanGetCoordsEvent) => void;
+    onGetCoordsClick?: (e: FloorPlanGetCoordsEvent) => void;
 }
 
 interface FloorPlanBoothBase {
@@ -81,10 +81,14 @@ interface Point {
     y: number;
 }
 
+interface RoutePoint extends Point {
+    layer: string;
+}
+
 interface FloorPlanDirectionEvent {
     from: FloorPlanBoothBase;
     to: FloorPlanBoothBase;
-    lines: { p0: Point; p1: Point }[];
+    lines: { p0: RoutePoint; p1: RoutePoint }[];
     distance: string;
     time: number;
 }
@@ -118,6 +122,12 @@ interface FloorPlanCategory {
     id: number;
     name: string;
     exhibitors: number[];
+}
+
+interface ExpoData {
+    booths: FloorPlanBooth[];
+    exhibitors: FloorPlanExhibitor[];
+    categories: FloorPlanCategory[];
 }
 
 const ExpoFP: {
