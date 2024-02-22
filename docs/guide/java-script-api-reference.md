@@ -98,10 +98,10 @@ interface FloorPlanDetailsEvent {
     name: string;
     externalId: string;
     /// Value depends on the type of event
-    /// if the type is 'booth' this value contains the same value as 'id'
-    /// if the type is 'exhibitor' this value contains the  assigned booths ids (the first booth id takes from the onBoothClick event)
-    /// if the the type is 'route' this value contains from and to booths ids
-    boothsIds: number[];
+    /// If the type is 'booth' this value contains the same value as 'name'
+    /// If the type is 'exhibitor' this value contains the assigned booths names (the first booth name takes from the onBoothClick event)
+    /// If the the type is 'route' this value contains ["to"] or ["from, "to"] booths names.
+    boothsNames: string[];
 }
 
 interface FloorPlanCustomButtonEvent {
