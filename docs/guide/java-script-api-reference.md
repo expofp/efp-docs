@@ -87,6 +87,7 @@ interface Point {
 }
 
 interface FloorPlanBookmarkClickEvent {
+    // Only exhibitors support.
     name: string;
     bookmarked: boolean;
 }
