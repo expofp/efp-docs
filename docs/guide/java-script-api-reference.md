@@ -29,12 +29,12 @@ class FloorPlan {
     selectExhibitor(nameOrExternalId: string): void;
 
     selectCurrentPosition(
-        //
         point: { x: number; y: number; angle?: number; z?: string; lat?: number; lng?: number },
         focus?: boolean,
         icon?: number // 0- blue dot, 1- YAH icon
     ): void;
 
+    // name: exhibitor name
     setBookmarks(bookmarks: { name: string; bookmarked: boolean }[]): void;
 
     updateLayerVisibility(layer: string, visible: boolean): void;
@@ -87,7 +87,7 @@ interface Point {
 }
 
 interface FloorPlanBookmarkClickEvent {
-    // Only exhibitors support.
+    // name: exhibitor name.
     name: string;
     bookmarked: boolean;
 }
@@ -106,9 +106,9 @@ interface FloorPlanDetailsEvent {
     name: string;
     externalId: string;
     /// Value depends on the type of event
-    /// if the type is 'booth' this value contains the same value as 'name'
-    /// if the type is 'exhibitor' this value contains the  assigned booths names (the first booth name takes from the onBoothClick event)
-    /// if the the type is 'route' this value contains "from" and "to" booths name.
+    /// If the type is 'booth' this value contains the same value as 'name'
+    /// If the type is 'exhibitor' this value contains the  assigned booth names (the first booth name takes from the onBoothClick event)
+    /// If the the type is 'route' this value contains "from" and "to" booth names.
     boothsNames: string[];
 }
 
