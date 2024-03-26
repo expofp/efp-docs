@@ -66,9 +66,15 @@ interface FloorPlanOptions {
     onGetCoordsClick?: (e: FloorPlanGetCoordsEvent) => void;
 }
 
+interface Layer {
+    name: string;
+    description: string;
+}
+
 interface FloorPlanBoothBase {
     id: number;
     name: string;
+    layer: Layer;
 }
 
 interface FloorPlanBooth extends FloorPlanBoothBase {
