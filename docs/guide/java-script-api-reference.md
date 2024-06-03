@@ -29,7 +29,8 @@ class FloorPlan {
     selectExhibitor(nameOrExternalId: string): void;
 
     selectCurrentPosition(
-        point: { x: number; y: number; angle?: number; z?: string; lat?: number; lng?: number },
+        // z- layer name (string) or layer index
+        point: { x: number; y: number; angle?: number; z?: string | number; lat?: number; lng?: number },
         focus?: boolean,
         icon?: number // 0- blue dot, 1- YAH icon
     ): void;
