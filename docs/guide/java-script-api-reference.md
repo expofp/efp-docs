@@ -48,6 +48,8 @@ class FloorPlan {
 
     categoriesList(): FloorPlanCategory[];
 
+    selectCategory(nameOrSlug: string): void
+
     unstable_destroy(): void;
 }
 
