@@ -40,7 +40,7 @@ class FloorPlan {
 
     updateLayerVisibility(layer: string, visible: boolean): void;
 
-    selectRoute(from: string, to: string, onlyAccessible: boolean): void;
+    selectRoute(from: string | CurrentPosition, to: string | CurrentPosition): void
 
     exhibitorsList(): FloorPlanExhibitor[];
 
@@ -149,6 +149,12 @@ interface ExpoData {
     booths: FloorPlanBooth[];
     exhibitors: FloorPlanExhibitor[];
     categories: FloorPlanCategory[];
+}
+
+interface CurrentPosition {
+    x: number;
+    y: number;
+    z?: string | number;
 }
 
 const ExpoFP: {
