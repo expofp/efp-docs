@@ -94,6 +94,7 @@ function sidebarGuide() {
       text: "JavaScript API Reference",
       link: "/guide/java-script-api-reference",
     },
+    { text: "Query parameters", link: "/guide/query-parameters" },
   ];
 }
 
