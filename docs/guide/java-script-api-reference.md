@@ -40,7 +40,7 @@ class FloorPlan {
 
     updateLayerVisibility(layer: string, visible: boolean): void;
 
-    selectRoute(from: string | CurrentPosition, to: string | CurrentPosition): void
+    selectRoute(from: string | CurrentPosition, to: string | CurrentPosition): void;
 
     exhibitorsList(): FloorPlanExhibitor[];
 
@@ -48,7 +48,21 @@ class FloorPlan {
 
     categoriesList(): FloorPlanCategory[];
 
-    selectCategory(nameOrSlug: string): void
+    selectCategory(nameOrSlug: string): void;
+
+    getVisibility(): Visibility;
+
+    setVisibility(visibility: Visibility): void;
+
+    findLocation(): void;
+
+    zoomIn(): void;
+
+    zoomOut(): void;
+
+    switchView(): void;
+
+    fitBounds(): void;
 
     unstable_destroy(): void;
 }
@@ -155,6 +169,13 @@ interface CurrentPosition {
     x: number;
     y: number;
     z?: string | number;
+}
+
+interface Visibility {
+    controls?: boolean;
+    levels?: boolean;
+    header?: boolean;
+    overlay?: boolean;
 }
 
 const ExpoFP: {
