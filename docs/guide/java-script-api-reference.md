@@ -1,3 +1,7 @@
+# JavaScript API Reference
+
+## FloorPlan
+
 ```ts
 class FloorPlan {
     constructor(options?: FloorPlanOptions);
@@ -63,6 +67,10 @@ class FloorPlan {
     switchView(): void;
 
     fitBounds(): void;
+
+    getBoothRect(name: string): Rect;
+
+    convertToGeo(x: number, y: number): [number, number] | never;
 
     unstable_destroy(): void;
 }
@@ -182,4 +190,32 @@ const ExpoFP: {
     FloorPlan: FloorPlanOptions;
 };
 
+```
+
+## Rect
+
+```ts
+interface Rect {
+    x1: number;
+    x2: number;
+    y1: number;
+    y2: number;
+    h: number;
+    w: number;
+    cx: number;
+    cy: number;
+    contains(r: Rect): boolean;
+    intersects(r: Rect): boolean;
+    getIntersection(r: Rect): Rect;
+    getRotated90(): Rect;
+    normalize(width: number, height: number): Rect;
+    withPadding(x: number, y: number = x): Rect;
+    scale(s: number): Rect;
+    getArea(): number;
+    clone(): Rect;
+    translate(dx: number, dy: number): Rect;
+    equals(r: Rect): boolean;
+    toString(): string;
+    containsPoint(x: number, y: number): boolean;
+}
 ```
