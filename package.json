@@ -1,6 +1,6 @@
 {
   "name": "efp-docs",
-  "version": "1.0.0",
+  "version": "2.1.0",
   "description": "ExpoFP Documentation",
   "directories": {
     "doc": "docs"
