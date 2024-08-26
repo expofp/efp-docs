@@ -125,6 +125,14 @@ function sidebarExamples() {
       text: "iOS App (SwiftUI)",
       link: "https://github.com/expofp/expofp-swiftui-example",
     },
+    {
+      text: "Preview mode",
+      link: `pathname://${base}examples/preview-mode.html`,
+    },
+    {
+      text: "Preview mode container",
+      link: `pathname://${base}examples/preview-mode-container.html`,
+    },
   ];
 }
 
