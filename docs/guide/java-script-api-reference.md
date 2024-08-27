@@ -35,7 +35,7 @@ class FloorPlan {
     exhibitorsList(): FloorPlanExhibitor[];
     boothsList(): FloorPlanBooth[];
     categoriesList(): FloorPlanCategory[];
-    selectCategory(nameOrSlug: string): void;
+    selectCategory(nameOrSlug?: string): void;
     applyParameters(queryRaw: string): void;
     getVisibility(): Visibility;
     setVisibility(visibility: Visibility): void;
