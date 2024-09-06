@@ -121,3 +121,10 @@ Provide a comma-separated list of UI elements to hide
 | Description               | Example                                  |
 | ------------------------- | ---------------------------------------- |
 | Sets the monochrome view. | https://demo.expofp.com/?monochrome=true |
+
+## `previewMode`
+
+| Description                      | Example                                    |
+| -------------------------------- | ------------------------------------------ |
+| This shows the preview mode.     | https://demo.expofp.com/?previewMode=true  |
+| This will hide the preview mode. | https://demo.expofp.com/?previewMode=false |
