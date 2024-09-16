@@ -14,6 +14,7 @@ class FloorPlan {
     readonly allowConsent: boolean;
     onBoothClick: (e: FloorPlanBoothClickEvent): void;
     onBookmarkClick: (e: FloorPlanBookmarkClickEvent): void;
+    onCategoryClick: (e: FloorPlanCategoryClickEvent) => void;
     onFpConfigured: (): void;
     onDirection: (e: FloorPlanDirectionEvent): void;
     onDetails: (e: FloorPlanDetailsEvent): void;
@@ -70,6 +71,7 @@ interface FloorPlanOptions {
   allowConsent?: boolean;
   onBoothClick?: (e: FloorPlanBoothClickEvent) => void;
   onBookmarkClick: (e: FloorPlanBookmarkClickEvent) => void;
+  onCategoryClick: (e: FloorPlanCategoryClickEvent) => void;
   onFpConfigured?: () => void;
   onDirection?: (e: FloorPlanDirectionEvent) => void;
   onDetails?: (e: FloorPlanDetailsEvent) => void;
@@ -131,6 +133,14 @@ interface FloorPlanBookmarkClickEvent {
   // name: exhibitor name.
   name: string;
   bookmarked: boolean;
+}
+```
+
+```ts
+interface FloorPlanCategoryClickEvent {
+    id: number;
+    name: string;
+    exhibitors: number[];
 }
 ```
 
