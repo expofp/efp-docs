@@ -136,6 +136,8 @@ interface FloorPlanBookmarkClickEvent {
 }
 ```
 
+## FloorPlanCategoryClickEvent
+
 ```ts
 interface FloorPlanCategoryClickEvent {
     id: number;
