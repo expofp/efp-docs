@@ -133,6 +133,10 @@ function sidebarExamples() {
       text: "Preview mode container",
       link: `pathname://${base}examples/preview-mode-container.html`,
     },
+    {
+      text: "Bookmarks",
+      link: "/guide/bookmarks",
+    },
   ];
 }
 
