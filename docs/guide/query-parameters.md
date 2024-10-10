@@ -9,11 +9,23 @@
 
 ## `bookmarks`
 
-| Description                                                       | Example                             |
-| ----------------------------------------------------------------- | ----------------------------------- |
-| This opens the bookmarks list.                                    | https://demo.expofp.com/?bookmarks  |
-| This opens the bookmarks list.                                    | https://demo.expofp.com/?b=         |
-| Add an exhibitor to bookmarks and display its detail information. | https://demo.expofp.com/?ba=2782719 |
+| View bookmarks list.                    |
+| ----------------------------------------|
+| https://demo.expofp.com/?bookmarks      |
+| https://demo.expofp.com/?b=             |
+| https://demo.expofp.com/?ba=            |
+
+
+| Add exhibitors to bookmarks.                  |
+| ----------------------------------------------|
+| https://demo.expofp.com/?b=2782719            |
+| https://demo.expofp.com/?b=2782719%7C2782667  |
+
+
+| Add exhibitors to bookmarks and open details  |
+| ----------------------------------------------|
+| https://demo.expofp.com/?ba=2782719           |
+
 
 ## `disableBookmarked`
 

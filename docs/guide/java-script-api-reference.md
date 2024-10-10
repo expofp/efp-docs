@@ -12,6 +12,7 @@ class FloorPlan {
     readonly noOverlay: boolean;
     readonly offHistory: boolean;
     readonly allowConsent: boolean;
+    onInit: (fp: FloorPlan): void;
     onBoothClick: (e: FloorPlanBoothClickEvent): void;
     onBookmarkClick: (e: FloorPlanBookmarkClickEvent): void;
     onCategoryClick: (e: FloorPlanCategoryClickEvent) => void;
