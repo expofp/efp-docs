@@ -64,7 +64,7 @@ new ExpoFP.FloorPlan({
     onInit: fp => {
         fp.setBookmarks([
             // ...
-        ])
+        ]);
     }
 });
 ```
