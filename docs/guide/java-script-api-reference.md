@@ -5,6 +5,7 @@
 ```ts
 class FloorPlan {
     constructor(options?: FloorPlanOptions);
+
     readonly ready: Promise<void>;
     readonly element: HTMLDivElement;
     readonly eventId: string;
@@ -12,41 +13,74 @@ class FloorPlan {
     readonly noOverlay: boolean;
     readonly offHistory: boolean;
     readonly allowConsent: boolean;
-    onBoothClick: (e: FloorPlanBoothClickEvent): void;
-    onBookmarkClick: (e: FloorPlanBookmarkClickEvent): void;
-    onCategoryClick: (e: FloorPlanCategoryClickEvent) => void;
-    onFpConfigured: (): void;
-    onDirection: (e: FloorPlanDirectionEvent): void;
-    onDetails: (e: FloorPlanDetailsEvent): void;
-    onExhibitorCustomButtonClick: (e: FloorPlanCustomButtonEvent): void;
-    onGetCoordsClick: (e: FloorPlanGetCoordsEvent): void;
-    onMarkerClick: (e: FloorPlanMarkerEvent): void;
-    selectBooth(nameOrExternalId: string | string[]): void;
-    selectExhibitor(nameOrExternalId: string | string[]): void;
-    selectCurrentPosition(point: CurrentPosition, focus: boolean, icon?: number): void;
-    // name: exhibitor name
-    setBookmarks(bookmarks: { name: string; bookmarked: boolean }[]): void;
-    setMarkers(markersData: MarkersData): void;
-    selectMarker(id: string, focus = true): void;
-    drawCircles(circles: { x: number; y: number; radius: number; color?: string }[]): void;
-    checkRoutes(): void;
-    updateLayerVisibility(layer: string, visible: boolean): void;
-    getCenterCoordinates(): { x: number, y: number, z: string };
+    readonly onInit: (fp: FloorPlan) => void;
+
+    onBoothClick(e: FloorPlanBoothClickEvent): void;
+
+    onBookmarkClick(e: FloorPlanBookmarkClickEvent): void;
+
+    onCategoryClick(e: FloorPlanCategoryClickEvent): void;
+
+    /** 
+     * @deprecated 
+     * The onFpConfigured method is deprecated. Use onInit instead. 
+     */
+    onFpConfigured(): void;
+
+    onDirection(e: FloorPlanDirectionEvent): void;
+
+    onDetails(e: FloorPlanDetailsEvent): void;
+
+    onExhibitorCustomButtonClick(e: FloorPlanCustomButtonEvent): void;
+
+    onGetCoordsClick(e: FloorPlanGetCoordsEvent): void;
+
+    onMarkerClick(e: FloorPlanMarkerEvent): void;
+
+    selectBooth(nameOrExternalId: string): void;
+
+    selectExhibitor(nameOrExternalId: string): void;
+
     selectRoute(from: string | CurrentPosition, to: string | CurrentPosition): void;
-    exhibitorsList(): FloorPlanExhibitor[];
-    boothsList(): FloorPlanBooth[];
-    categoriesList(): FloorPlanCategory[];
-    selectCategory(nameOrSlug?: string): void;
+
+    selectCurrentPosition(point: CurrentPosition, focus: boolean, icon?: number): void
+
+    setBookmarks(bookmarks: { name: string; bookmarked: boolean }[]): void;
+
+    setMarkers(markersData: MarkersData): void;
+
+    updateLayerVisibility(layer: string, visible: boolean): void;
+
+    getCenterCoordinates(): FloorPlanGetCoordsEvent;
+
     applyParameters(queryRaw: string): void;
+
+    exhibitorsList(): FloorPlanExhibitor[];
+
+    boothsList(): FloorPlanBooth[];
+
+    categoriesList(): FloorPlanCategory[];
+
+    selectCategory(nameOrSlug?: string): void;
+
     getVisibility(): Visibility;
+
     setVisibility(visibility: Visibility): void;
+
     findLocation(): void;
+
     zoomIn(): void;
+
     zoomOut(): void;
+
     switchView(): void;
+
     fitBounds(): void;
+
     getBoothRect(name: string): Rect;
+
     convertToGeo(x: number, y: number): [number, number] | never;
+
     unstable_destroy(): void;
 }
 ```
@@ -63,20 +97,27 @@ const ExpoFP: {
 
 ```ts
 interface FloorPlanOptions {
-  element?: HTMLDivElement;
-  eventId?: string;
-  dataUrl?: string;
-  noOverlay?: boolean;
-  offHistory?: boolean;
-  allowConsent?: boolean;
-  onBoothClick?: (e: FloorPlanBoothClickEvent) => void;
-  onBookmarkClick: (e: FloorPlanBookmarkClickEvent) => void;
-  onCategoryClick: (e: FloorPlanCategoryClickEvent) => void;
-  onFpConfigured?: () => void;
-  onDirection?: (e: FloorPlanDirectionEvent) => void;
-  onDetails?: (e: FloorPlanDetailsEvent) => void;
-  onExhibitorCustomButtonClick?: (e: FloorPlanCustomButtonEvent) => void;
-  onGetCoordsClick?: (e: FloorPlanGetCoordsEvent) => void;
+    element?: HTMLDivElement;
+    eventId?: string;
+    previewMode?: boolean;
+    dataUrl?: string;
+    noOverlay?: boolean;
+    offHistory?: boolean;
+    allowConsent?: boolean;
+    onBoothClick?: (e: FloorPlanBoothClickEvent) => void;
+    onBookmarkClick?: (e: FloorPlanBookmarkClickEvent) => void;
+    onCategoryClick?: (e: FloorPlanCategoryClickEvent) => void;
+    /**
+     * @deprecated 
+     * The onFpConfigured method is deprecated. Use onInit instead. 
+     */
+    onFpConfigured?: () => void;
+    onDirection?: (e: FloorPlanDirectionEvent) => void;
+    onDetails?: (e: FloorPlanDetailsEvent) => void;
+    onExhibitorCustomButtonClick?: (e: FloorPlanCustomButtonEvent) => void;
+    onMarkerClick?: (e: FloorPlanMarkerEvent | undefined) => void;
+    onGetCoordsClick?: (e: FloorPlanGetCoordsEvent) => void;
+    onInit?: (fp: FloorPlan) => void;
 }
 ```
 
@@ -139,11 +180,13 @@ interface FloorPlanBookmarkClickEvent {
 ## FloorPlanCategoryClickEvent
 
 ```ts
-interface FloorPlanCategoryClickEvent {
+interface FloorPlanCategory {
     id: number;
     name: string;
     exhibitors: number[];
 }
+
+interface FloorPlanCategoryClickEvent extends FloorPlanCategory {}
 ```
 
 ## FloorPlanDirectionEvent
@@ -190,6 +233,15 @@ interface FloorPlanCustomButtonEvent {
 ```ts
 interface FloorPlanGetCoordsEvent extends Point {
   z: string | null;
+}
+```
+
+## FloorPlanMarkerEvent
+
+```ts
+interface FloorPlanMarkerEvent extends Point {
+    id: string;
+    z?: number | string;
 }
 ```
 
