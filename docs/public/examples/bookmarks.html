@@ -1,0 +1,67 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, width=device-width" />
+</head>
+<body>
+
+<div id="demo" style="height: 100vh;"></div>
+
+<script src="https://demo-staging2.expofp.com/packages/master/expofp.js" crossorigin="anonymous"></script>
+<script>
+    // Example to work with bookmarks
+	const bookmarksStorage = {
+	  bookmarks: localStorage.getItem("BOOKMARKS") || {
+	    'Fern Expo': true,
+		'S&S Worldwide': true,		
+	  },
+	  
+	  // You custom remote ligic to load bookmarks
+	  load: () => {
+	    return new Promise((resolve) => {
+		  setTimeout(()=> {
+		    const bm = bookmarksStorage.bookmarks; 
+		    const res = Object.keys(bm).reduce((prev, name) => {
+			  return [...prev, { name, bookmarked: !!bm[name] } ];
+			}, []);
+			resolve(res);
+		  }, 1000)
+		});
+	  },
+	  
+	  // You custom remote ligic to save bookmarks
+	  save: ({name, bookmarked}) => {
+	  	return new Promise((resolve) => {
+		  setTimeout(()=> {
+		    const bm = bookmarksStorage.bookmarks; 
+			bm[name] = !!bookmarked;
+		    localStorage.setItem("BOOKMARKS", JSON.stringify(bm))
+			resolve();
+		  }, 1000)
+		});
+	  }
+	}
+	
+    new ExpoFP.FloorPlan({
+        element: document.querySelector("#demo"),
+        eventId: "demo-staging2",
+        onInit: fpRef => {
+           console.log("Load bookmarks...");			
+		   bookmarksStorage.load().then(bookmarks => {
+		     console.log("Bookmarks loaded.", bookmarks);
+			 fpRef.setBookmarks(bookmarks);
+		   })
+		},
+		onBookmarkClick: e => {
+          console.log("Saving bookmark...", e);
+		  bookmarksStorage.save(e).then(() => {
+			console.log("Bookmark " + e.name + " saved.");
+		  })
+		}
+    });
+</script>
+</body>
+</html>
