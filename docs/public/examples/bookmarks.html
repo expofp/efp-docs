@@ -12,6 +12,7 @@
 
 <script src="https://demo-staging2.expofp.com/packages/master/expofp.js" crossorigin="anonymous"></script>
 <script>
+
     // Example to work with bookmarks
 	const bookmarksStorage = {
 	  bookmarks: localStorage.getItem("BOOKMARKS") || {
@@ -19,7 +20,7 @@
 		'S&S Worldwide': true,		
 	  },
 	  
-	  // You custom remote ligic to load bookmarks
+	  // Your custom remote logic to load bookmarks
 	  load: () => {
 	    return new Promise((resolve) => {
 		  setTimeout(()=> {
@@ -32,7 +33,7 @@
 		});
 	  },
 	  
-	  // You custom remote ligic to save bookmarks
+	  // Your custom remote logic to save bookmarks
 	  save: ({name, bookmarked}) => {
 	  	return new Promise((resolve) => {
 		  setTimeout(()=> {
