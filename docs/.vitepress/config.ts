@@ -110,10 +110,6 @@ function sidebarExamples() {
       link: `pathname://${base}examples/no-overlay.html`,
     },
     {
-      text: "Bookmarks",
-      link: `pathname://${base}examples/bookmarks.html`,
-    },
-    {
       text: "Wayfinding",
       link: `pathname://${base}examples/wayfinding.html?route%3Aundefined%3A414`,
     },
