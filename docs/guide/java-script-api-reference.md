@@ -45,7 +45,7 @@ class FloorPlan {
 
     selectCurrentPosition(point: CurrentPosition, focus: boolean, icon?: number): void
 
-    setBookmarks(bookmarks: { name: string; bookmarked: boolean }[]): void;
+    setBookmarks(bookmarks: { name?: string; externalId?: string; bookmarked: boolean }[]): void;
 
     setMarkers(markersData: MarkersData): void;
 
@@ -82,6 +82,8 @@ class FloorPlan {
     convertToGeo(x: number, y: number): [number, number] | never;
 
     unstable_destroy(): void;
+
+    highlightExhibitors(externalIs: string[]): void;
 }
 ```
 
