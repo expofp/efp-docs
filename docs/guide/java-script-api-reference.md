@@ -176,6 +176,7 @@ interface FloorPlanBookmarkClickEvent {
   // name: exhibitor name.
   name: string;
   bookmarked: boolean;
+  externalId: string;
 }
 ```
 
