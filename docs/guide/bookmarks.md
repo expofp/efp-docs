@@ -38,9 +38,11 @@ const fp = new ExpoFP.FloorPlan({
 
 // Save to bookmarks
 fp.setBookmarks([{ name: "Alaska Airlines", bookmarked: true }]);
+fp.setBookmarks([{ externalId: "bizx", bookmarked: true }]);
 
 // Remove from bookmarks
 fp.setBookmarks([{ name: "Alaska Airlines", bookmarked: false }]);
+fp.setBookmarks([{ externalId: "bizx", bookmarked: false }]);
 ```
 
 ### Handling bookmark additions
