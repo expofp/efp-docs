@@ -41,7 +41,16 @@ class FloorPlan {
 
     selectExhibitor(nameOrExternalId: string): void;
 
-    selectRoute(from: string | CurrentPosition, to: string | CurrentPosition): void;
+    selectRoute(from: RouteWaypoint, to: RouteWaypoint): void;
+    
+    selectRoute(waypoints: RouteWaypoint[]): void;
+
+    /**
+     * @note
+     * 
+     * Experimental feature: functionality may be unstable or subject to change
+     */
+    getOptimizedRoutes(waypoints: RouteWaypoint[]): RouteInfo[];
 
     selectCurrentPosition(point: CurrentPosition, focus: boolean, icon?: number): void
 
@@ -325,5 +334,19 @@ interface Rect {
   equals(r: Rect): boolean;
   toString(): string;
   containsPoint(x: number, y: number): boolean;
+}
+```
+
+## RouteWaypoint
+
+```ts
+type RouteWaypoint = string | CurrentPosition;
+```
+
+## RouteInfo
+
+```ts
+interface RouteInfo {
+    waypoints: RouteWaypoint[];
 }
 ```
