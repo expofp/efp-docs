@@ -93,6 +93,8 @@ class FloorPlan {
     unstable_destroy(): void;
 
     highlightExhibitors(externalIs: string[]): void;
+
+    onCurrentPositionChanged(point: CurrentPosition): void;
 }
 ```
 
