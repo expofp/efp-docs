@@ -147,9 +147,10 @@ interface Layer {
 
 ```ts
 interface FloorPlanBoothBase {
-  id: number;
-  name: string;
-  layer: Layer;
+    id: number;
+    externalId: string;
+    name: string;
+    layer: Layer;
 }
 ```
 
@@ -157,9 +158,11 @@ interface FloorPlanBoothBase {
 
 ```ts
 interface FloorPlanBooth extends FloorPlanBoothBase {
-  externalId: string;
-  isSpecial: boolean;
-  exhibitors: number[];
+    externalId: string;
+    isSpecial: boolean;
+    exhibitors: number[];
+    meta: Record<string, string>;
+    description: string;
 }
 ```
 
