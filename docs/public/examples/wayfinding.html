@@ -27,12 +27,12 @@
         <div id="floorplan">Loading...</div>
         <script src="https://demo.expofp.com/packages/master/expofp.js" crossorigin="anonymous"></script>
         <script>
-            var fp = new ExpoFP.FloorPlan({
+            new ExpoFP.FloorPlan({
                 element: document.querySelector("#floorplan"),
                 eventId: "demo",
                 noOverlay: false,
                 onBoothClick: (e) => console.info(`Booth clicked: ${e.target.name}`),
-				onFpConfigured: () => fp.selectRoute("42-23", "101-12"),
+		onInit: fp => fp.selectRoute(["42-23", "101-12"]),
             });
         </script>
     </body>
