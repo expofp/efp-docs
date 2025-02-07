@@ -2,10 +2,10 @@
 
 ## Search text
 
-| Description                       | Example                         |
-| --------------------------------- | ------------------------------- |
-| This displays the found entities. | https://demo.expofp.com/?e      |
-| This displays the entity details. | https://demo.expofp.com/?expofp |
+| Description                       | Example                              |
+| --------------------------------- | ------------------------------------ |
+| This displays the found entities. | https://demo.expofp.com/?b           |
+| This displays the entity details. | https://demo.expofp.com/?biogreen-ag |
 
 ## `bookmarks`
 
@@ -16,15 +16,15 @@
 | https://demo.expofp.com/?ba=            |
 
 
-| Add exhibitors to bookmarks.                  |
-| ----------------------------------------------|
-| https://demo.expofp.com/?b=2782719            |
-| https://demo.expofp.com/?b=2782719%7C2782667  |
+| Add exhibitors to bookmarks.                   |
+| ---------------------------------------------- |
+| https://demo.expofp.com/?b=10689074            |
+| https://demo.expofp.com/?b=10689074|10689072   |
 
 
 | Add exhibitors to bookmarks and open details  |
 | ----------------------------------------------|
-| https://demo.expofp.com/?ba=2782719           |
+| https://demo.expofp.com/?ba=10689074          |
 
 
 ## `disableBookmarked`
@@ -39,13 +39,15 @@
 | --------------------------------- | --------------------------------- |
 | This opens the language selector. | https://demo.expofp.com/?language |
 
-## `kkiosk`
+## `kkiosk` 
+> **@deprecated** use [kiosk](#kiosk) instead
 
 | Description       | Example                         |
 | ----------------- | ------------------------------- |
 | Opens kiosk mode. | https://demo.expofp.com/?kkiosk |
 
 ## `nokkiosk`
+> **@deprecated** use [kiosk](#kiosk) instead
 
 | Description       | Example                           |
 | ----------------- | --------------------------------- |
@@ -59,7 +61,7 @@ Colon-separated list of route points.
 
 | Description              | Example                                       |
 | ------------------------ | --------------------------------------------- |
-| This displays the route. | https://demo.expofp.com/?route:main-stage:458 |
+| This displays the route. | https://demo.expofp.com/?route:42-23:101-12   |
 
 ## `hide`
 
@@ -86,9 +88,9 @@ Provide a comma-separated list of UI elements to hide
 
 - `blue-dot=<X>,<Y>,<Z>`
 
-| Description                         | Example                                                           |
-| ----------------------------------- | ----------------------------------------------------------------- |
-| This sets the blue dot coordinates. | https://demo.expofp.com/?blue-dot=42858.0429687,12087.591796875,2 |
+| Description                         | Example                                                              |
+| ----------------------------------- | -------------------------------------------------------------------- |
+| This sets the blue dot coordinates. | https://demo.expofp.com/?blue-dot=8022.44384765625,8423.1962890625,1 |
 
 ## `noOverlay`
 
@@ -140,3 +142,17 @@ Provide a comma-separated list of UI elements to hide
 | -------------------------------- | ------------------------------------------ |
 | This shows the preview mode.     | https://demo.expofp.com/?previewMode=true  |
 | This will hide the preview mode. | https://demo.expofp.com/?previewMode=false |
+
+## kiosk
+
+| Description           | Example                          |
+| --------------------- | -------------------------------- |
+| Enables kiosk mode.   | https://demo.expofp.com/?kiosk=1 |
+| Disables kiosk modee. | https://demo.expofp.com/?kiosk=0 |
+
+## sw
+
+| Description                                  | Example                       |
+| -------------------------------------------- | ----------------------------- |
+| Enables the service worker for offline mode. | https://demo.expofp.com/?sw=1 |
+| Disables the service worker.                 | https://demo.expofp.com/?sw=0 |
