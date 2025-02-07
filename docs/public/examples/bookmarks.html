@@ -11,14 +11,14 @@
 
 <div id="demo" style="height: 100vh;"></div>
 
-<script src="https://demo-staging2.expofp.com/packages/master/expofp.js" crossorigin="anonymous"></script>
+<script src="https://demo.expofp.com/packages/master/expofp.js" crossorigin="anonymous"></script>
 <script>
 
     // Example to work with bookmarks
 	const bookmarksStorage = {
 	  bookmarks: localStorage.getItem("BOOKMARKS") || {
-	    'Fern Expo': true,
-		'S&S Worldwide': true,		
+	    "BioSustainable Ltd.": true,
+		"CycleWorks Ltd.": true,		
 	  },
 	  
 	  // Your custom remote logic to load bookmarks
@@ -49,7 +49,7 @@
 	
     new ExpoFP.FloorPlan({
         element: document.querySelector("#demo"),
-        eventId: "demo-staging2",
+        eventId: "demo",
         onInit: fpRef => {
            console.log("Load bookmarks...");			
 		   bookmarksStorage.load().then(bookmarks => {
