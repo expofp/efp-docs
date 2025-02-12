@@ -43,12 +43,15 @@ class FloorPlan {
 
     selectRoute(from: RouteWaypoint, to: RouteWaypoint): void;
     
+    /**
+     * @note
+     * Max 8 waypoints allowed (total: from + 8 waypoints + to = 10).
+     */
     selectRoute(waypoints: RouteWaypoint[]): void;
 
     /**
      * @note
-     * 
-     * Experimental feature: functionality may be unstable or subject to change
+     * Experimental feature: functionality may be unstable or subject to change.
      */
     getOptimizedRoutes(waypoints: RouteWaypoint[]): RouteInfo[];
 
