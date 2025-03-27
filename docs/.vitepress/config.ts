@@ -80,6 +80,10 @@ function nav() {
       items: sidebarExamples(),
       activeMatch: "/examples/",
     },
+    {
+      text: "Changelog",
+      items: changelogItems(),
+    },
   ];
 }
 
@@ -154,6 +158,15 @@ function sidebarSdk() {
     {
       text: "iOS SDK (SWIFT)",
       link: "https://expofp.github.io/expofp-mobile-sdk/ios-sdk/",
+    },
+  ];
+}
+
+function changelogItems() {
+  return [
+    {
+      text: "JavaScript API Changelog",
+      link: "https://expofp.github.io/changelog/efp-app/",
     },
   ];
 }
