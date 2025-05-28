@@ -97,6 +97,8 @@ class FloorPlan {
 
     highlightExhibitors(externalIs: string[]): void;
 
+    highlightBooths(externalIs: string[]): void;
+
     onCurrentPositionChanged(point: CurrentPosition): void;
 }
 ```
