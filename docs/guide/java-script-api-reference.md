@@ -100,6 +100,13 @@ class FloorPlan {
     highlightBooths(externalIds: string[]): void;
 
     onCurrentPositionChanged(point: CurrentPosition): void;
+
+    /**
+     * Performs a fuzzy search.
+     * @param term Search query
+     * @returns Promise with [{ item, score }] (lower score = better match)
+     */
+    search(term: string): Promise<{ item: unknown, score: number }[]>;
 }
 ```
 
