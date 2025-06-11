@@ -36,8 +36,8 @@ ___fp.selectRoute(route);
 
 ### Before Optimization
 
-<img src="/img/wayfinding/before.png" alt="Before optimization" />
+<img src="/img/wayfinding/before.png" alt="Before Optimization" />
 
 ### After Optimization
 
-<img src="/img/wayfinding/after.png" alt="After optimization" />
+<img src="/img/wayfinding/after.png" alt="After Optimization" />
