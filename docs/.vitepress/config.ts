@@ -118,6 +118,10 @@ function sidebarExamples() {
       link: `pathname://${base}examples/wayfinding.html?route%3Aundefined%3A414`,
     },
     {
+      text: "Wayfinding Guide",
+      link: "/guide/wayfinding-guide",
+    },
+    {
       text: "Insert in container",
       link: `pathname://${base}examples/insert-in-container.html`,
     },
