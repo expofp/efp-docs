@@ -1,16 +1,19 @@
-# Routes / Multipoint wayfinding
+# Routes / Multipoint Wayfinding
 
 ::: info
-Currently, we can use multi-point routing through the [JS SDK](java-script-api-reference.md).
+Multipoint routing is available via the [JS SDK](java-script-api-reference.md).
 :::
 
 ## Route Creation
 
+The functionality that allows attendees to view routes connecting multiple points of interest (POIs).
+
+
 ::: info
-Maximum of 8 waypoints allowed (total: from + 8 waypoints + to = 10).
+A maximum of 8 intermediate waypoints is allowed (total: origin + 8 waypoints + destination = 10).
 :::
 
-[See Live Example](https://demo.expofp.com/?route%3A101-12%3A42-1%3Afalse%3A42-21%3A42-37%3A42-52%3A101-17)
+[View Live Example](https://demo.expofp.com/?route%3A101-12%3A42-1%3Afalse%3A42-21%3A42-37%3A42-52%3A101-17)
 
 ```js
 ___fp.selectRoute(["42-1", "42-21", "42-37", "42-52", "101-17", "101-12"]);
@@ -23,11 +26,13 @@ ___fp.selectRoute(["42-1", "42-21", "42-37", "42-52", "101-17", "101-12"]);
 
 ## Optimization
 
+An optional optimize mode attempts to compute the most efficient order in which to visit the selected POIs.
+
 ::: info
-Experimental feature.
+This feature is currently in Beta and may not always yield the absolutely optimal route.
 :::
 
-[See Live Example](https://demo.expofp.com/?route%3A41-3%3A42-1%3Afalse%3A42-3%3A42-21)
+[View Live Example](https://demo.expofp.com/?route%3A41-3%3A42-1%3Afalse%3A42-3%3A42-21)
 
 ```js
 const route = ___fp.getOptimizedRoutes(["42-1", "42-21", "42-3", "41-3"]).flatMap(r => r.waypoints);
