@@ -84,6 +84,9 @@ function nav() {
       text: "Changelog",
       items: changelogItems(),
     },
+    {
+      text: "Status",
+      link: "https://expofp.statuspage.io/",    },
   ];
 }
 
