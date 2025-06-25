@@ -163,6 +163,10 @@ function sidebarSdk() {
       text: "iOS SDK (SWIFT)",
       link: "https://expofp.github.io/expofp-mobile-sdk/ios-sdk/",
     },
+    {
+      text: "iOS SDK v5",
+      link: `https://expofp.github.io/expofp-sdk-ios/documentation/expofp/`,
+    },
   ];
 }
 
