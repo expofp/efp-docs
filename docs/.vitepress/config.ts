@@ -155,16 +155,16 @@ function sidebarExamples() {
 function sidebarSdk() {
   return [
     {
-      text: "Android SDK (Java)",
+      text: "Android Java SDK (current)",
       link: "https://expofp.github.io/expofp-mobile-sdk/android-sdk/",
     },
-    { text: "GPS SDK (JS)", link: "https://github.com/expofp/gps-efp-app" },
+    { text: "GPS JS SDK (current)", link: "https://github.com/expofp/gps-efp-app" },
     {
-      text: "iOS SDK (SWIFT)",
+      text: "iOS Swift SDK v4 (current)",
       link: "https://expofp.github.io/expofp-mobile-sdk/ios-sdk/",
     },
     {
-      text: "iOS SDK v5",
+      text: "iOS Swift SDK v5 (next)",
       link: `https://expofp.github.io/expofp-sdk-ios/documentation/expofp/`,
     },
   ];
