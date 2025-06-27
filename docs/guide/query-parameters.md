@@ -156,3 +156,43 @@ Provide a comma-separated list of UI elements to hide
 | -------------------------------------------- | ----------------------------- |
 | Enables the service worker for offline mode. | https://demo.expofp.com/?sw=1 |
 | Disables the service worker.                 | https://demo.expofp.com/?sw=0 |
+
+## zoomtime
+
+| Description                                  | Example                       |
+| -------------------------------------------- | ----------------------------- |
+| Zoom animation duration (ms) (500-5000)      | ?zoomtime=3000                |
+
+## center
+
+| Description                                  | Example                                     |
+| -------------------------------------------- | ------------------------------------------- |
+| Map center in WGS84 "lat,lng"                | ?center=52.32231711120545,9.814407599999997 |
+
+## centerxy
+
+| Description                                  | Example                                    |
+| -------------------------------------------- | -----------------------------------------  |
+| Map center in projected "x,y"                | ?centerxy=13595.177734375,6878.86865234375 |
+
+## z
+
+| Description                                  | Example                       |
+| -------------------------------------------- | ----------------------------- |
+| Floor/level name                             | ?z=2                          |
+
+## bearing
+
+::: info
+Currently works only in kiosk mode.
+:::
+
+| Description                                  | Example                       |
+| -------------------------------------------- | ----------------------------- |
+| Map rotation (0-360 degrees)                 | ?bearing=180                  | 
+
+## zoom
+
+| Description                                  | Example                       |
+| -------------------------------------------- | ----------------------------- |
+| Zoom level (1-100)                           | ?zoom=5                       |
