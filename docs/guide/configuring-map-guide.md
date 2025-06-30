@@ -1,5 +1,7 @@
 # Guide: Configuring Map Settings via URL Parameters  
 
+## Map Settings Overview
+
 You can customize your map experience by adjusting settings directly in the URL. Here’s a quick guide to the available parameters:  
 
 ### **center**  
@@ -78,6 +80,22 @@ Example: `?zoomtime=5000`
     <source src="/img/map-settings/zoomtime_5000.mp4" type="video/mp4" />
 </video>
 
+
+## How to Reset Settings?
+
+:::info
+**Important Note**: Settings are applied only to the specific map they are sent to and only on the device where they are applied.
+:::
+
+Settings do not accumulate — each time new settings are sent, they overwrite the previous ones.
+
+**Example**:
+
+If you open a card with `?bearing=45` and later open it again with `?zoom=5`, the `bearing=45` setting will not be applied — only `zoom=5` will take effect.
+In other words, if you need both settings, you must include them in the same request: `?bearing=45&zoom=5`.
+
+**To cancel a previously applied setting** (e.g., `zoom=5`), you can set a new value (e.g., `zoom=1`).
+
 ---
 
-For more details, check the [full documentation](/guide/query-parameters).
+Also, check out the [full documentation](/guide/query-parameters).
