@@ -113,6 +113,10 @@ function sidebarExamples() {
       text: "No Overlay",
       link: `pathname://${base}examples/no-overlay.html`,
     },
+	{
+      text: "No Overlay with background",
+      link: `pathname://${base}examples/no-overlay-with-background.html`,
+    },	
     {
       text: "Wayfinding",
       link: `pathname://${base}examples/wayfinding.html?route%3Aundefined%3A414`,
