@@ -149,6 +149,10 @@ function sidebarExamples() {
       text: "Bookmarks Example",
       link: `pathname://${base}examples/bookmarks.html`,
     },
+    {
+      text: "Configuring Map Settings via URL Parameters",
+      link: "/guide/configuring map-guide",
+    },
   ];
 }
 
