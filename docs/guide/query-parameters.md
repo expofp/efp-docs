@@ -22,9 +22,9 @@
 | ?b=10689074|10689072          |
 
 
-| Add exhibitors to bookmarks and open details |
-| ---------------------------------------------|
-| ?ba=10689074                                 |
+| Add exhibitors to bookmarks and open details. |
+| ----------------------------------------------|
+| ?ba=10689074                                  |
 
 
 ## `disableBookmarked`
@@ -154,27 +154,27 @@ Provide a comma-separated list of UI elements to hide
 
 ## zoomtime
 
-| Description                             | Example        |
-| --------------------------------------- | -------------- |
-| Zoom animation duration (ms) (500-5000) | ?zoomtime=3000 |
+| Description                              | Example        |
+| ---------------------------------------- | -------------- |
+| Zoom animation duration (ms) (500-5000). | ?zoomtime=3000 |
 
 ## center
 
-| Description                   | Example                                     |
-| ----------------------------- | ------------------------------------------- |
-| Map center in WGS84 "lat,lng" | ?center=52.32231711120545,9.814407599999997 |
+| Description                    | Example                                     |
+| ------------------------------ | ------------------------------------------- |
+| Map center in WGS84 "lat,lng". | ?center=52.32231711120545,9.814407599999997 |
 
 ## centerxy
 
-| Description                   | Example                                    |
-| ----------------------------- | -----------------------------------------  |
-| Map center in projected "x,y" | ?centerxy=13595.177734375,6878.86865234375 |
+| Description                    | Example                                    |
+| ------------------------------ | -----------------------------------------  |
+| Map center in projected "x,y". | ?centerxy=13595.177734375,6878.86865234375 |
 
 ## z
 
-| Description      | Example  |
-| ---------------- | -------- |
-| Floor/level name | ?z=2     |
+| Description       | Example  |
+| ----------------- | -------- |
+| Floor/level name. | ?z=2     |
 
 ## bearing
 
@@ -182,21 +182,21 @@ Provide a comma-separated list of UI elements to hide
 Currently works only in kiosk mode.
 :::
 
-| Description                  | Example       |
-| ---------------------------- | ------------- |
-| Map rotation (0-360 degrees) | ?bearing=180  | 
+| Description                   | Example       |
+| ----------------------------- | ------------- |
+| Map rotation (0-360 degrees). | ?bearing=180  | 
 
 ## zoom
 
-| Description        | Example |
-| ------------------ | ------- |
-| Zoom level (1-100) | ?zoom=5 |
+| Description         | Example |
+| ------------------- | ------- |
+| Zoom level (1-100). | ?zoom=5 |
 
 ## yah
 
-| Description                        | Example    |
-| ---------------------------------- | ---------- |
-| It shows the "You Are Here" marker | ?yah=yah_1 |
+| Description                         | Example    |
+| ----------------------------------- | ---------- |
+| It shows the "You Are Here" marker. | ?yah=yah_1 |
 
 ## agenda
 
@@ -206,7 +206,7 @@ Currently works only in kiosk mode.
 
 ## exhibitors
 
-| Displays the list of exhibitors                               |
+| Displays the list of exhibitors.                              |
 | ------------------------------------------------------------- |
 | ?exhibitors=RXhoaWJpdG9yXzE4OTc5NDQ=,RXhoaWJpdG9yXzE4OTc5MjM= |
 | ?exhibitors=BioCycle Africa,UrbanQuest Design                 |
@@ -215,5 +215,5 @@ Currently works only in kiosk mode.
 
 | Description                  | Example   |
 | ---------------------------- | --------- |
-| Enables debug mode           | ?debug=1  |
-| Disables debug mode          | ?debug=0  |
+| Enables debug mode.          | ?debug=1  |
+| Disables debug mode.         | ?debug=0  |
