@@ -213,6 +213,10 @@ Currently works only in kiosk mode.
 
 ## debug
 
+:::tip
+Alternatively, you can type `debug=1` into the search field to enable it or `debug=0` to disable it, and then press Enter.
+:::
+
 | Description                  | Example   |
 | ---------------------------- | --------- |
 | Enables debug mode.          | ?debug=1  |
