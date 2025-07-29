@@ -21,9 +21,9 @@ class FloorPlan {
 
     onCategoryClick(e: FloorPlanCategoryClickEvent): void;
 
-    /** 
-     * @deprecated 
-     * The onFpConfigured method is deprecated. Use onInit instead. 
+    /**
+     * @deprecated
+     * The onFpConfigured method is deprecated. Use onInit instead.
      */
     onFpConfigured(): void;
 
@@ -42,7 +42,7 @@ class FloorPlan {
     selectExhibitor(nameOrExternalId: string): void;
 
     selectRoute(from: RouteWaypoint, to: RouteWaypoint): void;
-    
+
     /**
      * @note
      * Max 8 waypoints allowed (total: from + 8 waypoints + to = 10).
@@ -55,7 +55,7 @@ class FloorPlan {
      */
     getOptimizedRoutes(waypoints: RouteWaypoint[]): RouteInfo[];
 
-    selectCurrentPosition(point: CurrentPosition, focus: boolean, icon?: number): void
+    selectCurrentPosition(point: CurrentPosition, focus: boolean, icon?: number): void;
 
     setBookmarks(bookmarks: { name?: string; externalId?: string; bookmarked: boolean }[]): void;
 
@@ -106,7 +106,13 @@ class FloorPlan {
      * @param term Search query
      * @returns Promise with [{ item, score }] (lower score = better match)
      */
-    search(term: string): Promise<{ item: unknown, score: number }[]>;
+    search(term: string): Promise<{ item: unknown; score: number }[]>;
+
+    getFloors(): Floor[];
+
+    onFloorActivated(floor: Floor): void;
+
+    activateFloor(floorId: { name?: string; index?: number }): void;
 }
 ```
 
@@ -114,7 +120,7 @@ class FloorPlan {
 
 ```ts
 const ExpoFP: {
-  FloorPlan: FloorPlanOptions;
+    FloorPlan: FloorPlanOptions;
 };
 ```
 
@@ -133,8 +139,8 @@ interface FloorPlanOptions {
     onBookmarkClick?: (e: FloorPlanBookmarkClickEvent) => void;
     onCategoryClick?: (e: FloorPlanCategoryClickEvent) => void;
     /**
-     * @deprecated 
-     * The onFpConfigured method is deprecated. Use onInit instead. 
+     * @deprecated
+     * The onFpConfigured method is deprecated. Use onInit instead.
      */
     onFpConfigured?: () => void;
     onDirection?: (e: FloorPlanDirectionEvent) => void;
@@ -143,6 +149,8 @@ interface FloorPlanOptions {
     onMarkerClick?: (e: FloorPlanMarkerEvent | undefined) => void;
     onGetCoordsClick?: (e: FloorPlanGetCoordsEvent) => void;
     onInit?: (fp: FloorPlan) => void;
+    onCurrentPositionChanged?: (point: CurrentPosition) => void;
+    onFloorActivated?: (floor: Floor) => void;
 }
 ```
 
@@ -150,8 +158,8 @@ interface FloorPlanOptions {
 
 ```ts
 interface Layer {
-  name: string;
-  description: string;
+    name: string;
+    description: string;
 }
 ```
 
@@ -170,11 +178,15 @@ interface FloorPlanBoothBase {
 
 ```ts
 interface FloorPlanBooth extends FloorPlanBoothBase {
+    id: number;
+    name: string;
     externalId: string;
     isSpecial: boolean;
     exhibitors: number[];
+    layer: Layer;
     meta: Record<string, string>;
     description: string;
+    entity: Entity;
 }
 ```
 
@@ -182,7 +194,7 @@ interface FloorPlanBooth extends FloorPlanBoothBase {
 
 ```ts
 interface FloorPlanBoothClickEvent {
-  target: FloorPlanBoothBase;
+    target: FloorPlanBoothBase;
 }
 ```
 
@@ -190,8 +202,8 @@ interface FloorPlanBoothClickEvent {
 
 ```ts
 interface Point {
-  x: number;
-  y: number;
+    x: number;
+    y: number;
 }
 ```
 
@@ -199,22 +211,25 @@ interface Point {
 
 ```ts
 interface FloorPlanBookmarkClickEvent {
-  // name: exhibitor name.
-  name: string;
-  bookmarked: boolean;
-  externalId: string;
+    name: string;
+    bookmarked: boolean;
+    externalId: string;
+}
+```
+
+## FloorPlanVisitedClickEvent
+
+```ts
+interface FloorPlanVisitedClickEvent {
+    name: string;
+    visited: boolean;
+    externalId: string;
 }
 ```
 
 ## FloorPlanCategoryClickEvent
 
 ```ts
-interface FloorPlanCategory {
-    id: number;
-    name: string;
-    exhibitors: number[];
-}
-
 interface FloorPlanCategoryClickEvent extends FloorPlanCategory {}
 ```
 
@@ -222,11 +237,11 @@ interface FloorPlanCategoryClickEvent extends FloorPlanCategory {}
 
 ```ts
 interface FloorPlanDirectionEvent {
-  from: FloorPlanBoothBase;
-  to: FloorPlanBoothBase;
-  lines: { p0: Point; p1: Point }[];
-  distance: string;
-  time: number;
+    from: FloorPlanBoothBase;
+    to: FloorPlanBoothBase;
+    lines: { p0: Point; p1: Point }[];
+    distance: string;
+    time: number;
 }
 ```
 
@@ -234,15 +249,15 @@ interface FloorPlanDirectionEvent {
 
 ```ts
 interface FloorPlanDetailsEvent {
-  type: "booth" | "exhibitor" | "route";
-  id: string;
-  name: string;
-  externalId: string;
-  /// Value depends on the type of event
-  /// If the type is 'booth' this value contains the same value as 'name'
-  /// If the type is 'exhibitor' this value contains the  assigned booth names (the first booth name takes from the onBoothClick event)
-  /// If the the type is 'route' this value contains "from" and "to" booth names.
-  boothsNames: string[];
+    type: "booth" | "exhibitor" | "route" | "category";
+    id: string;
+    name: string;
+    externalId: string;
+    /// Value depends on the type of event
+    /// if the type is 'booth' this value contains the same value as 'name'
+    /// if the type is 'exhibitor' this value contains the  assigned booths names (the first booth name takes from the onBoothClick event)
+    /// if the the type is 'route' this value contains "from" and "to" booths name.
+    boothsNames: string[];
 }
 ```
 
@@ -250,10 +265,10 @@ interface FloorPlanDetailsEvent {
 
 ```ts
 interface FloorPlanCustomButtonEvent {
-  externalId: string;
-  buttonNumber: number;
-  buttonUrl: string;
-  preventDefault: () => void;
+    externalId: string;
+    buttonNumber: number;
+    buttonUrl: string;
+    preventDefault: () => void;
 }
 ```
 
@@ -261,7 +276,7 @@ interface FloorPlanCustomButtonEvent {
 
 ```ts
 interface FloorPlanGetCoordsEvent extends Point {
-  z: string | null;
+    z: string | null;
 }
 ```
 
@@ -278,10 +293,12 @@ interface FloorPlanMarkerEvent extends Point {
 
 ```ts
 interface FloorPlanExhibitor {
-  id: number;
-  name: string;
-  externalId: string;
-  booths: number[];
+    id: number;
+    name: string;
+    externalId: string;
+    booths: number[];
+    entity: Entity;
+    slug: string;
 }
 ```
 
@@ -289,9 +306,11 @@ interface FloorPlanExhibitor {
 
 ```ts
 interface FloorPlanCategory {
-  id: number;
-  name: string;
-  exhibitors: number[];
+    id: number;
+    name: string;
+    exhibitors: number[];
+    entity: Entity;
+    slug: string;
 }
 ```
 
@@ -299,9 +318,9 @@ interface FloorPlanCategory {
 
 ```ts
 interface ExpoData {
-  booths: FloorPlanBooth[];
-  exhibitors: FloorPlanExhibitor[];
-  categories: FloorPlanCategory[];
+    booths: FloorPlanBooth[];
+    exhibitors: FloorPlanExhibitor[];
+    categories: FloorPlanCategory[];
 }
 ```
 
@@ -309,9 +328,9 @@ interface ExpoData {
 
 ```ts
 interface CurrentPosition {
-  x: number;
-  y: number;
-  z?: string | number;
+    x: number;
+    y: number;
+    z?: string | number;
 }
 ```
 
@@ -319,10 +338,10 @@ interface CurrentPosition {
 
 ```ts
 interface Visibility {
-  controls?: boolean;
-  levels?: boolean;
-  header?: boolean;
-  overlay?: boolean;
+    controls?: boolean;
+    levels?: boolean;
+    header?: boolean;
+    overlay?: boolean;
 }
 ```
 
@@ -330,27 +349,27 @@ interface Visibility {
 
 ```ts
 interface Rect {
-  x1: number;
-  x2: number;
-  y1: number;
-  y2: number;
-  h: number;
-  w: number;
-  cx: number;
-  cy: number;
-  contains(r: Rect): boolean;
-  intersects(r: Rect): boolean;
-  getIntersection(r: Rect): Rect;
-  getRotated90(): Rect;
-  normalize(width: number, height: number): Rect;
-  withPadding(x: number, y: number): Rect;
-  scale(s: number): Rect;
-  getArea(): number;
-  clone(): Rect;
-  translate(dx: number, dy: number): Rect;
-  equals(r: Rect): boolean;
-  toString(): string;
-  containsPoint(x: number, y: number): boolean;
+    x1: number;
+    x2: number;
+    y1: number;
+    y2: number;
+    h: number;
+    w: number;
+    cx: number;
+    cy: number;
+    contains(r: Rect): boolean;
+    intersects(r: Rect): boolean;
+    getIntersection(r: Rect): Rect;
+    getRotated90(): Rect;
+    normalize(width: number, height: number): Rect;
+    withPadding(x: number, y: number): Rect;
+    scale(s: number): Rect;
+    getArea(): number;
+    clone(): Rect;
+    translate(dx: number, dy: number): Rect;
+    equals(r: Rect): boolean;
+    toString(): string;
+    containsPoint(x: number, y: number): boolean;
 }
 ```
 
@@ -365,5 +384,104 @@ type RouteWaypoint = string | CurrentPosition;
 ```ts
 interface RouteInfo {
     waypoints: RouteWaypoint[];
+}
+```
+
+## FloorPlanIcon
+
+```ts
+type FloorPlanIcon =
+    | "departure"
+    | "destination"
+    | "direction"
+    | "transition"
+    | "transition_up"
+    | "transition_down"
+    | "kiosk-arrow"
+    | "kiosk-label";
+```
+
+## LayerPoint
+
+```ts
+interface LayerPoint extends Point {
+    layer: string;
+}
+```
+
+## Entity
+
+```ts
+interface Entity {
+    type: "booth" | "category" | "exhibitor" | "schedule" | "language" | "heatmap-yah" | "route-cut-in";
+    variant?: "regular" | "special";
+}
+```
+
+## FloorPlanSchedule
+
+```ts
+interface FloorPlanSchedule {
+    id: number;
+    externalId: string;
+    boothId: number;
+    exhibitorId: number;
+    name: string;
+    description: string;
+    startDate: string;
+    endDate: string;
+    link: string;
+    entity: Entity;
+    isEnded: boolean;
+}
+```
+
+## FloorPlanLanguage
+
+```ts
+interface FloorPlanLanguage {
+    id: number;
+    name: string;
+    entity: Entity;
+    selected: boolean;
+}
+```
+
+## FloorPlanHeatmapYah
+
+```ts
+interface FloorPlanHeatmapYah {
+    id: string;
+    name: string;
+    viewCount: number;
+    x: number;
+    y: number;
+    z: number | string;
+    entity: Entity;
+}
+```
+
+## FloorPlanEntity
+
+```ts
+type FloorPlanEntity =
+    | FloorPlanBooth
+    | FloorPlanCategory
+    | FloorPlanExhibitor
+    | FloorPlanSchedule
+    | FloorPlanLanguage
+    | FloorPlanHeatmapYah;
+```
+
+## Floor
+
+```ts
+interface Floor {
+    name: string;
+    shortName: string;
+    description: string;
+    active: boolean;
+    disabled: boolean;
+    index: number;
 }
 ```
