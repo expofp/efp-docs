@@ -241,6 +241,7 @@ interface FloorPlanDirectionEvent {
     to: FloorPlanBoothBase;
     lines: { p0: Point; p1: Point }[];
     distance: string;
+    units: string;
     time: number;
 }
 ```
