@@ -221,3 +221,34 @@ Alternatively, you can type `debug=1` into the search field to enable it or `deb
 | ---------------------------- | --------- |
 | Enables debug mode.          | ?debug=1  |
 | Disables debug mode.         | ?debug=0  |
+
+## setkiosk
+
+| Description                            | Example   |
+| -------------------------------------- | --------- |
+| Kiosk creation and configuration mode. | ?setkiosk |
+
+## k
+
+:::info
+Kiosks must first be created in the [`?setkiosk`](#setkiosk) mode.
+:::
+
+| Description                                   | Example |
+| --------------------------------------------- | ------- |
+| Displays previously created kiosk under ID 1. | ?k=1    |
+| Displays previously created kiosk under ID 2. | ?k=2    |
+
+
+## forceKioskShowDetails
+
+:::info
+In kiosk mode, forcibly enables/disables display of detailed information before building a route.
+
+**[Works only with the parameter k](#k)**
+:::
+
+| Description              | Example                      |
+| ------------------------ | ---------------------------- |
+| Enables.                 | ?k=1&forceKioskShowDetails=1 |
+| Returns to default mode. | ?k=1&forceKioskShowDetails=0 |
