@@ -162,8 +162,12 @@ function sidebarExamples() {
 
 function sidebarSdk() {
   return [
+     {
+      text: "JavaScript SDK (current)",
+      link: "/guide/java-script-api-reference",
+    },
     {
-      text: "Android Java SDK (current)",
+      text: "Android Java SDK v4 (current)",
       link: "https://expofp.github.io/expofp-mobile-sdk/android-sdk/",
     },
     { text: "GPS JS SDK (current)", link: "https://github.com/expofp/gps-efp-app" },
