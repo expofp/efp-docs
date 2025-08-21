@@ -188,5 +188,9 @@ function changelogItems() {
       text: "JavaScript API Changelog",
       link: "https://expofp.github.io/changelog/efp-app/",
     },
+     {
+      text: "iOS Swift SDK v5 Changelog",
+      link: "https://expofp.github.io/expofp-sdk-ios/documentation/expofp/changelog",
+    },
   ];
 }
