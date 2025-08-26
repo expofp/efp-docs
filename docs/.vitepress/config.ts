@@ -179,6 +179,10 @@ function sidebarSdk() {
       text: "iOS Swift SDK v5 (next)",
       link: `https://expofp.github.io/expofp-sdk-ios/documentation/expofp/`,
     },
+    {
+      text: "Android Kotlin SDK v5 (next)",
+      link: `https://expofp.github.io/expofp-fplan-android/`,
+    },
   ];
 }
 
@@ -191,6 +195,10 @@ function changelogItems() {
      {
       text: "iOS Swift SDK v5 Changelog",
       link: "https://expofp.github.io/expofp-sdk-ios/documentation/expofp/changelog",
+    },
+     {
+      text: "Android Kotlin SDK v5 Changelog",
+      link: "https://expofp.github.io/expofp-fplan-android/articles/changelog",
     },
   ];
 }
