@@ -22,8 +22,7 @@ This API exposes the **ExpoOfflineData** lifecycle:
    * If the archive exists, the API returns its **ExpoOfflineState** with a direct `fileUrl`.
    * If it does not exist yet, the API **starts** an asynchronous creation job and returns the **running** state.
 2. Clients may **poll** (client-side or via server-side polling using `waitseconds`) until the state becomes `Completed`.
-3. For history/auditing, completed states are listed by **Get History List**.
-4. A **Reset State** endpoint is available to explicitly reset the state for an Expo (without bumping version numbers).
+3. A **Reset State** endpoint is available to explicitly reset the state for an Expo (without bumping version numbers).
 
 ---
 
@@ -192,32 +191,7 @@ curl -s \
 
 ---
 
-### 3) Get History List (Completed Only)
-
-List all **completed** offline states for an expo (as found on S3).
-
-```
-GET /api/v2/expo-offline/{expoKey}/get-history-list
-```
-
-* **Path params**
-
-  * `expoKey` — the expo key.
-
-**Responses**
-
-* `200 OK` with `Array<ExpoOfflineState>` — only `Completed` states.
-
-**Example**
-
-```bash
-curl -s \
-  "https://app.expofp.com/api/v2/expo-offline/sltest2/get-history-list"
-```
-
----
-
-### 4) Reset State
+### 3) Reset State
 
 Explicitly reset the Expo’s offline state (without incrementing versions).
 
