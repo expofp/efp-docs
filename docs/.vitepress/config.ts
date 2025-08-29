@@ -92,6 +92,7 @@ function sidebarGuide() {
     { text: "Examples", collapsed: true, items: sidebarExamples() },
     { text: "SDK", collapsed: true, items: sidebarSdk() },
     { text: "JSON API", link: "/guide/json-api" },
+    { text: "Offline Data API", link: "/guide/offline-api" },
     { text: "Webhooks", link: "/guide/webhooks" },
     { text: "data.js Schema", link: "/guide/data-js-schema" },
     {
