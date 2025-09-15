@@ -100,6 +100,7 @@ function sidebarGuide() {
       link: "/guide/java-script-api-reference",
     },
     { text: "Query parameters", link: "/guide/query-parameters" },
+    { text: "Easy Guide to Using Search", link: "/guide/search" },
   ];
 }
 
@@ -157,7 +158,7 @@ function sidebarExamples() {
     {
       text: "Configuring Map Settings via URL Parameters",
       link: "/guide/configuring-map-guide",
-    },
+    }
   ];
 }
 
