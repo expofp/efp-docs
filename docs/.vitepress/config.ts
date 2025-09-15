@@ -158,7 +158,7 @@ function sidebarExamples() {
     {
       text: "Configuring Map Settings via URL Parameters",
       link: "/guide/configuring-map-guide",
-    }
+    },
   ];
 }
 
