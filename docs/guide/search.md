@@ -15,22 +15,26 @@ This helps you see the most relevant results immediately.
 #### Search Features
 
 **1. Highlighted Results**
+
 Your search words are highlighted in the results. This makes it easy to quickly see why something was found.
 
 <img src="/img/search/1.png" alt="" width="320" />
 
 **2. Fuzzy Search (Finds Close Matches)**
+
 It's okay if you spell something wrong. The search will still find what you're looking for.
 
 <img src="/img/search/2.png" alt="" width="320" />
 
 **3. Search in Descriptions**
+
 Find exhibitors by what they offer, even if those words aren't in their name. Just search for a product or service.
 
 <img src="/img/search/3.png" alt="" width="320" />
 
 **4. Find a Booth Directly**
-Get directions fast. Search for a booth's exact name or number to find it quickly.
+
+Search for a booth's exact name or number to find it quickly.
 
 <img src="/img/search/4.png" alt="" width="320" />
 
