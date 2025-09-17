@@ -159,6 +159,10 @@ function sidebarExamples() {
       text: "Configuring Map Settings via URL Parameters",
       link: "/guide/configuring-map-guide",
     },
+    {
+      text: "OnInit Example",
+      link: `pathname://${base}examples/on-init.html`,
+    },
   ];
 }
 
