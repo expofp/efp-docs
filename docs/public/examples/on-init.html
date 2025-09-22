@@ -1,0 +1,52 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, width=device-width" />
+        <style>
+            html,
+            body {
+                touch-action: none;
+                margin: 0;
+                padding: 0;
+                height: 100%;
+                width: 100%;
+                background: #ebebeb;
+                position: fixed;
+                overflow: hidden;
+            }
+            @media (max-width: 820px) and (min-width: 500px) {
+                html {
+                    font-size: 13px;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div id="floorplan">Loading...</div>
+        <script src="https://demo.expofp.com/packages/master/expofp.js" crossorigin="anonymous"></script>
+        <script>
+            window["___fp"] = new ExpoFP.FloorPlan({
+                element: document.querySelector("#floorplan"),
+                eventId: "demo",
+                allowConsent: true,
+                offHistory: true,
+                // onFpConfigured() {
+                //     console.warn("onFpConfigured", performance.now());
+                // },
+		        onInit(fp) {
+                    console.warn("onInit", performance.now(), fp);
+                    // fp.selectExhibitor(fp.exhibitorsList()[0].name);
+					setTimeout(() => {
+                        fp.selectBooth(fp.boothsList()[0].name);
+                    }, 100);
+                },
+            });
+
+            // window["___fp"].ready.then(() => {
+            //     console.warn("fp.ready", performance.now());
+            // });
+        </script>
+    </body>
+</html>

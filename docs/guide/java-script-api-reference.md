@@ -134,9 +134,11 @@ interface FloorPlanOptions {
     dataUrl?: string;
     noOverlay?: boolean;
     offHistory?: boolean;
+    ignoreQuery?: boolean;
     allowConsent?: boolean;
     onBoothClick?: (e: FloorPlanBoothClickEvent) => void;
     onBookmarkClick?: (e: FloorPlanBookmarkClickEvent) => void;
+    onVisitedClick?: (e: FloorPlanVisitedClickEvent) => void;
     onCategoryClick?: (e: FloorPlanCategoryClickEvent) => void;
     /**
      * @deprecated

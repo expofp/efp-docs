@@ -92,6 +92,7 @@ function sidebarGuide() {
     { text: "Examples", collapsed: true, items: sidebarExamples() },
     { text: "SDK", collapsed: true, items: sidebarSdk() },
     { text: "JSON API", link: "/guide/json-api" },
+    { text: "Offline Data API", link: "/guide/offline-api" },
     { text: "Webhooks", link: "/guide/webhooks" },
     { text: "data.js Schema", link: "/guide/data-js-schema" },
     {
@@ -99,6 +100,7 @@ function sidebarGuide() {
       link: "/guide/java-script-api-reference",
     },
     { text: "Query parameters", link: "/guide/query-parameters" },
+    { text: "Easy Guide to Using Search", link: "/guide/search" },
   ];
 }
 
@@ -156,6 +158,14 @@ function sidebarExamples() {
     {
       text: "Configuring Map Settings via URL Parameters",
       link: "/guide/configuring-map-guide",
+    },
+    {
+      text: "OnInit Example",
+      link: `pathname://${base}examples/on-init.html`,
+    },
+    {
+      text: "ignoreQuery Example",
+      link: `pathname://${base}examples/ignore-query.html`,
     },
   ];
 }
