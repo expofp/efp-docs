@@ -163,6 +163,10 @@ function sidebarExamples() {
       text: "OnInit Example",
       link: `pathname://${base}examples/on-init.html`,
     },
+    {
+      text: "ignoreQuery Example",
+      link: `pathname://${base}examples/ignore-query.html`,
+    },
   ];
 }
 
