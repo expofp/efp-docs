@@ -333,12 +333,12 @@ interface ExpoData {
 
 ```ts
 interface CurrentPosition {
-    x: number,
-    y: number,
-    z?: number | string,
-    angle?: number,
-    lat?: number,
-    lng?: number
+    x: number;
+    y: number;
+    z?: number | string;
+    angle?: number;
+    lat?: number;
+    lng?: number;
 }
 ```
 
