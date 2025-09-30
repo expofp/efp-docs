@@ -113,6 +113,8 @@ class FloorPlan {
     onFloorActivated(floor: Floor): void;
 
     activateFloor(floorId: { name?: string; index?: number }): void;
+
+    showSearch(): void;
 }
 ```
 
