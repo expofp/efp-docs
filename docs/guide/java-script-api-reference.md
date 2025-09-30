@@ -335,7 +335,10 @@ interface ExpoData {
 interface CurrentPosition {
     x: number;
     y: number;
-    z?: string | number;
+    z?: number | string; // The floor name or index in the floors array.
+    angle?: number; // Angle in degrees.
+    lat?: number;
+    lng?: number;
 }
 ```
 
