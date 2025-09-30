@@ -336,7 +336,7 @@ interface CurrentPosition {
     x: number;
     y: number;
     z?: number | string; // The floor name or index in the floors array.
-    angle?: number;
+    angle?: number; // Angle in degrees.
     lat?: number;
     lng?: number;
 }
