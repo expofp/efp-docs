@@ -41,7 +41,7 @@ Example: `?z=2`
 ---
 
 ### **bearing**  
-Rotates the map (0–360 degrees). 
+Rotates the kiosk arrow icon (0–360 degrees). 
 > *Currently works only in kiosk mode.*  
 
 Example: `?bearing=180`  
