@@ -263,6 +263,7 @@ interface FloorPlanDetailsEvent {
     /// if the type is 'exhibitor' this value contains the  assigned booths names (the first booth name takes from the onBoothClick event)
     /// if the the type is 'route' this value contains "from" and "to" booths name.
     boothsNames: string[];
+    routeInfo?: Record<string, unknown>;
 }
 ```
 
