@@ -115,6 +115,8 @@ class FloorPlan {
     activateFloor(floorId: { name?: string; index?: number }): void;
 
     showSearch(): void;
+
+    changeLanguage(langId: string): void
 }
 ```
 
