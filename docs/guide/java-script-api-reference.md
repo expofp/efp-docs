@@ -116,7 +116,7 @@ class FloorPlan {
 
     showSearch(): void;
 
-    changeLanguage(langId: string): void
+    changeLanguage(langId: string): void;
 }
 ```
 
