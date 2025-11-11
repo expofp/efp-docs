@@ -30,6 +30,7 @@
             new ExpoFP.FloorPlan({
                 element: document.querySelector("#floorplan"),
                 eventId: "demo",
+                dataUrl: "https://demo.expofp.com/data/",
                 noOverlay: false,
                 onBoothClick: (e) => console.info(`Booth clicked: ${e.target.name}`),
 		onInit: fp => fp.selectRoute(["42-23", "101-12"]),

@@ -50,6 +50,7 @@
     new ExpoFP.FloorPlan({
         element: document.querySelector("#demo"),
         eventId: "demo",
+		dataUrl: "https://demo.expofp.com/data/",
         onInit: fpRef => {
            console.log("Load bookmarks...");			
 		   bookmarksStorage.load().then(bookmarks => {

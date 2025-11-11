@@ -30,23 +30,15 @@
             window["___fp"] = new ExpoFP.FloorPlan({
                 element: document.querySelector("#floorplan"),
                 eventId: "demo",
+                dataUrl: "https://demo.expofp.com/data/",
                 allowConsent: true,
                 offHistory: true,
-                // onFpConfigured() {
-                //     console.warn("onFpConfigured", performance.now());
-                // },
 		        onInit(fp) {
-                    console.warn("onInit", performance.now(), fp);
-                    // fp.selectExhibitor(fp.exhibitorsList()[0].name);
 					setTimeout(() => {
                         fp.selectBooth(fp.boothsList()[0].name);
                     }, 100);
                 },
             });
-
-            // window["___fp"].ready.then(() => {
-            //     console.warn("fp.ready", performance.now());
-            // });
         </script>
     </body>
 </html>
