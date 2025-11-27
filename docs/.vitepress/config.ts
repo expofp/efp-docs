@@ -175,7 +175,7 @@ function sidebarSdk() {
      {
       text: "JavaScript SDK (current)",
       link: "/guide/java-script-api-reference",
-    },
+    },    
     {
       text: "Android Java SDK v4 (legacy)",
       link: "https://expofp.github.io/expofp-mobile-sdk/android-sdk/",
@@ -192,6 +192,10 @@ function sidebarSdk() {
     {
       text: "Android Kotlin SDK v5 (current)",
       link: `https://expofp.github.io/expofp-fplan-android/`,
+    },
+    {
+      text: "ReactNative SDK (current)",
+      link: "https://expofp.github.io/react-native-efp-sdk/",
     },
   ];
 }
