@@ -2,6 +2,7 @@
 
 ::: warning
 **Do not clear the browser cache on the kiosk.**
+
 Kiosk settings are stored locally in the browser. Clearing the cache will remove the kiosk and require a full re-setup. Reloading the page is safe and will not affect the kiosk configuration.
 :::
 
