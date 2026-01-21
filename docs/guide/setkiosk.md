@@ -1,11 +1,8 @@
 # Set Kiosk in 6 Steps
 
 ::: warning
-**Disable browser cache clearing on the kiosk!**
-
-Kiosk settings are saved directly in the browser. 
-This means if you clear the browser cache, the kiosk will be removed and you will need to repeat the setup.
-Simply reloading the page in the browser is fine.
+**Do not clear the browser cache on the kiosk.**
+Kiosk settings are stored locally in the browser. Clearing the cache will remove the kiosk and require a full re-setup. Reloading the page is safe and will not affect the kiosk configuration.
 :::
 
 ## Step 1
@@ -24,7 +21,7 @@ Click on the screen where the kiosk should be.
 ![Step 3](/img/setkiosk/step_3.webp)
 
 ## Step 4
-Optionally, adjust the kiosk icon size and rotation, interface size, map rotation, and map zoom.
+Optionally, adjust the kiosk icon (size and rotation), interface size, and map (rotation, zoom, and position).
 
 ![Step 4](/img/setkiosk/step_4.webp)
 
@@ -40,6 +37,11 @@ Close.
 
 ## How to Edit a Kiosk
 To edit an existing kiosk, repeat the process from [step 1](#step-1).
+
+## How to Exit Setkiosk Mode
+To exit the mode, press the close button.
+
+![Close](/img/setkiosk/close.webp)
 
 ## Advanced settings for offline use
 You can also set up the kiosk for [offline use](https://docs.google.com/document/d/1NCe_CCeb-YFZ7dv8z-64Qy-G_I980hTVzJBEwqHxIt8/edit?tab=t.0#heading=h.vara7lnhbzc9)
