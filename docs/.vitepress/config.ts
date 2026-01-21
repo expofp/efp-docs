@@ -115,6 +115,10 @@ function sidebarExamples() {
       text: "No Overlay",
       link: `pathname://${base}examples/no-overlay.html`,
     },
+    {
+      text: "Zoom",
+      link: `pathname://${base}examples/zoom.html`,
+    },
 	{
       text: "No Overlay with background",
       link: `pathname://${base}examples/no-overlay-with-background.html`,

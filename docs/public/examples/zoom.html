@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, width=device-width" />
+        <style>
+            html,
+            body {
+                touch-action: none;
+                margin: 0;
+                padding: 0;
+                height: 100%;
+                width: 100%;
+                background: #ebebeb;
+                position: fixed;
+                overflow: hidden;
+            }
+            @media (max-width: 820px) and (min-width: 500px) {
+                html {
+                    font-size: 13px;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div id="floorplan">Loading...</div>
+        <script src="https://demo.expofp.com/packages/main/expofp.js" crossorigin="anonymous"></script>
+        <script>
+            window["___fp"] = new ExpoFP.FloorPlan({
+                element: document.querySelector("#floorplan"),
+                eventId: "demo",
+                dataUrl: "https://demo.expofp.com/data/",
+                noOverlay: true,
+                onBoothClick: e => {
+                    ___fp.selectBooth(e.target?.name);
+                }
+            });
+        </script>
+    </body>
+</html>
