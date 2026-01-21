@@ -40,3 +40,6 @@ Close.
 
 ## How to Edit a Kiosk
 To edit an existing kiosk, repeat the process from [step 1](#step-1).
+
+## Advanced settings for offline use
+You can also set up the kiosk for [offline use](https://docs.google.com/document/d/1NCe_CCeb-YFZ7dv8z-64Qy-G_I980hTVzJBEwqHxIt8/edit?tab=t.0#heading=h.vara7lnhbzc9)
