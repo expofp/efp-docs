@@ -46,3 +46,12 @@ To exit the mode, press the close button.
 
 ## Advanced settings for offline use
 You can also set up the kiosk for [offline use](https://docs.google.com/document/d/1NCe_CCeb-YFZ7dv8z-64Qy-G_I980hTVzJBEwqHxIt8/edit?tab=t.0#heading=h.vara7lnhbzc9)
+
+
+## Additional information
+
+To temporarily disable kiosk mode, you can reopen the plan with the corresponding [parameter](https://developer.expofp.com/guide/query-parameters#kiosk).  
+
+For example:  
+- Disable kiosk mode: https://demo.expofp.com/?kiosk=0
+- Enable kiosk mode again: https://demo.expofp.com/?kiosk=1
