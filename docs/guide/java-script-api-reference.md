@@ -87,7 +87,11 @@ class FloorPlan {
 
     switchView(): void;
 
-    fitBounds(): void;
+    zoomTo(selectors: POISelectors, options?: { padding?: number }): void
+
+    getBounds(selectors: POISelectors): Bounds | undefined;
+
+    fitBounds(bounds?: Bounds, options?: { padding?: number }): void;
 
     getBoothRect(name: string): Rect;
 
@@ -207,9 +211,69 @@ interface FloorPlanBoothClickEvent {
 ## Point
 
 ```ts
-interface Point {
+/**
+ * Represents a 2D point coordinate in the floor plan coordinate system.
+ */
+export interface Point {
+    /** X coordinate */
     x: number;
+    /** Y coordinate */
     y: number;
+}
+```
+
+## Bounds
+
+```ts
+/**
+ * Defines a rectangular bounding box using two corner points.
+ */
+export interface Bounds {
+    /** Top-left corner of the bounding box */
+    leftTop: Point;
+    /** Bottom-right corner of the bounding box */
+    rightBottom: Point;
+}
+```
+
+## POISelector
+
+```ts
+/**
+ * Selector for identifying a Point of Interest (POI) 
+ * by name or external ID.
+ */
+export interface POISelector {
+    /** Name of the POI */
+    name?: string;
+    /** External identifier of the POI */
+    externalId?: string;
+}
+```
+
+## POISelectors
+
+```ts
+/**
+ * Collection of POI selectors for booths and exhibitors.
+ */
+export interface POISelectors {
+    /** Array of booth selectors */
+    booths?: POISelector[];
+    /** Array of exhibitor selectors */
+    exhibitors?: POISelector[];
+}
+```
+
+## zoomToOptions
+
+```ts
+/**
+ * Options for the zoomTo operation.
+ */
+export interface ZoomToOptions {
+    /** Padding in pixels around the zoomed area. Defaults to 0. */
+    padding?: number;
 }
 ```
 

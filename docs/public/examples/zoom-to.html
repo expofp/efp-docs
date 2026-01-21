@@ -14,6 +14,16 @@
                 background: #ebebeb;
                 position: fixed;
                 overflow: hidden;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            #floorplan {
+                width: 300px;
+                height: 300px;
+                border: 2px solid #ccc;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                background: #fff;
             }
             @media (max-width: 820px) and (min-width: 500px) {
                 html {
@@ -26,14 +36,25 @@
         <div id="floorplan">Loading...</div>
         <script src="https://demo.expofp.com/packages/main/expofp.js" crossorigin="anonymous"></script>
         <script>
-            window["___fp"] = new ExpoFP.FloorPlan({
+            new ExpoFP.FloorPlan({
                 element: document.querySelector("#floorplan"),
                 eventId: "demo",
                 dataUrl: "https://demo.expofp.com/data/",
                 noOverlay: true,
-                onBoothClick: e => {
-                    ___fp.selectBooth(e.target?.name);
-                }
+    
+                onInit: (fp) => {
+                    // Expose
+                    window.___fp = fp;
+                    // Hide all UI elements
+                    fp.setVisibility({
+                        "controls": false,
+                        "levels": false,
+                        "header": false,
+                        "overlay": false
+                    });
+                    // Zoom to booth with name '1'
+                    fp.zoomTo({ booths:[ { name: '1' } ]})
+                },
             });
         </script>
     </body>
