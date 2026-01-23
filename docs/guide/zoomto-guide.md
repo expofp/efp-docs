@@ -34,8 +34,8 @@ new ExpoFP.FloorPlan({
 ## Live Demo
 
 <iframe
-  src="https://stackblitz.com/edit/stackblitz-starters-237p1clm?embed=1&file=index.html&hideExplorer=1&hideNavigation=1&view=preview"
-  style="width:100%; height:800px; border:0; border-radius:4px; overflow:hidden;"
+  src="https://stackblitz.com/edit/stackblitz-starters-237p1clm?embed=1&file=index.html&hideExplorer=1&hideNavigation=1&view=editor"
+  style="width:100%; height:500px; border:0; border-radius:4px; overflow:hidden;"
   title="Zoom to Booth Example"
 ></iframe>
 
