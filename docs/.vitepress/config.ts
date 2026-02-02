@@ -102,6 +102,7 @@ function sidebarGuide() {
     { text: "Query parameters", link: "/guide/query-parameters" },
     { text: "Easy Guide to Using Search", link: "/guide/search" },
     { text: "Set Kiosk", link: "/guide/setkiosk" },
+    { text: "Map integration", link: "/guide/map-integration" },
   ];
 }
 
