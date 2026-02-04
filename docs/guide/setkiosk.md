@@ -1,5 +1,9 @@
 # Set Kiosk in 6 Steps
 
+::: info
+Repeat this process on each physical kiosk.
+:::
+
 ::: warning
 **Do not clear the browser cache on the kiosk.**
 
