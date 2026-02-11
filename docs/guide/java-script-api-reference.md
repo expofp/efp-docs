@@ -136,10 +136,10 @@ const ExpoFP: {
 
 ```ts
 interface FloorPlanOptions {
-    element?: HTMLDivElement;
-    eventId?: string;
+    element: HTMLDivElement;
+    eventId: string;
+    dataUrl: string;
     previewMode?: boolean;
-    dataUrl?: string;
     noOverlay?: boolean;
     offHistory?: boolean;
     ignoreQuery?: boolean;
