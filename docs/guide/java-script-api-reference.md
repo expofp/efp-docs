@@ -118,6 +118,10 @@ class FloorPlan {
 
     activateFloor(floorId: { name?: string; index?: number }): void;
 
+    showPathway(name: string, boothExternalIds: string[]): void;
+
+    hidePathways(): void;
+
     showSearch(): void;
 
     changeLanguage(langId: string): void;
