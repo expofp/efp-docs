@@ -28,10 +28,6 @@ ___fp.selectRoute(["42-1", "42-21", "42-37", "42-52", "101-17", "101-12"]);
 
 An optional optimize mode attempts to compute the most efficient order in which to visit the selected POIs.
 
-::: info
-This feature is currently in Beta and may not always yield the absolutely optimal route.
-:::
-
 [View Live Example](https://demo.expofp.com/?route%3A41-3%3A42-1%3Afalse%3A42-3%3A42-21)
 
 ```js
