@@ -49,13 +49,13 @@ class FloorPlan {
      */
     selectRoute(waypoints: RouteWaypoint[]): void;
 
-    /**
-     * @note
-     * Experimental feature: functionality may be unstable or subject to change.
-     */
     getOptimizedRoutes(waypoints: RouteWaypoint[]): RouteInfo[];
 
+    deselectRoute(): void;
+
     selectCurrentPosition(point: CurrentPosition, focus: boolean, icon?: number): void;
+
+    deselectCurrentPosition(): void;
 
     setBookmarks(bookmarks: { name?: string; externalId?: string; bookmarked: boolean }[]): void;
 
@@ -121,6 +121,10 @@ class FloorPlan {
     showSearch(): void;
 
     changeLanguage(langId: string): void;
+
+    isGpsTrackingEnabled(): boolean;
+
+    setGpsTrackingEnabled(value: boolean): void;
 }
 ```
 
