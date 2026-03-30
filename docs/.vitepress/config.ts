@@ -49,7 +49,7 @@ export default defineConfig({
 
     // https://vitepress.dev/reference/default-theme-footer#footer
     footer: {
-      copyright: `© ${year} <a href='http://expofp.com/'>ExpoFP.com</a> • <a href='https://expofp.com/#contact'>Support</a> • <a target='_blank' href='https://expofp.statuspage.io/'>Status</a>`,
+      copyright: `© ${year} <a href='http://expofp.com/'>ExpoFP.com</a> • <a href='https://expofp.com/#contact'>Support</a> • <a target='_blank' href='https://statuspage.incident.io/expofp'>Status</a>`,
     },
 
     // https://vitepress.dev/reference/default-theme-search#local-search
