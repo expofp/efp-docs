@@ -519,10 +519,9 @@ interface FloorPlanSchedule {
 
 ```ts
 interface Language {
-    id: number;
-    name: string;
-    entity: Entity;
-    selected: boolean;
+    readonly id: string;
+    readonly name: string;
+    readonly entity: { readonly type: "language" };
 }
 ```
 
