@@ -515,10 +515,10 @@ interface FloorPlanSchedule {
 }
 ```
 
-## FloorPlanLanguage
+## Language
 
 ```ts
-interface FloorPlanLanguage {
+interface Language {
     id: number;
     name: string;
     entity: Entity;
@@ -548,7 +548,7 @@ type FloorPlanEntity =
     | FloorPlanCategory
     | FloorPlanExhibitor
     | FloorPlanSchedule
-    | FloorPlanLanguage
+    | Language
     | FloorPlanHeatmapYah;
 ```
 
