@@ -217,7 +217,7 @@ function changelogItems() {
     },
      {
       text: "iOS Swift SDK v5 Changelog",
-      link: "https://expofp.github.io/expofp-sdk-ios/documentation/expofp/changelog",
+      link: "https://expofp.github.io/expofp-sdk-ios/documentation/expofp/changelog-history",
     },
      {
       text: "Android Kotlin SDK v5 Changelog",
