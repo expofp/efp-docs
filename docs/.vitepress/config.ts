@@ -143,14 +143,6 @@ function sidebarExamples() {
       link: `pathname://${base}examples/insert-in-container.html`,
     },
     {
-      text: "Android App (Java)",
-      link: "https://github.com/expofp/expofp-example-android",
-    },
-    {
-      text: "iOS App (SwiftUI)",
-      link: "https://github.com/expofp/expofp-swiftui-example",
-    },
-    {
       text: "Preview mode",
       link: `pathname://${base}examples/preview-mode.html`,
     },
