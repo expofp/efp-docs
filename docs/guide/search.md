@@ -6,9 +6,9 @@ Our platform has a smart search tool to help you quickly find exhibitors, booths
 
 The search shows you the best matches first:
 
-1.  **Perfect Name Match:** Items with names that exactly match your search.
-2.  **Close Name Match:** If there's no perfect match, it shows similar names (even with small spelling mistakes).
-3.  **Description Match:** Finally, it shows items where your search words are in the description.
+1.  **Name Match:** Items whose name contains your search text.
+2.  **Close Name Match:** Items with similar names — including small spelling mistakes, swapped letters, or words typed in a different order.
+3.  **Description Match:** Items where your search text appears in the description..
 
 This helps you see the most relevant results immediately.
 
