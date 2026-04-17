@@ -143,6 +143,14 @@ function sidebarExamples() {
       link: `pathname://${base}examples/insert-in-container.html`,
     },
     {
+      text: "Android SDK examples",
+      link: "https://expofp.github.io/expofp-fplan-android/#usage-examples",
+    },
+    {
+      text: "iOS SDK examples",
+      link: "https://expofp.github.io/expofp-sdk-ios/documentation/expofp#Usage-Examples",
+    },
+    {
       text: "Preview mode",
       link: `pathname://${base}examples/preview-mode.html`,
     },
