@@ -183,26 +183,30 @@ function sidebarExamples() {
 
 function sidebarSdk() {
   return [
-     {
-      text: "JavaScript SDK (current)",
+    {
+      text: "JavaScript SDK v3 (current)",
+      link: "https://js-sdk.expofp.com/",
+    },
+    {
+      text: "JavaScript SDK v2 (legacy)",
       link: "/guide/java-script-api-reference",
     },    
-    {
-      text: "Android Java SDK v4 (legacy)",
-      link: "https://expofp.github.io/expofp-mobile-sdk/android-sdk/",
-    },
     { text: "GPS JS SDK (current)", link: "https://github.com/expofp/gps-efp-app" },
+    {
+      text: "iOS Swift SDK v5 (current)",
+      link: "https://expofp.github.io/expofp-sdk-ios/documentation/expofp/",
+    },
     {
       text: "iOS Swift SDK v4 (legacy)",
       link: "https://expofp.github.io/expofp-mobile-sdk/ios-sdk/",
     },
     {
-      text: "iOS Swift SDK v5 (current)",
-      link: `https://expofp.github.io/expofp-sdk-ios/documentation/expofp/`,
+      text: "Android Kotlin SDK v5 (current)",
+      link: "https://expofp.github.io/expofp-fplan-android/",
     },
     {
-      text: "Android Kotlin SDK v5 (current)",
-      link: `https://expofp.github.io/expofp-fplan-android/`,
+      text: "Android Java SDK v4 (legacy)",
+      link: "https://expofp.github.io/expofp-mobile-sdk/android-sdk/",
     },
     {
       text: "ReactNative SDK (current)",
