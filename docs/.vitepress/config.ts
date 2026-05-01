@@ -191,7 +191,6 @@ function sidebarSdk() {
       text: "JavaScript SDK v2 (legacy)",
       link: "/guide/java-script-api-reference",
     },    
-    { text: "GPS JS SDK (current)", link: "https://github.com/expofp/gps-efp-app" },
     {
       text: "iOS Swift SDK v5 (current)",
       link: "https://expofp.github.io/expofp-sdk-ios/documentation/expofp/",
@@ -222,11 +221,11 @@ function changelogItems() {
       link: "https://expofp.github.io/changelog/efp-app/",
     },
      {
-      text: "iOS Swift SDK v5 Changelog",
+      text: "iOS SDK v5 Changelog",
       link: "https://expofp.github.io/expofp-sdk-ios/documentation/expofp/changelog-history",
     },
      {
-      text: "Android Kotlin SDK v5 Changelog",
+      text: "Android SDK v5 Changelog",
       link: "https://expofp.github.io/expofp-fplan-android/articles/changelog",
     },
   ];
