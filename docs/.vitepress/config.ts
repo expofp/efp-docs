@@ -59,14 +59,9 @@ export default defineConfig({
 function nav() {
   return [
     {
-      text: "Documentation",
+      text: "General Documentation",
       link: "/guide/",
       activeMatch: "/guide/",
-    },
-    {
-      text: "SDK",
-      items: sidebarSdk(),
-      activeMatch: "/sdk/",
     }
   ];
 }
