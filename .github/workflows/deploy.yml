@@ -21,10 +21,11 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 16
-          cache: npm
-      - run: npm ci
+          cache: yarn
+      - run: corepack enable
+      - run: yarn install --frozen-lockfile
       - name: Build
-        run: npm run build
+        run: yarn build
       - uses: actions/configure-pages@v4
       - uses: actions/upload-pages-artifact@v3
         with:
