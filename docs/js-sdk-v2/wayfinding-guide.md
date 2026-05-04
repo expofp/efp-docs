@@ -1,7 +1,7 @@
 # Wayfinding Guide
 
 ::: info
-Multipoint routing is available via the [JS SDK](java-script-api-reference.md).
+Multipoint routing is available via the [JS SDK](/js-sdk-v2/javascript-api-reference).
 :::
 
 ## Route Creation

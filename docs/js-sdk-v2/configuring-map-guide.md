@@ -98,4 +98,4 @@ In other words, if you need both settings, you must include them in the same req
 
 ---
 
-Also, check out the [full documentation](/guide/query-parameters).
+Also, check out the [full documentation](/js-sdk-v2/query-parameters).

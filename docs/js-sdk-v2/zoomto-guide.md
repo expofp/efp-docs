@@ -3,7 +3,7 @@
 Select and zoom to a booth when the user clicks on it.
 
 ::: tip
-See the [JavaScript API Reference](/guide/java-script-api-reference) for all available methods.
+See the [JavaScript API Reference](/js-sdk-v2/javascript-api-reference) for all available methods.
 :::
 
 ## Code
@@ -41,5 +41,5 @@ new ExpoFP.FloorPlan({
 
 ## Related
 
-[Query parameters](/guide/query-parameters#zoom) - set initial zoom level via URL  
-[JavaScript API Reference](/guide/java-script-api-reference) - full method documentation
+[Query parameters](/js-sdk-v2/query-parameters#zoom) - set initial zoom level via URL  
+[JavaScript API Reference](/js-sdk-v2/javascript-api-reference) - full method documentation

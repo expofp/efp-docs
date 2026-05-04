@@ -54,7 +54,7 @@ You can also set up the kiosk for [offline use](https://docs.google.com/document
 
 ## Additional information
 
-To temporarily disable kiosk mode, you can reopen the plan with the corresponding [parameter](https://developer.expofp.com/guide/query-parameters#kiosk).  
+To temporarily disable kiosk mode, you can reopen the plan with the corresponding [parameter](/js-sdk-v2/query-parameters#kiosk).  
 
 For example:  
 - Disable kiosk mode: https://demo.expofp.com/?kiosk=0

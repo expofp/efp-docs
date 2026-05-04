@@ -18,7 +18,7 @@ Make sure the container has a set width and height.
 This method gives you direct control over initialization in your application’s JavaScript.
 
 ::: info
-Other options are also available, more details <a href="/guide/java-script-api-reference" target="_blank">here</a>.
+Other options are also available, more details <a href="/js-sdk-v2/javascript-api-reference" target="_blank">here</a>.
 :::
 
 ```html

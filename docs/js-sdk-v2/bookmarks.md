@@ -3,7 +3,7 @@
 The app allows users to save items as bookmarks.
 
 ::: info
-Please note that adding bookmarks is disabled in [kiosk mode](/guide/query-parameters#kkiosk).
+Please note that adding bookmarks is disabled in [kiosk mode](/js-sdk-v2/query-parameters#kkiosk).
 :::
 
 ## Bookmarking feature in the app interface
@@ -25,7 +25,7 @@ Please note that adding bookmarks is disabled in [kiosk mode](/guide/query-param
 ## Bookmark management in the JS SDK
 
 ::: tip
-Refer to the [JavaScript API Reference](/guide/java-script-api-reference) for more information.
+Refer to the [JavaScript API Reference](/js-sdk-v2/javascript-api-reference) for more information.
 :::
 
 ### Adding and removing bookmarks
@@ -73,4 +73,4 @@ new ExpoFP.FloorPlan({
 
 ## Bookmarking via URL parameters
 
-The following [parameters](/guide/query-parameters#bookmarks) are supported.
+The following [parameters](/js-sdk-v2/query-parameters#bookmarks) are supported.

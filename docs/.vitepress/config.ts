@@ -142,7 +142,7 @@ function sidebarSdk() {
     },
     {
       text: "JavaScript SDK v2 (legacy)",
-      link: "/guide/java-script-api-reference",
+      link: "/js-sdk-v2/javascript-api-reference",
     },    
     {
       text: "iOS Swift SDK v5",
