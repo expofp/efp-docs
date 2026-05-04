@@ -1,4 +1,4 @@
-# Guide: Configuring Map Settings via URL Parameters  
+# Configuring Map Settings via URL Parameters  
 
 ## Map Settings Overview
 

@@ -1,8 +1,8 @@
-### Easy Guide to Using Search
+# Easy Guide to Using Search
 
 Our platform has a smart search tool to help you quickly find exhibitors, booths, and other things.
 
-#### How Search Results Are Ordered
+## How Search Results Are Ordered
 
 The search shows you the best matches first:
 
@@ -12,7 +12,7 @@ The search shows you the best matches first:
 
 This helps you see the most relevant results immediately.
 
-#### Search Features
+## Search Features
 
 **1. Highlighted Results**
 

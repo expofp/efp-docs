@@ -1,4 +1,4 @@
-# Bookmarks
+# Bookmarks Guide
 
 The app allows users to save items as bookmarks.
 

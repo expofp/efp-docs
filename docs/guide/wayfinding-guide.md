@@ -1,4 +1,4 @@
-# Routes / Multipoint Wayfinding
+# Wayfinding Guide
 
 ::: info
 Multipoint routing is available via the [JS SDK](java-script-api-reference.md).

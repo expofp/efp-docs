@@ -1,4 +1,4 @@
-# Expo Offline Data API
+# Offline Data API
 
 Prepare and retrieve versioned offline archives of an Expo floor plan (“**ExpoFloorPlan**”) for mobile/offline usage.
 
