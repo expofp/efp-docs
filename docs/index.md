@@ -5,11 +5,11 @@ title: Documentation
 # https://vitepress.dev/reference/default-theme-home-page#hero-section
 hero:
   name: ExpoFP 
-  text: Event floor plans
+  text: Developer Portal
   tagline: Free interactive floor plan software for expos and conferences.
   actions:
     - theme: brand
-      text: Guide for Developers
+      text: General Documentation
       link: /guide/
     - theme: alt
       text: View on GitHub

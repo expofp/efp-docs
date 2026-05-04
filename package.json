@@ -16,11 +16,10 @@
   },
   "scripts": {
     "start": "vitepress dev docs",
-    "serve": "cross-env NODE_ENV=development npm run start",
+    "serve": "cross-env NODE_ENV=development yarn run start",
     "build": "vitepress build docs",
     "preview": "vitepress preview docs",
-    "deploy": "gh-pages -d docs/.vitepress/dist",
-    "test": "exit 0"
+    "deploy": "gh-pages -d docs/.vitepress/dist"
   },
   "repository": {
     "type": "git",

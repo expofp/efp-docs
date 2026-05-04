@@ -35,14 +35,7 @@ export default defineConfig({
     // https://vitepress.dev/reference/default-theme-sidebar#multiple-sidebars
     sidebar: {
       "/guide/": sidebarGuide(),
-      "/examples/": sidebarExamples(),
       "/sdk/": sidebarSdk(),
-    },
-
-    // https://vitepress.dev/reference/default-theme-edit-link#site-level-config
-    editLink: {
-      pattern: "https://github.com/expofp/efp-docs/edit/main/docs/:path",
-      text: "Edit this page on GitHub",
     },
 
     socialLinks: [{ icon: "github", link: "https://github.com/expofp" }],
@@ -66,7 +59,7 @@ export default defineConfig({
 function nav() {
   return [
     {
-      text: "Guide",
+      text: "Documentation",
       link: "/guide/",
       activeMatch: "/guide/",
     },
@@ -74,11 +67,6 @@ function nav() {
       text: "SDK",
       items: sidebarSdk(),
       activeMatch: "/sdk/",
-    },
-    {
-      text: "Examples",
-      items: sidebarExamples(),
-      activeMatch: "/examples/",
     },
     {
       text: "Changelog",
@@ -89,26 +77,25 @@ function nav() {
 
 function sidebarGuide() {
   return [
-    { text: "Examples", collapsed: true, items: sidebarExamples() },
-    { text: "SDK", collapsed: true, items: sidebarSdk() },
-    { text: "JSON API", link: "/guide/json-api" },
-    { text: "Offline Data API", link: "/guide/offline-api" },
-    { text: "Webhooks", link: "/guide/webhooks" },
-    { text: "data.js Schema", link: "/guide/data-js-schema" },
-    {
-      text: "JavaScript API Reference",
-      link: "/guide/java-script-api-reference",
-    },
-    { text: "Query parameters", link: "/guide/query-parameters" },
-    { text: "Easy Guide to Using Search", link: "/guide/search" },
-    { text: "Set Kiosk", link: "/guide/setkiosk" },
-    { text: "Map integration", link: "/guide/map-integration" },
-    { text: "UX specification: Blue dot and geolocation behavior", link: "/guide/ux-spec-blue-dot-and-geolocation-behavior" },
+    { text: "General Documentation", collapsed: true, items: [
+      { text: "JSON API", link: "/guide/json-api" },
+      { text: "Offline Data API", link: "/guide/offline-api" },
+      { text: "Webhooks", link: "/guide/webhooks" },
+      { text: "data.js Schema", link: "/guide/data-js-schema" },
+      { text: "Query parameters", link: "/guide/query-parameters" },
+      { text: "Easy Guide to Using Search", link: "/guide/search" },
+      { text: "Set Kiosk", link: "/guide/setkiosk" },
+      { text: "UX specification: Blue dot and geolocation behavior", link: "/guide/ux-spec-blue-dot-and-geolocation-behavior" },
+      { text: "Configuring Map Settings via URL Parameters", link: "/guide/configuring-map-guide" },
+    ] },
+    { text: "Platform SDKs", collapsed: true, items: sidebarSdk() },
+    { text: "JS SDK v2 (legacy) Examples", collapsed: true, items: sidebarExamples() },
   ];
 }
 
 function sidebarExamples() {
   return [
+    { text: "Map integration", link: "/guide/map-integration" },
     {
       text: "Simple Floor Plan",
       // https://vitepress.dev/guide/asset-handling#the-public-directory
@@ -143,14 +130,6 @@ function sidebarExamples() {
       link: `pathname://${base}examples/insert-in-container.html`,
     },
     {
-      text: "Android SDK examples",
-      link: "https://expofp.github.io/expofp-fplan-android/#usage-examples",
-    },
-    {
-      text: "iOS SDK examples",
-      link: "https://expofp.github.io/expofp-sdk-ios/documentation/expofp#Usage-Examples",
-    },
-    {
       text: "Preview mode",
       link: `pathname://${base}examples/preview-mode.html`,
     },
@@ -167,10 +146,6 @@ function sidebarExamples() {
       link: `pathname://${base}examples/bookmarks.html`,
     },
     {
-      text: "Configuring Map Settings via URL Parameters",
-      link: "/guide/configuring-map-guide",
-    },
-    {
       text: "OnInit Example",
       link: `pathname://${base}examples/on-init.html`,
     },
@@ -184,7 +159,7 @@ function sidebarExamples() {
 function sidebarSdk() {
   return [
     {
-      text: "JavaScript SDK v3 (current)",
+      text: "JavaScript SDK v3",
       link: "https://js-sdk.expofp.com/",
     },
     {
@@ -192,7 +167,7 @@ function sidebarSdk() {
       link: "/guide/java-script-api-reference",
     },    
     {
-      text: "iOS Swift SDK v5 (current)",
+      text: "iOS Swift SDK v5",
       link: "https://expofp.github.io/expofp-sdk-ios/documentation/expofp/",
     },
     {
@@ -200,7 +175,7 @@ function sidebarSdk() {
       link: "https://expofp.github.io/expofp-mobile-sdk/ios-sdk/",
     },
     {
-      text: "Android Kotlin SDK v5 (current)",
+      text: "Android Kotlin SDK v5",
       link: "https://expofp.github.io/expofp-fplan-android/",
     },
     {
@@ -208,7 +183,7 @@ function sidebarSdk() {
       link: "https://expofp.github.io/expofp-mobile-sdk/android-sdk/",
     },
     {
-      text: "ReactNative SDK (current)",
+      text: "ReactNative SDK",
       link: "https://expofp.github.io/react-native-efp-sdk/",
     },
   ];

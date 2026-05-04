@@ -1,3 +1,98 @@
 .title .logo {
   height: 30px;
 }
+
+/* Guide landing (/guide/) — header nav “Documentation” entry */
+.guide-landing-hero {
+  margin: -0.5rem 0 2rem;
+  padding-bottom: 1.75rem;
+  border-bottom: 1px solid var(--vp-c-divider);
+}
+
+.guide-landing-hero h1 {
+  font-size: clamp(1.75rem, 2.5vw, 2.25rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  margin: 0 0 0.75rem;
+  color: var(--vp-c-text-1);
+  border-left: 4px solid var(--vp-c-brand-1);
+  padding-left: 0.85rem;
+}
+
+.guide-landing-hero p {
+  margin: 0;
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: var(--vp-c-text-2);
+  max-width: 52rem;
+}
+
+.guide-landing-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  margin: 0 0 2.5rem;
+}
+
+.guide-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.35rem;
+  padding: 1.15rem 1.2rem;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 12px;
+  background: var(--vp-c-bg-soft);
+  text-decoration: none;
+  color: inherit;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.guide-card:hover {
+  border-color: var(--vp-c-brand-1);
+  box-shadow: 0 8px 28px color-mix(in srgb, var(--vp-c-brand-1) 12%, transparent);
+  transform: translateY(-2px);
+}
+
+.guide-card-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--vp-c-brand-1);
+}
+
+.guide-card-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--vp-c-text-1);
+}
+
+.guide-card-desc {
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--vp-c-text-2);
+  flex: 1;
+}
+
+.guide-card-desc code {
+  font-size: 0.88em;
+  padding: 0.1em 0.35em;
+  border-radius: 4px;
+  background: var(--vp-c-bg-mute);
+}
+.guide-card-cta {
+  margin-top: 0.35rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--vp-c-brand-1);
+}
+
+.guide-card:hover .guide-card-cta {
+  text-decoration: underline;
+}
+
