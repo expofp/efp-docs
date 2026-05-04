@@ -10,8 +10,8 @@
     "vitepress": "1.0.0-alpha.71"
   },
   "devDependencies": {
-    "@types/node": "18.15.11",
-    "gh-pages": "5.0.0",
+    "@types/node": "^24",
+    "gh-pages": "6.3.0",
     "cross-env": "7.0.3"
   },
   "scripts": {
@@ -35,5 +35,8 @@
     "url": "https://github.com/expofp/efp-docs/issues"
   },
   "homepage": "https://github.com/expofp/efp-docs#readme",
-  "packageManager": "yarn@1.22.19+sha1.4ba7fc5c6e704fce2066ecbfb0b0d8976fe62447"
+  "packageManager": "yarn@1.22.19+sha1.4ba7fc5c6e704fce2066ecbfb0b0d8976fe62447",
+  "engines": {
+    "node": "24"
+  }
 }
