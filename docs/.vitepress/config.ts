@@ -30,12 +30,10 @@ export default defineConfig({
       dark: "/dev-logo-dark.svg",
     },
 
-    nav: nav(),
-
     // https://vitepress.dev/reference/default-theme-sidebar#multiple-sidebars
     sidebar: {
+      "/js-sdk-v2/": sidebarJsV2Examples(),
       "/guide/": sidebarGuide(),
-      "/sdk/": sidebarSdk(),
     },
 
     socialLinks: [{ icon: "github", link: "https://github.com/expofp" }],
@@ -56,34 +54,24 @@ export default defineConfig({
   },
 });
 
-function nav() {
-  return [
-    {
-      text: "General Documentation",
-      link: "/guide/",
-      activeMatch: "/guide/",
-    }
-  ];
-}
-
 function sidebarGuide() {
   return [
-    { text: "General Documentation", collapsed: true, items: [
-      { text: "JSON API", link: "/guide/json-api" },
-      { text: "Offline Data API", link: "/guide/offline-api" },
-      { text: "Webhooks", link: "/guide/webhooks" },
-      { text: "Easy Guide to Using Search", link: "/guide/search" },
-      { text: "Set Kiosk", link: "/guide/setkiosk" },
-      { text: "UX specification: Blue dot and geolocation behavior", link: "/guide/ux-spec-blue-dot-and-geolocation-behavior" },
-    ] },
-    { text: "Platform SDKs", collapsed: true, items: sidebarSdk() },
-    { text: "JS SDK v2 (legacy) Examples", collapsed: true, items: sidebarExamples() },
+    { text: "JSON API", link: "/guide/json-api" },
+    { text: "Offline Data API", link: "/guide/offline-api" },
+    { text: "Webhooks", link: "/guide/webhooks" },
+    { text: "Easy Guide to Using Search", link: "/guide/search" },
+    { text: "Set Kiosk", link: "/guide/setkiosk" },
+    { text: "UX specification: Blue dot and geolocation behavior", link: "/guide/ux-spec-blue-dot-and-geolocation-behavior" },
   ];
 }
 
-function sidebarExamples() {
+function sidebarJsV2Examples() {
   return [
-    { text: "Map integration", link: "/guide/map-integration" },
+    { text: "Map integration", link: "/js-sdk-v2/map-integration" },
+    {
+      text: 'JavaScript API Reference',
+      link: '/js-sdk-v2/javascript-api-reference',
+    },
     {
       text: "Simple Floor Plan",
       // https://vitepress.dev/guide/asset-handling#the-public-directory
@@ -99,7 +87,7 @@ function sidebarExamples() {
     },
     {
       text: "ZoomTo Guide",
-      link: "/guide/zoomto-guide",
+      link: "/js-sdk-v2/zoomto-guide",
     },
 	  {
       text: "No Overlay with background",
@@ -111,7 +99,7 @@ function sidebarExamples() {
     },
     {
       text: "Wayfinding Guide",
-      link: "/guide/wayfinding-guide",
+      link: "/js-sdk-v2/wayfinding-guide",
     },
     {
       text: "Insert in container",
@@ -127,7 +115,7 @@ function sidebarExamples() {
     },
     {
       text: "Bookmarks Guide",
-      link: "/guide/bookmarks",
+      link: "/js-sdk-v2/bookmarks",
     },
     {
       text: "Bookmarks Example",
@@ -141,8 +129,8 @@ function sidebarExamples() {
       text: "ignoreQuery Example",
       link: `pathname://${base}examples/ignore-query.html`,
     },
-    { text: "Configuring Map Settings via URL Parameters", link: "/guide/configuring-map-guide" },
-    { text: "Query parameters", link: "/guide/query-parameters" },
+    { text: "Configuring Map Settings via URL Parameters", link: "/js-sdk-v2/configuring-map-guide" },
+    { text: "Query parameters", link: "/js-sdk-v2/query-parameters" },
   ];
 }
 
