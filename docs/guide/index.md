@@ -1,5 +1,5 @@
 ---
-title: General documentation
+title: General Documentation
 description: ExpoFP APIs, SDKs, and guides for building interactive floor plans.
 prev: false
 next: true

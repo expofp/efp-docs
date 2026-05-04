@@ -16,7 +16,7 @@
   line-height: 1.2;
   margin: 0 0 0.75rem;
   color: var(--vp-c-text-1);
-  border-left: 4px solid var(--vp-c-brand-1);
+  border-left: 4px solid var(--vp-c-brand);
   padding-left: 0.85rem;
 }
 
@@ -31,8 +31,21 @@
 .guide-landing-grid {
   display: grid;
   gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: 1fr;
   margin: 0 0 2.5rem;
+}
+
+@media (min-width: 640px) {
+  .guide-landing-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Desktop: exactly three tiles per row (e.g. 5 tiles → 3 + 2) */
+@media (min-width: 960px) {
+  .guide-landing-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 .guide-card {
@@ -53,8 +66,8 @@
 }
 
 .guide-card:hover {
-  border-color: var(--vp-c-brand-1);
-  box-shadow: 0 8px 28px color-mix(in srgb, var(--vp-c-brand-1) 12%, transparent);
+  border-color: var(--vp-c-brand);
+  box-shadow: 0 8px 28px color-mix(in srgb, var(--vp-c-brand) 12%, transparent);
   transform: translateY(-2px);
 }
 
@@ -63,7 +76,7 @@
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  color: var(--vp-c-brand-1);
+  color: var(--vp-c-brand);
 }
 
 .guide-card-title {
@@ -85,14 +98,48 @@
   border-radius: 4px;
   background: var(--vp-c-bg-mute);
 }
+/* Match `.vp-doc a` so CTAs look the same on the home layout (no `.vp-doc` wrapper). */
 .guide-card-cta {
   margin-top: 0.35rem;
   font-size: 0.85rem;
   font-weight: 500;
-  color: var(--vp-c-brand-1);
+  color: var(--vp-c-brand);
+  text-decoration: underline dotted;
+  transition: color 0.25s;
 }
 
 .guide-card:hover .guide-card-cta {
   text-decoration: underline;
+}
+
+/* Home (/): mirror VPHero — horizontal padding on outer layer, max-width on inner (.container). */
+.VPHome .home-tiles-shell {
+  box-sizing: border-box;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+@media (min-width: 640px) {
+  .VPHome .home-tiles-shell {
+    padding-left: 48px;
+    padding-right: 48px;
+  }
+}
+
+@media (min-width: 960px) {
+  .VPHome .home-tiles-shell {
+    padding-left: 64px;
+    padding-right: 64px;
+  }
+}
+
+.VPHome .home-tiles-container {
+  max-width: 1152px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.VPHome .home-tiles-container .guide-landing-grid {
+  margin-top: -30px;
 }
 

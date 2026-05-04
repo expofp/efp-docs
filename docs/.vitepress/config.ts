@@ -67,10 +67,6 @@ function nav() {
       text: "SDK",
       items: sidebarSdk(),
       activeMatch: "/sdk/",
-    },
-    {
-      text: "Changelog",
-      items: changelogItems(),
     }
   ];
 }
@@ -81,12 +77,9 @@ function sidebarGuide() {
       { text: "JSON API", link: "/guide/json-api" },
       { text: "Offline Data API", link: "/guide/offline-api" },
       { text: "Webhooks", link: "/guide/webhooks" },
-      { text: "data.js Schema", link: "/guide/data-js-schema" },
-      { text: "Query parameters", link: "/guide/query-parameters" },
       { text: "Easy Guide to Using Search", link: "/guide/search" },
       { text: "Set Kiosk", link: "/guide/setkiosk" },
       { text: "UX specification: Blue dot and geolocation behavior", link: "/guide/ux-spec-blue-dot-and-geolocation-behavior" },
-      { text: "Configuring Map Settings via URL Parameters", link: "/guide/configuring-map-guide" },
     ] },
     { text: "Platform SDKs", collapsed: true, items: sidebarSdk() },
     { text: "JS SDK v2 (legacy) Examples", collapsed: true, items: sidebarExamples() },
@@ -153,6 +146,8 @@ function sidebarExamples() {
       text: "ignoreQuery Example",
       link: `pathname://${base}examples/ignore-query.html`,
     },
+    { text: "Configuring Map Settings via URL Parameters", link: "/guide/configuring-map-guide" },
+    { text: "Query parameters", link: "/guide/query-parameters" },
   ];
 }
 
@@ -185,23 +180,6 @@ function sidebarSdk() {
     {
       text: "ReactNative SDK",
       link: "https://expofp.github.io/react-native-efp-sdk/",
-    },
-  ];
-}
-
-function changelogItems() {
-  return [
-    {
-      text: "JavaScript API Changelog",
-      link: "https://expofp.github.io/changelog/efp-app/",
-    },
-     {
-      text: "iOS SDK v5 Changelog",
-      link: "https://expofp.github.io/expofp-sdk-ios/documentation/expofp/changelog-history",
-    },
-     {
-      text: "Android SDK v5 Changelog",
-      link: "https://expofp.github.io/expofp-fplan-android/articles/changelog",
     },
   ];
 }
