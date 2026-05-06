@@ -125,6 +125,14 @@ class FloorPlan {
     isGpsTrackingEnabled(): boolean;
 
     setGpsTrackingEnabled(value: boolean): void;
+
+    reset(): void;
+
+    /**
+     * Same as {@link selectRoute}, but restricts the path to accessible segments only.
+     * @param waypoints - Ordered route stops (booth name/ID or `CurrentPosition`).
+     */
+    selectAccessibleRoute(waypoints: RouteWaypoint[]): void;
 }
 ```
 
