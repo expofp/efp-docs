@@ -130,7 +130,7 @@ class FloorPlan {
 
     /**
      * Same as {@link selectRoute}, but restricts the path to accessible segments only.
-     * @param waypoints - Ordered route stops (booth name/ID or `CurrentPosition`).
+     * @param waypoints - Ordered route stops (booth name or `CurrentPosition`).
      */
     selectAccessibleRoute(waypoints: RouteWaypoint[]): void;
 }
