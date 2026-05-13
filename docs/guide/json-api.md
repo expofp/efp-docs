@@ -9,7 +9,7 @@ The ExpoFP JSON API is a REST API that lets you programmatically manage your eve
 - **Manage extras** — assign sponsorship packages, booth extras, and featured listings to exhibitors.
 - **Read floor plan data** — retrieve information about booths, exhibitors, and categories on your floor plan.
 
-Authentication is handled via an API key passed with each request.
+Authentication is handled via an API key passed with each request. Get your key from [your ExpoFP profile page](https://app.expofp.com/profile/).
 
 **Base URL:** `https://app.expofp.com`
 
