@@ -18,6 +18,10 @@ Open a floor plan.
 ## Step 2
 In the search bar, type `setkiosk`.
 
+::: tip
+The "setkiosk" value can be changed to any other character sequence (e.g., "setkiosk123"). Contact support to request this change.
+:::
+
 ![Step 2](/img/setkiosk/step_2.webp)
 
 ## Step 3
