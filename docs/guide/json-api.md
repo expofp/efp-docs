@@ -9,12 +9,11 @@ The ExpoFP JSON API is a REST API that lets you programmatically manage your eve
 
 ## What you can do with the API
 
-- **Manage exhibitors** — create, update, and delete exhibitor profiles including company details, logos, descriptions, contact information, and custom fields.
+- **Manage exhibitors** — create, update, and delete exhibitor profiles including company details, logos, descriptions, and contact information.
 - **Assign booths** — add or remove booth assignments for exhibitors, mark booths as reserved or sold.
 - **Manage extras** — assign sponsorship packages, booth extras, and featured listings to exhibitors.
 - **Manage sessions** — create and update conference sessions, session tracks, and speakers.
 - **Read floor plan data** — retrieve event configuration and floor plan data (booths, exhibitors, and categories).
-- **Manage rebooking** — handle exhibitor rebooking for recurring events.
 
 ## Authentication
 
