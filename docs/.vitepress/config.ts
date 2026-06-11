@@ -56,12 +56,24 @@ export default defineConfig({
 
 function sidebarGuide() {
   return [
-    { text: "JSON API", link: "/guide/json-api" },
-    { text: "Offline Data API", link: "/guide/offline-api" },
-    { text: "Webhooks", link: "/guide/webhooks" },
-    { text: "Easy Guide to Using Search", link: "/guide/search" },
-    { text: "Set Kiosk", link: "/guide/setkiosk" },
-    { text: "UX specification: Blue dot and geolocation behavior", link: "/guide/ux-spec-blue-dot-and-geolocation-behavior" },
+    {
+      text: "APIs",
+      collapsed: false,
+      items: [
+        { text: "JSON API", link: "/guide/json-api" },
+        { text: "Offline Data API", link: "/guide/offline-api" },
+        { text: "Webhooks", link: "/guide/webhooks" },
+      ],
+    },
+    {
+      text: "Guides",
+      collapsed: false,
+      items: [
+        { text: "Easy Guide to Using Search", link: "/guide/search" },
+        { text: "Set Kiosk", link: "/guide/setkiosk" },
+        { text: "Blue dot & geolocation behavior", link: "/guide/ux-spec-blue-dot-and-geolocation-behavior" },
+      ],
+    },
   ];
 }
 

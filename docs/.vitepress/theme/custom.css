@@ -112,6 +112,52 @@
   text-decoration: underline;
 }
 
+/* Doc-page CTA buttons (e.g. JSON API → Apiary reference / API key) */
+.doc-cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin: 1.5rem 0 2rem;
+}
+
+/* Mirror VitePress hero buttons (.VPButton, medium) but with our brand color. */
+.doc-cta-button {
+  display: inline-block;
+  border: 1px solid transparent;
+  border-radius: 20px;
+  padding: 0 20px;
+  line-height: 38px;
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+  text-decoration: none !important;
+  transition:
+    color 0.25s,
+    border-color 0.25s,
+    background-color 0.25s;
+}
+
+.doc-cta-button.primary {
+  border-color: var(--vp-c-brand-dark, var(--vp-c-brand));
+  background-color: var(--vp-c-brand-dark, var(--vp-c-brand));
+  color: var(--vp-c-white, #fff);
+}
+
+.doc-cta-button.primary:hover {
+  border-color: var(--vp-c-brand-darker, var(--vp-c-brand-dark, var(--vp-c-brand)));
+  background-color: var(--vp-c-brand-darker, var(--vp-c-brand-dark, var(--vp-c-brand)));
+}
+
+.doc-cta-button.alt {
+  border-color: transparent;
+  background-color: var(--vp-c-mute, var(--vp-c-bg-mute));
+  color: var(--vp-c-text-1);
+}
+
+.doc-cta-button.alt:hover {
+  background-color: var(--vp-c-mute-dark, var(--vp-c-gray-light-3, var(--vp-c-bg-soft)));
+}
+
 /* Home (/): mirror VPHero — horizontal padding on outer layer, max-width on inner (.container). */
 .VPHome .home-tiles-shell {
   box-sizing: border-box;
