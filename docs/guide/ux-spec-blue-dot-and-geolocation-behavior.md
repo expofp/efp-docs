@@ -8,7 +8,7 @@
 - **Initial viewport:** Once permission is granted, the map automatically pans to the user’s current position (center-aligned).
 - **Zoom level:** The system preserves the current zoom level. It does not automatically adjust the zoom to a predefined scale.  
   - *Note:* If the user is far from the event location, the map will pan to their coordinates, but they may need to zoom in manually to see details.
-- **Floor awareness:** The Blue Dot is visible only when the user is on the currently active floor. If the user is on a different floor, the icon appears dimmed (semi-transparent) to reduce confusion.
+- **Floor awareness:** The Blue Dot is visible only when the user is on the currently active floor. If the user is on a different floor, the Blue Dot is hidden to reduce confusion.
 
 ## 2. Navigation & movement logic
 
@@ -26,7 +26,7 @@ When a route is active, the system applies smart snapping to improve stability a
 
 - **Snapping threshold:** If the user is within 7.5 meters of the suggested route, the Blue Dot snaps to the route line. This reduces visible position shifts caused by GPS jitter.
 - **Route progress:** As the user moves, the completed portion of the path changes color to grey, indicating progress.
-- **Automatic rerouting:** If the user deviates from the route by more than 10 SVG units (approximately 5–7 meters) and is near a booth, the system automatically recalculates the route.
+- **Automatic rerouting:** If the active route starts from the user's current position, it is automatically recalculated when the user moves more than ~15 meters away from it, or moves to a floor the route doesn't pass through.
 
 ## 4. Visual States
 
@@ -34,5 +34,5 @@ When a route is active, the system applies smart snapping to improve stability a
 |------------|------------|-------------------------------------------------------------------------|
 | Blue circle | Active      | GPS is on, but compass heading is unavailable.                         |
 | Blue arrow  | Directional | GPS is on and the compass is active (shows the user’s facing direction). |
-| Dimmed dot  | Off-floor   | The user is on a different floor or layer than the one currently displayed. |
+| Hidden dot  | Off-floor   | The user is on a different floor or layer than the one currently displayed. |
 | Hidden      | No signal   | GPS signal is lost or location permission is denied.                   |
