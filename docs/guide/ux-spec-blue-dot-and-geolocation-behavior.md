@@ -30,9 +30,9 @@ When a route is active, the system applies smart snapping to improve stability a
 
 ## 4. Visual States
 
-| Icon        | State       | Meaning                                                                 |
-|------------|------------|-------------------------------------------------------------------------|
+| Icon       | State       | Meaning                                                                 |
+|-----------|------------|-------------------------------------------------------------------------|
 | Blue circle | Active      | GPS is on, but compass heading is unavailable.                         |
-| Blue arrow  | Directional | GPS is on and the compass is active (shows the user’s facing direction). |
-| Hidden dot  | Off-floor   | The user is on a different floor or layer than the one currently displayed. |
-| Hidden      | No signal   | GPS signal is lost or location permission is denied.                   |
+| Blue arrow | Directional | GPS is on and the compass is active (shows the user’s facing direction). |
+| Hidden  | Off-floor   | The user is on a different floor or layer than the one currently displayed. |
+| Hidden     | No signal   | GPS signal is lost or location permission is denied.                   |
