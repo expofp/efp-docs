@@ -25,11 +25,12 @@
     </head>
     <body>
         <div id="floorplan">Loading...</div>
-        <script src="https://demo.expofp.com/packages/master/expofp.js" crossorigin="anonymous"></script>
+        <script src="https://demo.expofp.com/packages/main/expofp.js" crossorigin="anonymous"></script>
         <script>
             new ExpoFP.FloorPlan({
                 element: document.querySelector("#floorplan"),
                 eventId: "demo",
+                dataUrl: "https://demo.expofp.com/data/",
                 noOverlay: true,
                 onBoothClick: e => {
                     alert(`Booth clicked: ${e.target.name}`);
