@@ -186,7 +186,7 @@ Provide a comma-separated list of UI elements to hide
 
 | Description           | Example |
 | --------------------- | ------- |
-| Zoom factor to apply. | ?zoom=5 |
+| Zoom factor to apply. | ?zoom=1.5 |
 
 ## yah
 
