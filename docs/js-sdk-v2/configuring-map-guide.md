@@ -4,12 +4,17 @@
 
 You can customize your map experience by adjusting settings directly in the URL. Here’s a quick guide to the available parameters:  
 
+::: tip
+Also, check out the [full documentation](/js-sdk-v2/query-parameters).
+:::
+
 ### **center**  
-Defines the map center using WGS84 coordinates (latitude, longitude).  
-Example: `?center=52.31801546937824,9.803534426718189`  
+Defines the map center using WGS84 coordinates (latitude, longitude).
+
+Example: `?center=50.9422097115228,6.9760677305048855`  
 
 *Default*
-<img loading="lazy" src="/img/map-settings/eurotier.webp" alt="" />
+<img loading="lazy" src="/img/map-settings/default.webp" alt="" />
 
 *With parameter*
 <img loading="lazy" src="/img/map-settings/center.webp" alt="" />
@@ -17,23 +22,25 @@ Example: `?center=52.31801546937824,9.803534426718189`
 ---
 
 ### **centerxy**  
-Sets the map center using projected coordinates (x, y).  
-Example: `?centerxy=6517.28955078125,3826.6064453125`  
+Sets the map center using projected coordinates (x, y).
+
+Example: `?centerxy=834.8957208062235,1174.5600925632295`  
 
 *Default*
-<img loading="lazy" src="/img/map-settings/eurotier.webp" alt="" />
+<img loading="lazy" src="/img/map-settings/default.webp" alt="" />
 
 *With parameter*
-<img loading="lazy" src="/img/map-settings/centerxy.webp" alt="" />
+<img loading="lazy" src="/img/map-settings/center.webp" alt="" />
 
 ---
 
 ### **z**  
-Specifies the floor/level name.  
+Specifies the floor/level name.
+
 Example: `?z=2`
 
 *Default*
-<img loading="lazy" src="/img/map-settings/demo.webp" alt="" />
+<img loading="lazy" src="/img/map-settings/default.webp" alt="" />
 
 *With parameter*
 <img loading="lazy" src="/img/map-settings/z.webp" alt="" />
@@ -41,13 +48,12 @@ Example: `?z=2`
 ---
 
 ### **bearing**  
-Rotates the kiosk arrow icon (0–360 degrees). 
-> *Currently works only in kiosk mode.*  
+Map rotation (0-360 degrees).
 
 Example: `?bearing=180`  
 
 *Default*
-<img loading="lazy" src="/img/map-settings/kiosk.webp" alt="" />
+<img loading="lazy" src="/img/map-settings/default.webp" alt="" />
 
 *With parameter*
 <img loading="lazy" src="/img/map-settings/bearing.webp" alt="" />
@@ -55,11 +61,12 @@ Example: `?bearing=180`
 ---
 
 ### **zoom**  
-Adjusts the zoom level (1–100).  
+Zoom factor to apply (e.g., 1.5 for 50% zoom in, 0.5 for 50% zoom out).
+
 Example: `?zoom=5`  
 
 *Default*
-<img loading="lazy" src="/img/map-settings/eurotier.webp" alt="" />
+<img loading="lazy" src="/img/map-settings/default.webp" alt="" />
 
 *With parameter*
 <img loading="lazy" src="/img/map-settings/zoom.webp" alt="" />
@@ -67,35 +74,16 @@ Example: `?zoom=5`
 ---
 
 ### **zoomtime**  
-Sets the zoom animation duration in milliseconds (range: 500–5000).  
+Sets the zoom animation duration in milliseconds (range: 500–5000).
+
 Example: `?zoomtime=5000`  
 
-*?zoomtime=500*
+*Default*
 <video controls>
-    <source src="/img/map-settings/zoomtime_500.mp4" type="video/mp4" />
+    <source src="/img/map-settings/default.mp4" type="video/mp4" />
 </video>
 
-*?zoomtime=5000*
+*With parameter*
 <video controls>
-    <source src="/img/map-settings/zoomtime_5000.mp4" type="video/mp4" />
+    <source src="/img/map-settings/zoomtime.mp4" type="video/mp4" />
 </video>
-
-
-## How to Reset Settings?
-
-:::info
-**Important Note**: Settings are applied only to the specific map they are sent to and only on the device where they are applied.
-:::
-
-Settings do not accumulate — each time new settings are sent, they overwrite the previous ones.
-
-**Example**:
-
-If you open a card with `?bearing=45` and later open it again with `?zoom=5`, the `bearing=45` setting will not be applied — only `zoom=5` will take effect.
-In other words, if you need both settings, you must include them in the same request: `?bearing=45&zoom=5`.
-
-**To cancel a previously applied setting** (e.g., `zoom=5`), you can set a new value (e.g., `zoom=1`).
-
----
-
-Also, check out the [full documentation](/js-sdk-v2/query-parameters).

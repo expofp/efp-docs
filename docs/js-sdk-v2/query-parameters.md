@@ -162,13 +162,13 @@ Provide a comma-separated list of UI elements to hide
 
 | Description                    | Example                                     |
 | ------------------------------ | ------------------------------------------- |
-| Map center in WGS84 "lat,lng". | ?center=52.32231711120545,9.814407599999997 |
+| Map center in WGS84 "lat,lng". | ?center=50.9422097115228,6.9760677305048855 |
 
 ## centerxy
 
-| Description                    | Example                                    |
-| ------------------------------ | -----------------------------------------  |
-| Map center in projected "x,y". | ?centerxy=13595.177734375,6878.86865234375 |
+| Description                    | Example                                        |
+| ------------------------------ | ---------------------------------------------  |
+| Map center in projected "x,y". | ?centerxy=834.8957208062235,1174.5600925632295 |
 
 ## z
 
@@ -178,19 +178,15 @@ Provide a comma-separated list of UI elements to hide
 
 ## bearing
 
-::: info
-Currently works only in kiosk mode.
-:::
-
 | Description                   | Example       |
 | ----------------------------- | ------------- |
 | Map rotation (0-360 degrees). | ?bearing=180  | 
 
 ## zoom
 
-| Description         | Example |
-| ------------------- | ------- |
-| Zoom level (1-100). | ?zoom=5 |
+| Description           | Example |
+| --------------------- | ------- |
+| Zoom factor to apply. | ?zoom=5 |
 
 ## yah
 
