@@ -226,14 +226,18 @@ Alternatively, you can type `debug=1` into the search field to enable it or `deb
 
 ## k
 
-:::info
-Kiosks must first be created in the [`?setkiosk`](#setkiosk) mode.
+::: warning
+Deprecated. Please use [the new method](/guide/setkiosk).
 :::
 
-| Description                                   | Example |
-| --------------------------------------------- | ------- |
-| Displays previously created kiosk under ID 1. | ?k=1    |
-| Displays previously created kiosk under ID 2. | ?k=2    |
+:::info
+~~Kiosks must first be created in the [`?setkiosk`](#setkiosk) mode.~~
+:::
+
+| Description                                       | Example  |
+| ------------------------------------------------- | -------- |
+| ~~Displays previously created kiosk under ID 1.~~ | ~~?k=1~~ |
+| ~~Displays previously created kiosk under ID 2.~~ | ~~?k=2~~ |
 
 
 ## forceKioskShowDetails
