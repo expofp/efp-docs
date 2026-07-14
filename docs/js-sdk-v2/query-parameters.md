@@ -7,13 +7,13 @@
 | This displays the found entities. | ?b           |
 | This displays the entity details. | ?biogreen-ag |
 
-## `bookmarks`
+## bookmarks
 
 | View bookmarks list. |
 | ---------------------|
 | ?bookmarks           |
-| ?b=                  |
-| ?ba=                 |
+| ~~?b=~~              |
+| ~~?ba=~~             |
 
 
 | Add exhibitors to bookmarks.  |
@@ -27,33 +27,37 @@
 | ?ba=10689074                                  |
 
 
-## `disableBookmarked`
+## disableBookmarked
 
 | Description                               | Example                 |
 | ----------------------------------------- | ----------------------- |
 | Disables the ability to add to bookmarks. | ?disableBookmarked=true |
 
-## `language`
+## language
 
 | Description                       | Example   |
 | --------------------------------- | --------- |
 | This opens the language selector. | ?language |
 
-## `kkiosk` 
-> **@deprecated** use [kiosk](#kiosk) instead
+## ~~kkiosk~~
+::: warning
+Deprecated. Use [kiosk](#kiosk) instead.
+:::
 
 | Description       | Example |
 | ----------------- | ------- |
-| Opens kiosk mode. | ?kkiosk |
+| ~~Opens kiosk mode.~~ | ~~?kkiosk~~ |
 
-## `nokkiosk`
-> **@deprecated** use [kiosk](#kiosk) instead
+## ~~nokkiosk~~
+::: warning
+Deprecated. Use [kiosk](#kiosk) instead.
+:::
 
 | Description       | Example   |
 | ----------------- | --------- |
-| Exits kiosk mode. | ?nokkiosk |
+| ~~Exits kiosk mode.~~ | ~~?nokkiosk~~ |
 
-## `route`
+## route
 
 Colon-separated list of route points.
 
@@ -63,7 +67,7 @@ Colon-separated list of route points.
 | ------------------------ | --------------------- |
 | This displays the route. | ?route:42-23:101-12   |
 
-## `hide`
+## hide
 
 Provide a comma-separated list of UI elements to hide
 
@@ -78,7 +82,7 @@ Provide a comma-separated list of UI elements to hide
 | This shows all UI elements.                     | ?hide=                               |
 | This hides an element and shows other elements. | ?hide=controls                       |
 
-## `heatmap`
+## heatmap
 
 | Description                               | Example                                       |
 | ----------------------------------------- | --------------------------------------------- |
@@ -86,7 +90,7 @@ Provide a comma-separated list of UI elements to hide
 | Heatmap view for "You are here" QR codes. | ?heatmap=true&type=yah&t=TOKEN                |
 | Heatmap mode for kiosks.                  | ?heatmap=true&type=yah&subtype=kiosk&t=TOKEN  |
 
-## `blue-dot`
+## blue-dot
 
 - `blue-dot=<X>,<Y>,<Z>`
 
@@ -94,45 +98,45 @@ Provide a comma-separated list of UI elements to hide
 | ----------------------------------- | -------------------------------------------- |
 | This sets the blue dot coordinates. | ?blue-dot=8022.44384765625,8423.1962890625,1 |
 
-## `noOverlay`
+## noOverlay
 
 | Description              | Example          |
 | ------------------------ | ---------------- |
 | Hides the overlay panel. | ?noOverlay=true  |
 | Shows the overlay panel. | ?noOverlay=false |
 
-## `allowConsent`
+## allowConsent
 
 | Description                     | Example             |
 | ------------------------------- | ------------------- |
 | This sets the consent settings. | ?allowConsent=true  |
 | This sets the consent settings. | ?allowConsent=false |
 
-## `hideHeaderLogo`
+## hideHeaderLogo
 
 | Description                                | Example              |
 | ------------------------------------------ | -------------------- |
 | Hides the header logo and the ExpoFP logo. | ?hideHeaderLogo=true |
 
-## `hideLogoInBooth`
+## hideLogoInBooth
 
 | Description        | Example               |
 | ------------------ | --------------------- |
 | Hides booth logos. | ?hideLogoInBooth=true |
 
-## `disableFeatured`
+## disableFeatured
 
 | Description                      | Example               |
 | -------------------------------- | --------------------- |
 | This disables the featured view. | ?disableFeatured=true |
 
-## `disableGps`
+## disableGps
 
 | Description        | Example          |
 | ------------------ | ---------------- |
 | This disables GPS. | ?disableGps=true |
 
-## `monochrome`
+## monochrome
 
 | Description               | Example          |
 | ------------------------- | ---------------- |
@@ -145,12 +149,16 @@ Provide a comma-separated list of UI elements to hide
 | Enables kiosk mode.   | ?kiosk=1 |
 | Disables kiosk mode. | ?kiosk=0 |
 
-## sw
+## ~~sw~~
 
-| Description                                  | Example |
-| -------------------------------------------- | ------- |
-| Enables the service worker for offline mode. | ?sw=1   |
-| Disables the service worker.                 | ?sw=0   |
+::: warning
+Deprecated and will be removed.
+:::
+
+| Description                                      | Example     |
+| ------------------------------------------------ | ----------- |
+| ~~Enables the service worker for offline mode.~~ | ~~?sw=1~~   |
+| ~~Disables the service worker.~~                 | ~~?sw=0~~   |
 
 ## zoomtime
 
@@ -202,10 +210,10 @@ Provide a comma-separated list of UI elements to hide
 
 ## exhibitors
 
-| Displays the list of exhibitors.                              |
-| ------------------------------------------------------------- |
-| ?exhibitors=RXhoaWJpdG9yXzE4OTc5NDQ=,RXhoaWJpdG9yXzE4OTc5MjM= |
-| ?exhibitors=BioCycle Africa,UrbanQuest Design                 |
+| Displays the list of exhibitors.                                  |
+| ----------------------------------------------------------------- |
+| ~~?exhibitors=RXhoaWJpdG9yXzE4OTc5NDQ=,RXhoaWJpdG9yXzE4OTc5MjM=~~ |
+| ?exhibitors=BioCycle Africa,UrbanQuest Design                     |
 
 ## debug
 
@@ -224,7 +232,7 @@ Alternatively, you can type `debug=1` into the search field to enable it or `deb
 | -------------------------------------- | --------- |
 | Kiosk creation and configuration mode. | ?setkiosk |
 
-## k
+## ~~k~~
 
 ::: warning
 Deprecated. Please use [the new method](/guide/setkiosk).
@@ -240,15 +248,19 @@ Deprecated. Please use [the new method](/guide/setkiosk).
 | ~~Displays previously created kiosk under ID 2.~~ | ~~?k=2~~ |
 
 
-## forceKioskShowDetails
+## ~~forceKioskShowDetails~~
 
-:::info
-In kiosk mode, forcibly enables/disables display of detailed information before building a route.
-
-**[Works only with the parameter k](#k)**
+::: warning
+Deprecated and will be removed.
 :::
 
-| Description              | Example                      |
-| ------------------------ | ---------------------------- |
-| Enables.                 | ?k=1&forceKioskShowDetails=1 |
-| Returns to default mode. | ?k=1&forceKioskShowDetails=0 |
+:::info
+~~In kiosk mode, forcibly enables/disables display of detailed information before building a route.~~
+
+~~**[Works only with the parameter k](#k)**~~
+:::
+
+| Description                  | Example                          |
+| ---------------------------- | -------------------------------- |
+| ~~Enables.~~                 | ~~?k=1&forceKioskShowDetails=1~~ |
+| ~~Returns to default mode.~~ | ~~?k=1&forceKioskShowDetails=0~~ |
