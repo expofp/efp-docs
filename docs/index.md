@@ -47,13 +47,6 @@ hero:
   <span class="guide-card-cta">Open docs</span>
 </a>
 
-<a class="guide-card" href="/js-sdk-v2/javascript-api-reference">
-  <span class="guide-card-label">Web · Legacy</span>
-  <span class="guide-card-title">JavaScript SDK v2</span>
-  <span class="guide-card-desc">Legacy web integration — JavaScript API reference maintained for existing implementations.</span>
-  <span class="guide-card-cta">Open docs</span>
-</a>
-
 <a class="guide-card" href="https://expofp.github.io/react-native-efp-sdk/" target="_blank">
   <span class="guide-card-label">Cross-platform</span>
   <span class="guide-card-title">React Native</span>

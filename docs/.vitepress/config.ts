@@ -32,7 +32,6 @@ export default defineConfig({
 
     // https://vitepress.dev/reference/default-theme-sidebar#multiple-sidebars
     sidebar: {
-      "/js-sdk-v2/": sidebarJsV2Examples(),
       "/guide/": sidebarGuide(),
     },
 
@@ -77,85 +76,12 @@ function sidebarGuide() {
   ];
 }
 
-function sidebarJsV2Examples() {
-  return [
-    { text: "Map integration", link: "/js-sdk-v2/map-integration" },
-    {
-      text: 'JavaScript API Reference',
-      link: '/js-sdk-v2/javascript-api-reference',
-    },
-    {
-      text: "Simple Floor Plan",
-      // https://vitepress.dev/guide/asset-handling#the-public-directory
-      link: `pathname://${base}examples/simple.html`,
-    },
-    {
-      text: "No Overlay",
-      link: `pathname://${base}examples/no-overlay.html`,
-    },
-    {
-      text: "ZoomTo",
-      link: `pathname://${base}examples/zoom-to.html`,
-    },
-    {
-      text: "ZoomTo Guide",
-      link: "/js-sdk-v2/zoomto-guide",
-    },
-	  {
-      text: "No Overlay with background",
-      link: `pathname://${base}examples/no-overlay-with-background.html`,
-    },	
-    {
-      text: "Wayfinding",
-      link: `pathname://${base}examples/wayfinding.html?route%3Aundefined%3A414`,
-    },
-    {
-      text: "Wayfinding Guide",
-      link: "/js-sdk-v2/wayfinding-guide",
-    },
-    {
-      text: "Insert in container",
-      link: `pathname://${base}examples/insert-in-container.html`,
-    },
-    {
-      text: "Preview mode",
-      link: `pathname://${base}examples/preview-mode.html`,
-    },
-    {
-      text: "Preview mode container",
-      link: `pathname://${base}examples/preview-mode-container.html`,
-    },
-    {
-      text: "Bookmarks Guide",
-      link: "/js-sdk-v2/bookmarks",
-    },
-    {
-      text: "Bookmarks Example",
-      link: `pathname://${base}examples/bookmarks.html`,
-    },
-    {
-      text: "OnInit Example",
-      link: `pathname://${base}examples/on-init.html`,
-    },
-    {
-      text: "ignoreQuery Example",
-      link: `pathname://${base}examples/ignore-query.html`,
-    },
-    { text: "Configuring Map Settings via URL Parameters", link: "/js-sdk-v2/configuring-map-guide" },
-    { text: "Query parameters", link: "/js-sdk-v2/query-parameters" },
-  ];
-}
-
 function sidebarSdk() {
   return [
     {
       text: "JavaScript SDK v3",
       link: "https://js-sdk.expofp.com/",
     },
-    {
-      text: "JavaScript SDK v2 (legacy)",
-      link: "/js-sdk-v2/javascript-api-reference",
-    },    
     {
       text: "iOS Swift SDK v5",
       link: "https://expofp.github.io/expofp-sdk-ios/documentation/expofp/",
