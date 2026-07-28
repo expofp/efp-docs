@@ -28,7 +28,7 @@ hero:
 
 <a class="guide-card" href="https://js-sdk.expofp.com/" target="_blank">
   <span class="guide-card-label">Web</span>
-  <span class="guide-card-title">JavaScript SDK v3</span>
+  <span class="guide-card-title">JavaScript SDK</span>
   <span class="guide-card-desc">Current browser SDK — embedding, JavaScript API, and integration guides.</span>
   <span class="guide-card-cta">Open docs</span>
 </a>
