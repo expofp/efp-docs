@@ -124,7 +124,7 @@ Example payload:
 
 Once your account has a webhook secret, ExpoFP signs every delivery it sends you, so you can prove the request came from ExpoFP and that the body was not altered on the way.
 
-Signing is enabled per account by generating a secret. Until you generate one, deliveries are sent unsigned, exactly as before — the signature is additive and no existing integration has to change.
+Signing is enabled per account by generating a secret, and turned off again by removing it. Until you generate one, deliveries are sent unsigned, exactly as before — the signature is additive and no existing integration has to change.
 
 ### Headers ExpoFP sends
 
@@ -287,7 +287,7 @@ sha256 = 757107ea0eb2509fc211221cce984b8a37570b6d7586c22c46f4379c8b043e17
 
 This vector fixes the algorithm only. It says nothing about the shape of an ExpoFP payload — verify that against a real delivery, using the **Test webhook** button on your profile page.
 
-### Getting and rotating your secret
+### Getting, rotating and removing your secret
 
 - A secret is generated for your account and shown to you **once**, at the moment it is created. ExpoFP cannot show it again. If it is lost, generate a new one.
 - Rotation is done in two steps and costs no downtime:
@@ -295,4 +295,12 @@ This vector fixes the algorithm only. It says nothing about the shape of an Expo
   2. You add the replacement to your accepted list, so your receiver accepts both, and confirm. ExpoFP then activates the replacement and signs with it from that point on. Once you see deliveries verifying against the new secret, drop the old one.
 
   ExpoFP always signs with exactly one secret; the overlap lives on your side, which is why rule 3 above asks you to accept a list.
+- Removing the secret turns signing off. Deliveries go back to unsigned — the same bytes they carried before the secret existed, with no `X-ExpoFP-Signature-256`, `X-ExpoFP-Delivery` or `X-ExpoFP-Timestamp` header on them.
+
+  ::: warning A receiver that requires a signature will reject every delivery after a removal
+  That is the point of requiring one: an unsigned delivery is indistinguishable from an unsigned request by anyone else. Removing a secret is a deliberate act with an immediate, visible consequence on your side, not a cleanup step.
+  :::
+
+- Removing is not one way. A new secret can be generated afterwards and signing resumes — but it is a **different value**, and unlike a rotation there is no overlap: deliveries are signed with it from the moment it is generated. Add it to your accepted list as soon as you are shown it.
+
 - Treat the secret as a credential: an environment variable or a secret store, never in source control, never in a log line, never in a client-side bundle.
