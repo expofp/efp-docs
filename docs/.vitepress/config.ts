@@ -62,6 +62,7 @@ function sidebarGuide() {
         { text: "JSON API", link: "/guide/json-api" },
         { text: "Offline Data API", link: "/guide/offline-api" },
         { text: "Webhooks", link: "/guide/webhooks" },
+        { text: "Receiving Webhooks", link: "/guide/receiving-webhooks" },
       ],
     },
     {
