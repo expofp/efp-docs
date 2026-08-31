@@ -35,4 +35,23 @@ The token identifies you as the partner it belongs to. It authenticates you agai
 
 Every method of `json-api-v1` — its parameters, its responses and a worked example — is in the [JSON API reference](https://app.expofp.com/api-docs/json-api-v1). **Opening it requires signing in with an ExpoFP account.** If you do not have one yet, [contact us](https://expofp.com/#contact) and we will get you set up.
 
-Signing in and the API token are two different things: the account is how a person reads the reference, the token is how your code calls the API.
+Signing in and the API token are two different things: the account is how a person reads the reference, the token is how your code calls the API. There is a third way in, and it reuses the second: the same token, sent in the `X-API-Token` header, is how a tool fetches the [machine-readable document](#the-machine-readable-document). One token, two places it travels — the request body when you call the API, a header when you download the document.
+
+## The machine-readable document
+
+The same reference is published as an OpenAPI 3.0.1 document, so you can import the API into Postman or generate a client for it instead of writing every request by hand.
+
+- **YAML** — `https://app.expofp.com/api-docs/json-api-v1.yaml`
+- **JSON** — `https://app.expofp.com/api-docs/json-api-v1.json`
+
+Both are authenticated with your ExpoFP API token — the same token as above, sent in the **`X-API-Token`** request header rather than in the request body. A request with no credential answers `401` instead of redirecting to the sign-in page, so a generator gets a status code it can act on.
+
+```bash
+curl -H "X-API-Token: YOUR_API_TOKEN" \
+  -o json-api-v1.yaml \
+  "https://app.expofp.com/api-docs/json-api-v1.yaml"
+```
+
+**In the header, never in the URL.** There is no `?token=` form of these addresses, and that is deliberate: a token in a URL is written into browser history, into proxy and server access logs and into `Referer` headers, and this token grants full read and write access to your data.
+
+Then point `openapi-generator` at the file you downloaded — that is the client generator this document is tested against.
