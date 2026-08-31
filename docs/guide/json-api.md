@@ -2,8 +2,10 @@
 
 The ExpoFP JSON API is a REST API that lets you programmatically manage your event floor plans and exhibitor data. Use it to integrate ExpoFP with your existing event management platform, CRM, or registration system — keeping booth assignments, exhibitor profiles, and floor plan data in sync without manual imports.
 
+The complete reference is published as **`json-api-v1`** on `app.expofp.com` and **requires an ExpoFP account** — the button below opens a sign-in screen if you are not signed in already. This page is the part that needs no account: it carries what you need to decide whether the API fits before you have one.
+
 <div class="doc-cta-row">
-  <a class="doc-cta-button primary" href="https://expofp.docs.apiary.io" target="_blank" rel="noopener">JSON API reference</a>
+  <a class="doc-cta-button primary" href="https://app.expofp.com/api-docs/json-api-v1" target="_blank" rel="noopener">JSON API reference</a>
   <a class="doc-cta-button alt" href="https://app.expofp.com/profile/" target="_blank" rel="noopener">Get your API key</a>
 </div>
 
@@ -17,4 +19,14 @@ The ExpoFP JSON API is a REST API that lets you programmatically manage your eve
 
 ## Authentication
 
-Authentication is handled via an API key passed with each request. Get your key from [your ExpoFP profile page](https://app.expofp.com/profile/).
+Authentication is a single API token, sent with **every** request as a `token` field in the request body. There is no login call, no session to keep alive: one credential, on each call.
+
+Get your token from [your ExpoFP profile page](https://app.expofp.com/profile/) — the **Get your API key** button above goes straight there, and the key on that page is the value you send as `token`.
+
+The token identifies you as the partner it belongs to. It authenticates you against your own expos, exhibitors, booths and sessions, and reaches nothing belonging to anyone else. It grants full read and write access over that data, so treat it as a credential: keep it on your server, out of client-side code and out of version control.
+
+## The full reference
+
+Every method of `json-api-v1` — its parameters, its responses and a worked example — is in the [JSON API reference](https://app.expofp.com/api-docs/json-api-v1). **Opening it requires signing in with an ExpoFP account.** If you do not have one yet, [contact us](https://expofp.com/#contact) and we will get you set up.
+
+Signing in and the API token are two different things: the account is how a person reads the reference, the token is how your code calls the API.
