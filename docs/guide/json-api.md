@@ -9,6 +9,12 @@ The complete reference is published as **`json-api-v1`** on `app.expofp.com` and
   <a class="doc-cta-button alt" href="https://app.expofp.com/profile/" target="_blank" rel="noopener">Get your API key</a>
 </div>
 
+::: warning The reference is no longer on Apiary
+This reference used to be published on Apiary; it is not published there any more. Oracle is shutting that service down — its Service Changes page records **"End-of-Life (EOL) for Apiary Cloud Service effective October 31, 2026"**, after which "all remaining instances will be permanently deleted". Source: [Oracle Cloud Infrastructure Service Changes](https://docs.oracle.com/en-us/iaas/Content/servicechanges.htm), section *Oracle Apiary*.
+
+If you came from an older link, the reference is now [`json-api-v1` on `app.expofp.com`](https://app.expofp.com/api-docs/json-api-v1), and opening it requires an ExpoFP account.
+:::
+
 ## What you can do with the API
 
 - **Manage exhibitors** — create, update, and delete exhibitor profiles including company details, logos, descriptions, and contact information.
