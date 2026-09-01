@@ -112,7 +112,7 @@
   text-decoration: underline;
 }
 
-/* Doc-page CTA buttons (e.g. JSON API → Apiary reference / API key) */
+/* Doc-page CTA buttons (e.g. JSON API → reference / API key) */
 .doc-cta-row {
   display: flex;
   flex-wrap: wrap;
