@@ -6,6 +6,13 @@ Prepare and retrieve versioned offline archives of an Expo floor plan for mobile
 - **Format:** JSON over HTTPS
 - **Authentication:** Not required (public).
 
+::: tip Integrating a mobile app?
+The iOS, Android and React Native SDKs call this API for you — `downloadPlan`
+does everything below. Read
+[Online, offline, preload and caching](/guide/plan-loading-modes) first; come
+back here when you need to check versions or drive the refresh yourself.
+:::
+
 ## How it works
 
 An offline archive is a versioned ZIP of an Expo floor plan. Each Expo has a single state that describes the latest archive and its build progress.

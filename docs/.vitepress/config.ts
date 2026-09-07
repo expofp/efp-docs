@@ -69,6 +69,10 @@ function sidebarGuide() {
       text: "Guides",
       collapsed: false,
       items: [
+        {
+          text: "Online, offline, preload & caching",
+          link: "/guide/plan-loading-modes",
+        },
         { text: "Easy Guide to Using Search", link: "/guide/search" },
         { text: "Set Kiosk", link: "/guide/setkiosk" },
         { text: "Blue dot & geolocation behavior", link: "/guide/ux-spec-blue-dot-and-geolocation-behavior" },
