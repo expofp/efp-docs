@@ -245,12 +245,6 @@
         color: var(--brand-ink);
       }
 
-      button.secondary {
-        border-color: var(--line);
-        background: transparent;
-        color: var(--ink);
-      }
-
       button.action:disabled {
         opacity: 0.45;
         cursor: not-allowed;
@@ -318,7 +312,6 @@
           <div id="selection"></div>
           <div class="actions">
             <button id="reserve" class="action primary" type="button" disabled>Reserve</button>
-            <button id="hold" class="action secondary" type="button" disabled>Put on hold</button>
           </div>
         </div>
       </section>
@@ -466,7 +459,7 @@
           ? `Your selection (${selection.length})`
           : "Your selection";
 
-        for (const id of ["reserve", "hold"]) el(id).disabled = selection.length === 0;
+        el("reserve").disabled = selection.length === 0;
 
         if (!selection.length) {
           el("selection").innerHTML = '<p class="empty">Click a booth on the plan to add it here.</p>';
@@ -522,17 +515,17 @@
       /**
        * What a real page would POST, and what it would do with the answer.
        *
-       * Here the "answer" is immediate: the booths join the unavailable list, so
-       * the plan dims them and drops them from the selection. That single call is
-       * enough — `clearReservationSelection()` only wipes the intent behind the
-       * booths that are already gone, so the page is notified once, not twice.
+       * Here the "answer" is immediate: the booths are handed to the company, so
+       * the plan prints its name on them, stops offering them and drops them
+       * from the selection. That one call does all of it —
+       * `clearReservationSelection()` only wipes the intent behind booths that
+       * are already gone, so the page is notified once, not twice.
        */
-      function commit(mode, verb) {
+      function reserve() {
         const booths = selection;
 
         console.log("[demo] would POST", {
           company,
-          mode,
           booths: booths.map(booth => ({ name: booth.name, externalId: booth.externalId })),
         });
 
@@ -544,7 +537,7 @@
         fp.clearReservationSelection();
 
         const count = `${booths.length} ${booths.length === 1 ? "booth" : "booths"}`;
-        toast(`${verb} ${count} for ${company}`);
+        toast(`Reserved ${count} for ${company}`);
       }
 
       let toastTimer;
@@ -555,8 +548,7 @@
         toastTimer = setTimeout(() => el("toast").classList.remove("shown"), 3200);
       }
 
-      el("reserve").addEventListener("click", () => commit("reserve", "Reserved"));
-      el("hold").addEventListener("click", () => commit("hold", "Put on hold"));
+      el("reserve").addEventListener("click", reserve);
 
       render();
 
