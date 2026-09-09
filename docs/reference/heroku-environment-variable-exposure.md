@@ -116,10 +116,6 @@ All linked materials below were reviewed on **September 9, 2026**. Incident date
 - OWASP: [Command Injection][command]; [Deserialization Cheat Sheet][deserialize]; [WSTG v4.2, Local File Inclusion][lfi]; [Server Side Request Forgery][ssrf].
 - Framework/build documentation: [Django 5.2 deployment checklist][django] (debug); [Spring Boot endpoints][spring] (sensitive-value sanitization); [Docker build secrets][docker]; [Vite environment variables][vite].
 
-### C. Research inputs and treatment
-
-Two supplied AI-generated research PDFs, captured September 9, 2026, defined the topics to be consolidated: **“ChatGPT - Взлом Heroku инфраструктуры”** (“Compromise of Heroku Infrastructure,” 7 pages) and **“Взломы Heroku и утечки окружения”** (“Heroku Breaches and Environment Leaks,” 2 pages). They were used as research leads, not as independent evidence. The linked sources above support the retained claims. Unsupported assertions of universal environment disclosure, specific malware targeting Heroku CLI, fixed time-to-theft, or the absence of all later Heroku incidents are not adopted.
-
 [heroku-2022]: https://www.heroku.com/blog/april-2022-incident-review/
 [github-2022]: https://github.blog/news-insights/company-news/security-alert-stolen-oauth-user-tokens/
 [circleci]: https://circleci.com/blog/jan-4-2023-incident-report/
