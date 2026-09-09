@@ -1,0 +1,571 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Nothing links here, and a demo of an unreleased mode has no business in
+         search results while it is one. Drop this when the mode ships. -->
+    <meta name="robots" content="noindex" />
+    <title>Reserve a booth — InnovateGreen Expo</title>
+    <style>
+      :root {
+        --ground: #f4f5f7;
+        --card: #ffffff;
+        --ink: #16202c;
+        --ink-soft: #5b6875;
+        --line: #dfe3e8;
+        --brand: #0b7a66;
+        --brand-ink: #ffffff;
+        --accent: #2f80ed;
+        color-scheme: light;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --ground: #16191d;
+          --card: #1e2126;
+          --ink: #e8eaed;
+          --ink-soft: #9aa4af;
+          --line: #333940;
+          color-scheme: dark;
+        }
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: var(--ground);
+        color: var(--ink);
+        font:
+          15px/1.5 -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          Roboto,
+          Helvetica,
+          Arial,
+          sans-serif;
+      }
+
+      .preview-note {
+        padding: 8px 16px;
+        background: #fff4d6;
+        color: #6b4f00;
+        font-size: 13px;
+        text-align: center;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        .preview-note {
+          background: #3a3115;
+          color: #f0d99a;
+        }
+      }
+
+      .show-header {
+        padding: 18px 16px;
+        border-bottom: 1px solid var(--line);
+        background: var(--card);
+      }
+
+      .show-header h1 {
+        margin: 0;
+        font-size: 19px;
+        font-weight: 650;
+        letter-spacing: -0.01em;
+      }
+
+      .show-header p {
+        margin: 3px 0 0;
+        color: var(--ink-soft);
+        font-size: 13px;
+      }
+
+      main {
+        max-width: 980px;
+        margin: 0 auto;
+        padding: 24px 16px 64px;
+      }
+
+      section {
+        margin-bottom: 28px;
+      }
+
+      h2 {
+        margin: 0 0 12px;
+        font-size: 13px;
+        font-weight: 650;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: var(--ink-soft);
+      }
+
+      .card {
+        padding: 16px;
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        background: var(--card);
+      }
+
+      .identity {
+        margin: 0;
+        font-size: 15px;
+      }
+
+      .identity-pending {
+        color: var(--ink-soft);
+      }
+
+      .identity-hint {
+        margin: 6px 0 0;
+        font-size: 13px;
+        color: var(--ink-soft);
+      }
+
+      .identity-hint code {
+        padding: 1px 5px;
+        border-radius: 4px;
+        background: var(--ground);
+        font-size: 12px;
+      }
+
+      /*
+       * `position` is the one property an inline embed must state itself: the
+       * SDK's default stylesheet puts the plan at `position: fixed` filling the
+       * viewport, which is right for a full-page plan and wrong inside a page
+       * that has a header and a form. The default is a low-specificity
+       * attribute rule, so this `#id` rule wins.
+       */
+      #floorplan {
+        position: relative;
+        height: min(70vh, 600px);
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        overflow: hidden;
+        background: var(--card);
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      th,
+      td {
+        padding: 9px 8px;
+        text-align: left;
+        border-bottom: 1px solid var(--line);
+        vertical-align: baseline;
+      }
+
+      th {
+        font-size: 12px;
+        font-weight: 600;
+        color: var(--ink-soft);
+      }
+
+      td.booth {
+        font-weight: 600;
+      }
+
+      td.price,
+      th.price {
+        text-align: right;
+        white-space: nowrap;
+      }
+
+      td.muted {
+        color: var(--ink-soft);
+      }
+
+      td.remove,
+      th.remove {
+        width: 34px;
+        text-align: right;
+      }
+
+      .remove button {
+        width: 26px;
+        height: 26px;
+        padding: 0;
+        border: 0;
+        border-radius: 6px;
+        background: transparent;
+        color: var(--ink-soft);
+        font-size: 17px;
+        line-height: 1;
+        cursor: pointer;
+      }
+
+      .remove button:hover {
+        background: var(--ground);
+        color: var(--ink);
+      }
+
+      .totals {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 12px;
+        padding: 12px 8px 0;
+        font-weight: 650;
+      }
+
+      .totals .note {
+        font-weight: 400;
+        font-size: 13px;
+        color: var(--ink-soft);
+      }
+
+      .empty {
+        padding: 22px 8px;
+        color: var(--ink-soft);
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 16px;
+      }
+
+      button.action {
+        padding: 10px 18px;
+        border: 1px solid transparent;
+        border-radius: 8px;
+        font: inherit;
+        font-weight: 600;
+        cursor: pointer;
+      }
+
+      button.primary {
+        background: var(--brand);
+        color: var(--brand-ink);
+      }
+
+      button.secondary {
+        border-color: var(--line);
+        background: transparent;
+        color: var(--ink);
+      }
+
+      button.action:disabled {
+        opacity: 0.45;
+        cursor: not-allowed;
+      }
+
+      #toast {
+        position: fixed;
+        left: 50%;
+        bottom: 28px;
+        transform: translate(-50%, 12px);
+        padding: 11px 18px;
+        border-radius: 8px;
+        background: #16202c;
+        color: #fff;
+        font-size: 14px;
+        opacity: 0;
+        pointer-events: none;
+        transition:
+          opacity 0.18s,
+          transform 0.18s;
+      }
+
+      #toast.shown {
+        opacity: 1;
+        transform: translate(-50%, 0);
+      }
+    </style>
+  </head>
+  <body>
+    <p class="preview-note">
+      Demo — nothing here is saved, and no booth is really booked. Reservation mode is not in a published release
+      yet, so the plan below runs a preview build of the ExpoFP SDK.
+    </p>
+
+    <!--
+      The show's name, dates and venue are the ones drawn into the plan itself,
+      so the page and the map agree. There is no SDK call for them: the event
+      title is not part of the public API, and in reservation mode the plan's
+      own header is stripped anyway.
+    -->
+    <header class="show-header">
+      <h1>InnovateGreen Expo</h1>
+      <p>Exhibit with us · May 5–8 · Koelnmesse, Germany</p>
+    </header>
+
+    <main>
+      <section>
+        <h2>Who is booking</h2>
+        <div class="card">
+          <p class="identity" id="identity">
+            <span class="identity-pending">Checking your link…</span>
+          </p>
+          <p class="identity-hint" id="company-hint"></p>
+        </div>
+      </section>
+
+      <section>
+        <h2>Select a booth</h2>
+        <div id="floorplan"></div>
+      </section>
+
+      <section>
+        <h2 id="selection-heading">Your selection</h2>
+        <div class="card">
+          <div id="selection"></div>
+          <div class="actions">
+            <button id="reserve" class="action primary" type="button" disabled>Reserve</button>
+            <button id="hold" class="action secondary" type="button" disabled>Put on hold</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div id="toast" role="status" aria-live="polite"></div>
+
+    <script type="module">
+      /*
+       * The SDK owns the address bar once it boots (`services/url-sync.ts` is
+       * its single URL writer) and rewrites the query from its own model of it.
+       * A parameter it does not know — this page's `exhibitorId` — comes back
+       * with its `=` percent-encoded, and the address bar keeps that form. So
+       * the value has to be read two ways: plainly on the first visit, and out
+       * of the rewritten query on every reload after it. The SDK reads its own
+       * `?rt=` token exactly like this.
+       *
+       * Read before `load()` as well, so the first visit never races the
+       * rewrite.
+       */
+      function pageParam(name) {
+        const asWritten = new URLSearchParams(location.search).get(name);
+        if (asWritten !== null) return asWritten;
+
+        try {
+          return new URLSearchParams(decodeURIComponent(location.search)).get(name);
+        } catch {
+          // A malformed escape somewhere else in the query: nothing to read.
+          return null;
+        }
+      }
+
+      const exhibitorId = pageParam("exhibitorId");
+
+      /*
+      /*
+       * Preview build of the branch, rebuilt by CI on every push to it.
+       *
+       * SWAP THIS FOR 'https://unpkg.com/@expofp/floorplan' ONCE THE MODE SHIPS.
+       * Nothing will break if you forget, which is the danger: the per-branch
+       * S3 folder is never cleaned up, so after the branch is gone this keeps
+       * serving its last build — quietly, and further from the release every
+       * month.
+       */
+      const SDK = "https://efp-runtime.expofp.com/branch/feat/map-mode-for-reservation/index.js";
+
+      const { load } = await import(SDK);
+
+      const el = id => document.getElementById(id);
+
+      /**
+       * Everything this page remembers, in memory only: a reload starts over.
+       *
+       * `selection` arrives from the plan; `owned` maps a booth to the company
+       * holding it — what this session has booked. In a real integration that
+       * map comes from your back office, and it holds every company's
+       * bookings, not only the visitor's.
+       */
+      let selection = [];
+      const owned = new Map();
+
+      /** The company doing the booking. Resolved from the link once the plan is up. */
+      let company = "Company X";
+
+      const fp = await load(
+        { $ref: "https://demo.expofp.com/manifest.json" },
+        {
+          element: el("floorplan"),
+          reservation: true,
+          onReservationSelectionChange: e => {
+            selection = e.booths;
+            render();
+          },
+        },
+      );
+
+      /**
+       * Who is booking, from `?exhibitorId=` — the link an exhibitor arrives by.
+       *
+       * The plan is the same bytes for everyone who opens it, so the SDK has no
+       * idea who is looking; identity is this page's job. Here the parameter is
+       * matched against the event's own exhibitors, which is what a real
+       * integration does after its own login: the id comes from your system,
+       * the name comes from the show's data.
+       *
+       * Without the parameter the demo books as a stand-in company, so the bare
+       * link still works. Called after `fp.ready`, because it reads the event.
+       */
+      function resolveCompany() {
+        const key = exhibitorId;
+        const exhibitor = key
+          ? fp.exhibitorsList().find(e => String(e.id) === key || e.externalId === key || e.name === key)
+          : undefined;
+
+        if (exhibitor) company = exhibitor.name;
+
+        // Written once, when the answer is known: until then the card says it is
+        // still checking rather than naming a stand-in the link may be about to
+        // replace. Nothing is bookable before this runs — the plan is not up yet
+        // — so no booking can be made under the wrong name.
+        //
+        // As text nodes, not innerHTML: the name comes from the event's data and
+        // the key straight off the query string.
+        const name = document.createElement("strong");
+        name.textContent = company;
+        el("identity").replaceChildren("Booking as ", name);
+
+        const hint = el("company-hint");
+        if (!key) {
+          const param = document.createElement("code");
+          param.textContent = "?exhibitorId=<id>";
+          hint.replaceChildren("Arrive as a real exhibitor of this show with ", param, ".");
+        } else if (exhibitor) {
+          hint.textContent = `Signed in from the link · exhibitor ${exhibitor.id}`;
+        } else {
+          hint.textContent = `No exhibitor of this show matches “${key}”, so this is a stand-in.`;
+        }
+      }
+
+      /**
+       * A booth's price as a number, or null when the plan does not publish one.
+       *
+       * `price` arrives as authored — '$5,400', '1 500', '0' — because only your
+       * page knows the currency and the separators. Here: drop everything but
+       * digits and separators, read commas as thousands, and treat '0' as unset.
+       */
+      function priceOf(booth) {
+        const value = Number.parseFloat(booth.price.replace(/[^\d.,]/g, "").replace(/,/g, ""));
+        return Number.isFinite(value) && value > 0 ? value : null;
+      }
+
+      /** Whatever symbol the plan's own prices carry, so the total matches the rows. */
+      function currencySymbol() {
+        const priced = selection.find(priceOf);
+        return priced ? (priced.price.match(/^\D+/) ?? [""])[0].trim() : "";
+      }
+
+      const money = value => `${currencySymbol()}${value.toLocaleString("en-US", { maximumFractionDigits: 2 })}`;
+
+      /** The key to address a booth by — the same one `setReservationSelection` takes. */
+      const keyOf = booth => booth.externalId || booth.name;
+
+      function render() {
+        el("selection-heading").textContent = selection.length
+          ? `Your selection (${selection.length})`
+          : "Your selection";
+
+        for (const id of ["reserve", "hold"]) el(id).disabled = selection.length === 0;
+
+        if (!selection.length) {
+          el("selection").innerHTML = '<p class="empty">Click a booth on the plan to add it here.</p>';
+          return;
+        }
+
+        const rows = selection.map(booth => {
+          const price = priceOf(booth);
+          const cell =
+            price === null ? '<td class="price muted">on request</td>' : `<td class="price">${money(price)}</td>`;
+          return `<tr>
+              <td class="booth">${booth.name}</td>
+              <td class="muted">${booth.layer.name}</td>
+              <td class="muted">${booth.type}</td>
+              <td class="muted">${booth.size}</td>
+              ${cell}
+              <td class="remove"><button type="button" data-key="${keyOf(booth)}" aria-label="Remove ${booth.name}">×</button></td>
+            </tr>`;
+        });
+
+        const priced = selection.map(priceOf).filter(price => price !== null);
+        const unpriced = selection.length - priced.length;
+        const total = priced.reduce((sum, price) => sum + price, 0);
+
+        // The sum covers the rows that carry a price, and the note names the rest.
+        // Hiding the total whenever one row is unpriced would hide it most of the
+        // time on this plan — a whole floor of it is quoted on request.
+        const note = unpriced
+          ? `<span class="note">plus ${unpriced} ${unpriced === 1 ? "booth" : "booths"} priced on request</span>`
+          : "";
+
+        el("selection").innerHTML = `
+          <table>
+            <thead>
+              <tr>
+                <th>Booth</th><th>Floor</th><th>Type</th><th>Size</th>
+                <th class="price">Price</th><th class="remove"></th>
+              </tr>
+            </thead>
+            <tbody>${rows.join("")}</tbody>
+          </table>
+          <div class="totals"><span>Total</span>${note}<span>${priced.length ? money(total) : "—"}</span></div>`;
+      }
+
+      // Removing a row hands the plan the booths that are left: the selection is
+      // read-write, and the map repaints from the same source the list shows.
+      el("selection").addEventListener("click", event => {
+        const key = event.target.closest("button[data-key]")?.dataset.key;
+        if (!key) return;
+        fp.setReservationSelection(selection.map(keyOf).filter(selected => selected !== key));
+      });
+
+      /**
+       * What a real page would POST, and what it would do with the answer.
+       *
+       * Here the "answer" is immediate: the booths join the unavailable list, so
+       * the plan dims them and drops them from the selection. That single call is
+       * enough — `clearReservationSelection()` only wipes the intent behind the
+       * booths that are already gone, so the page is notified once, not twice.
+       */
+      function commit(mode, verb) {
+        const booths = selection;
+
+        console.log("[demo] would POST", {
+          company,
+          mode,
+          booths: booths.map(booth => ({ name: booth.name, externalId: booth.externalId })),
+        });
+
+        // Keyed by booth, so a booth booked twice is held by one company and
+        // the list cannot grow duplicates — `setBoothOwners` takes the whole
+        // truth about who holds what, every time.
+        for (const booth of booths) owned.set(keyOf(booth), company);
+        fp.setBoothOwners([...owned].map(([booth, holder]) => ({ booth, company: holder })));
+        fp.clearReservationSelection();
+
+        const count = `${booths.length} ${booths.length === 1 ? "booth" : "booths"}`;
+        toast(`${verb} ${count} for ${company}`);
+      }
+
+      let toastTimer;
+      function toast(text) {
+        el("toast").textContent = text;
+        el("toast").classList.add("shown");
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => el("toast").classList.remove("shown"), 3200);
+      }
+
+      el("reserve").addEventListener("click", () => commit("reserve", "Reserved"));
+      el("hold").addEventListener("click", () => commit("hold", "Put on hold"));
+
+      render();
+
+      // `load()` hands back the plan before it has finished loading, and every
+      // method on it throws "FloorPlan not ready" until it has. Anything that
+      // reads the event's data — here, looking the visitor up among the
+      // exhibitors — waits for `fp.ready`.
+      await fp.ready;
+      resolveCompany();
+    </script>
+  </body>
+</html>
