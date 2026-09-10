@@ -17,18 +17,12 @@
         --brand: #0b7a66;
         --brand-ink: #ffffff;
         --accent: #2f80ed;
+        /*
+         * Light, and only light — not the viewer's system theme. The plan itself
+         * always renders light, so a dark page would frame a bright rectangle,
+         * and which of the two a visitor got would depend on their laptop.
+         */
         color-scheme: light;
-      }
-
-      @media (prefers-color-scheme: dark) {
-        :root {
-          --ground: #16191d;
-          --card: #1e2126;
-          --ink: #e8eaed;
-          --ink-soft: #9aa4af;
-          --line: #333940;
-          color-scheme: dark;
-        }
       }
 
       * {
@@ -57,15 +51,13 @@
         text-align: center;
       }
 
-      @media (prefers-color-scheme: dark) {
-        .preview-note {
-          background: #3a3115;
-          color: #f0d99a;
-        }
-      }
-
       .show-header {
-        padding: 18px 16px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px 24px;
+        align-items: center;
+        justify-content: space-between;
+        padding: 16px;
         border-bottom: 1px solid var(--line);
         background: var(--card);
       }
@@ -77,20 +69,118 @@
         letter-spacing: -0.01em;
       }
 
-      .show-header p {
+      .show-header__meta {
         margin: 3px 0 0;
         color: var(--ink-soft);
         font-size: 13px;
       }
 
       main {
-        max-width: 980px;
+        max-width: 1240px;
         margin: 0 auto;
-        padding: 24px 16px 64px;
+        padding: 20px 16px 40px;
       }
 
-      section {
-        margin-bottom: 28px;
+      .layout {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 360px;
+        gap: 20px;
+        align-items: start;
+      }
+
+      .plan h2 {
+        margin-bottom: 10px;
+      }
+
+      /*
+       * Sticky, and as tall as the plan beside it: the selection scrolls inside
+       * the panel while the total and the button stay put. `align-self: start`
+       * is what keeps a grid item from stretching to the row's height, which
+       * would leave sticky nothing to do.
+       */
+      .panel {
+        position: sticky;
+        top: 16px;
+        align-self: start;
+        display: flex;
+        flex-direction: column;
+        max-height: min(78vh, 720px);
+        padding: 0;
+        overflow: hidden;
+      }
+
+      .panel-head {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 14px 16px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .panel-head h2 {
+        margin: 0;
+      }
+
+      .count {
+        display: grid;
+        place-items: center;
+        min-width: 22px;
+        height: 22px;
+        padding: 0 6px;
+        border-radius: 11px;
+        background: var(--ground);
+        font-size: 12px;
+        font-weight: 650;
+        color: var(--ink-soft);
+      }
+
+      .link-button {
+        margin-left: auto;
+        padding: 0;
+        border: 0;
+        background: none;
+        color: var(--ink-soft);
+        font: inherit;
+        font-size: 13px;
+        text-decoration: underline;
+        cursor: pointer;
+      }
+
+      .link-button:hover {
+        color: var(--ink);
+      }
+
+      /* The collapsed sheet: a phone thing, out of the way everywhere else. */
+      .panel-summary {
+        display: none;
+      }
+
+      /* The event's own types are cased inconsistently — STANDARD next to Cabanas. */
+      .badge {
+        text-transform: uppercase;
+        margin-left: 6px;
+        padding: 1px 5px;
+        border-radius: 4px;
+        background: var(--ground);
+        color: var(--ink-soft);
+        font-size: 10px;
+        font-weight: 650;
+        letter-spacing: 0.04em;
+        vertical-align: 1px;
+      }
+
+      /* `min-height: 0` — without it a flex child refuses to shrink and scroll. */
+      .panel-body {
+        flex: 1;
+        min-height: 0;
+        overflow-y: auto;
+        padding: 14px 16px 16px;
+      }
+
+      .panel-foot {
+        padding: 12px 16px 16px;
+        border-top: 1px solid var(--line);
+        background: var(--card);
       }
 
       h2 {
@@ -109,17 +199,40 @@
         background: var(--card);
       }
 
+      /* Who is booking, as a line in the show's header rather than a card of its own. */
       .identity {
+        display: flex;
+        align-items: center;
+        gap: 10px;
         margin: 0;
-        font-size: 15px;
+        font-size: 14px;
       }
 
       .identity-pending {
         color: var(--ink-soft);
       }
 
+      .avatar {
+        display: grid;
+        place-items: center;
+        width: 38px;
+        height: 38px;
+        flex: none;
+        border-radius: 9px;
+        background: var(--brand);
+        color: var(--brand-ink);
+        font-size: 13px;
+        font-weight: 650;
+        letter-spacing: 0.02em;
+      }
+
+      .identity-name {
+        display: block;
+        font-weight: 650;
+      }
+
       .identity-hint {
-        margin: 6px 0 0;
+        display: block;
         font-size: 13px;
         color: var(--ink-soft);
       }
@@ -140,7 +253,14 @@
        */
       #floorplan {
         position: relative;
-        height: min(70vh, 600px);
+        /*
+         * The plan's own controls sit at `z-index: 20`/`30` inside it, and
+         * `position: relative` with `z-index: auto` opens no stacking context —
+         * so without this they paint over anything of yours below `30`, this
+         * page's confirmation screen included. Isolating keeps them in.
+         */
+        isolation: isolate;
+        height: min(78vh, 720px);
         border: 1px solid var(--line);
         border-radius: 10px;
         overflow: hidden;
@@ -204,31 +324,61 @@
         color: var(--ink);
       }
 
-      .totals {
+      .totals-line {
         display: flex;
+        flex-wrap: wrap;
         justify-content: space-between;
         align-items: baseline;
-        gap: 12px;
-        padding: 12px 8px 0;
+        gap: 2px 12px;
+      }
+
+      .totals-line--sum {
+        margin-top: 4px;
+        font-size: 17px;
         font-weight: 650;
       }
 
-      .totals .note {
+      .totals-line .note {
+        order: 3;
+        width: 100%;
+        text-align: right;
+      }
+
+      .muted {
+        color: var(--ink-soft);
+      }
+
+      .confirmation .totals {
+        margin-top: 12px;
+        padding-top: 12px;
+        border-top: 1px solid var(--line);
+      }
+
+      /* The totals draw their own rule above them, so the last row must not draw one below. */
+      #confirmation-booths tr:last-child td {
+        border-bottom: 0;
+      }
+
+      .note {
         font-weight: 400;
         font-size: 13px;
         color: var(--ink-soft);
       }
 
       .empty {
-        padding: 22px 8px;
+        margin: 0;
+        padding: 18px 0;
         color: var(--ink-soft);
       }
 
       .actions {
         display: flex;
-        flex-wrap: wrap;
         gap: 10px;
-        margin-top: 16px;
+        margin-top: 12px;
+      }
+
+      .actions button {
+        width: 100%;
       }
 
       button.action {
@@ -250,26 +400,280 @@
         cursor: not-allowed;
       }
 
-      #toast {
+      .confirmation {
         position: fixed;
-        left: 50%;
-        bottom: 28px;
-        transform: translate(-50%, 12px);
-        padding: 11px 18px;
-        border-radius: 8px;
-        background: #16202c;
-        color: #fff;
-        font-size: 14px;
-        opacity: 0;
-        pointer-events: none;
-        transition:
-          opacity 0.18s,
-          transform 0.18s;
+        inset: 0;
+        z-index: 10;
+        overflow: auto;
+        padding: 24px 16px 64px;
+        background: var(--ground);
       }
 
-      #toast.shown {
-        opacity: 1;
-        transform: translate(-50%, 0);
+      .confirmation-card {
+        max-width: 640px;
+        margin: max(6vh, 32px) auto 0;
+        padding: 28px 24px 24px;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        background: var(--card);
+        text-align: center;
+      }
+
+      .check {
+        width: 46px;
+        height: 46px;
+        margin: 0 auto 14px;
+        border-radius: 50%;
+        background: var(--brand);
+        color: var(--brand-ink);
+        font-size: 25px;
+        line-height: 46px;
+      }
+
+      .confirmation-card h2 {
+        margin: 0;
+        font-size: 22px;
+        font-weight: 650;
+        text-transform: none;
+        letter-spacing: -0.01em;
+        color: var(--ink);
+      }
+
+      /* Focused only to move the reader here; it is a heading, not a control. */
+      .confirmation-card h2:focus {
+        outline: none;
+      }
+
+      .confirmation-lede {
+        margin: 8px 0 0;
+        color: var(--ink-soft);
+      }
+
+      .request-id {
+        margin: 18px 0 22px;
+        font-size: 14px;
+        color: var(--ink-soft);
+      }
+
+      .request-id strong {
+        color: var(--ink);
+        font-variant-numeric: tabular-nums;
+        letter-spacing: 0.04em;
+      }
+
+      #confirmation-booths {
+        text-align: left;
+      }
+
+      .confirmation-fineprint {
+        margin: 22px 0 20px;
+        font-size: 13px;
+        color: var(--ink-soft);
+      }
+
+      /*
+       * One column under the plan, and only the foot stays pinned — two columns
+       * do not fit a phone, but the promise is the same: the total and the
+       * button never leave the screen.
+       */
+      @media (max-width: 900px) {
+        main {
+          padding: 16px 12px 32px;
+        }
+
+        .layout {
+          grid-template-columns: minmax(0, 1fr);
+          gap: 16px;
+        }
+
+        #floorplan {
+          height: min(55vh, 420px);
+        }
+
+        /*
+         * A sheet pinned to the bottom edge: collapsed it is one line — how many
+         * booths, how much floor, how much money — and the button. The list
+         * behind it opens on the caret.
+         */
+        .panel {
+          position: fixed;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          /* Reset the desktop offset: with both set, `top` wins and the sheet
+             would pin to the top of the screen instead. */
+          top: auto;
+          z-index: 5;
+          max-height: 80vh;
+          border-radius: 12px 12px 0 0;
+          border-bottom: 0;
+          box-shadow: 0 -10px 24px -18px rgb(0 0 0 / 55%);
+        }
+
+        /* Room under the plan so the sheet never covers the end of the page. */
+        main {
+          padding-bottom: 150px;
+        }
+
+        .panel-summary {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          width: 100%;
+          padding: 12px 16px 10px;
+          border: 0;
+          background: none;
+          font: inherit;
+          text-align: left;
+          cursor: pointer;
+        }
+
+        .panel-summary__price {
+          margin-left: auto;
+          font-weight: 650;
+        }
+
+        .caret {
+          font-size: 10px;
+          color: var(--ink-soft);
+          transition: transform 0.15s;
+        }
+
+        .panel.open .caret {
+          transform: rotate(180deg);
+        }
+
+        .panel-head,
+        .panel-body {
+          display: none;
+        }
+
+        .panel.open .panel-head {
+          display: flex;
+        }
+
+        .panel.open .panel-body {
+          display: block;
+          overflow-y: auto;
+        }
+
+        .panel-foot {
+          border-top: 0;
+          padding-top: 0;
+        }
+
+        /* Collapsed, the summary row already carries the count, the area and the
+           sum — repeating them under it is noise. */
+        .totals {
+          display: none;
+        }
+
+        .panel.open .totals {
+          display: block;
+        }
+
+        .panel.open .panel-foot {
+          border-top: 1px solid var(--line);
+          padding-top: 12px;
+        }
+      }
+
+      /*
+       * The selection list is a list, not a table: inside a 360px panel four
+       * columns break booth numbers and sizes mid-word at any window size. Each
+       * row is two lines — the booth and its price, then the details under them,
+       * with the remove button alongside.
+       */
+      #selection table,
+      #selection tbody {
+        display: block;
+      }
+
+      #selection tr {
+        display: grid;
+        grid-template-columns: 1fr auto auto;
+        column-gap: 10px;
+        align-items: baseline;
+        padding: 9px 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      #selection tr:last-child {
+        border-bottom: 0;
+      }
+
+      #selection td {
+        display: block;
+        padding: 0;
+        border: 0;
+      }
+
+      #selection td.booth {
+        grid-column: 1;
+        grid-row: 1;
+      }
+
+      #selection td.price {
+        grid-column: 2;
+        grid-row: 1;
+      }
+
+      #selection td.meta {
+        grid-column: 1 / span 2;
+        grid-row: 2;
+        font-size: 13px;
+      }
+
+      #selection td.remove {
+        grid-column: 3;
+        grid-row: 1 / span 2;
+        align-self: center;
+        width: auto;
+      }
+
+      /* The confirmation is a wide card, so there its rows keep their columns. */
+      @media (max-width: 620px) {
+        #confirmation-booths thead {
+          display: none;
+        }
+
+        #confirmation-booths table,
+        #confirmation-booths tbody {
+          display: block;
+        }
+
+        #confirmation-booths tr {
+          display: grid;
+          grid-template-columns: 1fr auto;
+          column-gap: 10px;
+          align-items: baseline;
+          padding: 10px 0;
+          border-bottom: 1px solid var(--line);
+        }
+
+        #confirmation-booths tr:last-child {
+          border-bottom: 0;
+        }
+
+        #confirmation-booths td {
+          display: block;
+          padding: 0;
+          border: 0;
+        }
+
+        #confirmation-booths td.meta {
+          grid-column: 1 / span 2;
+          font-size: 13px;
+        }
+
+        .confirmation {
+          padding: 16px 12px 48px;
+        }
+
+        .confirmation-card {
+          margin-top: 16px;
+          padding: 24px 16px 20px;
+        }
       }
     </style>
   </head>
@@ -286,38 +690,92 @@
       own header is stripped anyway.
     -->
     <header class="show-header">
-      <h1>InnovateGreen Expo</h1>
-      <p>Exhibit with us · May 5–8 · Koelnmesse, Germany</p>
+      <div>
+        <h1>InnovateGreen Expo</h1>
+        <p class="show-header__meta">Exhibit with us · May 5–8 · Koelnmesse, Germany</p>
+      </div>
+      <p class="identity" id="identity">
+        <span class="identity-pending">Checking your link…</span>
+      </p>
     </header>
 
-    <main>
-      <section>
-        <h2>Who is booking</h2>
-        <div class="card">
-          <p class="identity" id="identity">
-            <span class="identity-pending">Checking your link…</span>
-          </p>
-          <p class="identity-hint" id="company-hint"></p>
-        </div>
-      </section>
-
-      <section>
+    <main class="layout">
+      <section class="plan">
         <h2>Select a booth</h2>
         <div id="floorplan"></div>
       </section>
 
-      <section>
-        <h2 id="selection-heading">Your selection</h2>
-        <div class="card">
+      <!--
+        The booking panel is one column beside the plan and sticks to the top as
+        the page scrolls, so what a visitor is spending and the button that
+        commits it never leave the screen. On a phone the column falls under the
+        plan and only its foot stays pinned.
+      -->
+      <aside class="panel card" id="panel">
+        <!-- The collapsed sheet on a phone; the toggle for the list behind it. -->
+        <button
+          class="panel-summary"
+          id="panel-summary"
+          type="button"
+          aria-expanded="false"
+          aria-controls="panel-body"
+        >
+          <span class="count" id="summary-count">0</span>
+          <span class="panel-summary__text" id="summary-text">No booths selected</span>
+          <span class="caret" aria-hidden="true">▲</span>
+          <span class="panel-summary__price" id="summary-price"></span>
+        </button>
+
+        <div class="panel-head">
+          <h2 id="selection-heading">Your selection</h2>
+          <span class="count" id="selection-count">0</span>
+          <button class="link-button" id="clear" type="button" hidden>Clear</button>
+        </div>
+
+        <div class="panel-body" id="panel-body">
           <div id="selection"></div>
+        </div>
+
+        <div class="panel-foot">
+          <div class="totals" id="totals"></div>
           <div class="actions">
             <button id="reserve" class="action primary" type="button" disabled>Reserve</button>
           </div>
         </div>
-      </section>
+      </aside>
     </main>
 
-    <div id="toast" role="status" aria-live="polite"></div>
+    <!--
+      Shown instead of the page once a reservation is made, not on top of it:
+      the point of the step is that the booking is finished and you are somewhere
+      else. It covers the viewport rather than replacing the markup so the plan
+      keeps its size underneath and comes back exactly as it was — now with the
+      company printed on the booths.
+    -->
+    <div
+      id="confirmation"
+      class="confirmation"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="confirmation-heading"
+      hidden
+    >
+      <div class="confirmation-card">
+        <div class="check" aria-hidden="true">✓</div>
+        <h2 id="confirmation-heading" tabindex="-1">Request sent</h2>
+        <p class="confirmation-lede" id="confirmation-lede"></p>
+
+        <p class="request-id">Reference <strong id="request-id"></strong></p>
+
+        <div id="confirmation-booths"></div>
+
+        <p class="confirmation-fineprint">
+          This is a demo. Nothing was saved, no booth is really held, and the reference above is made up.
+        </p>
+
+        <button id="back-to-plan" class="action primary" type="button">Start a new selection</button>
+      </div>
+    </div>
 
     <script type="module">
       /*
@@ -413,22 +871,41 @@
         // replace. Nothing is bookable before this runs — the plan is not up yet
         // — so no booking can be made under the wrong name.
         //
-        // As text nodes, not innerHTML: the name comes from the event's data and
+        // As elements, not innerHTML: the name comes from the event's data and
         // the key straight off the query string.
-        const name = document.createElement("strong");
-        name.textContent = company;
-        el("identity").replaceChildren("Booking as ", name);
+        const avatar = document.createElement("span");
+        avatar.className = "avatar";
+        avatar.textContent = initialsOf(company);
 
-        const hint = el("company-hint");
+        const name = document.createElement("span");
+        name.className = "identity-name";
+        name.textContent = company;
+
+        const hint = document.createElement("span");
+        hint.className = "identity-hint";
         if (!key) {
           const param = document.createElement("code");
           param.textContent = "?exhibitorId=<id>";
-          hint.replaceChildren("Arrive as a real exhibitor of this show with ", param, ".");
+          hint.replaceChildren("Arrive as a real exhibitor with ", param);
         } else if (exhibitor) {
-          hint.textContent = `Signed in from the link · exhibitor ${exhibitor.id}`;
+          hint.textContent = `Signed in from the link · #${exhibitor.id}`;
         } else {
-          hint.textContent = `No exhibitor of this show matches “${key}”, so this is a stand-in.`;
+          hint.textContent = `Nothing here matches “${key}” — this is a stand-in`;
         }
+
+        const text = document.createElement("span");
+        text.append(name, hint);
+        el("identity").replaceChildren(avatar, text);
+      }
+
+      /** "BioCycle Africa" → "BA". One letter when there is only one word. */
+      function initialsOf(name) {
+        return name
+          .split(/\s+/)
+          .filter(Boolean)
+          .slice(0, 2)
+          .map(word => word[0].toUpperCase())
+          .join("");
       }
 
       /**
@@ -443,65 +920,145 @@
         return Number.isFinite(value) && value > 0 ? value : null;
       }
 
+      /**
+       * A booth's floor area in m², or null when the plan does not publish a size.
+       *
+       * `size` reads `'9 x 11 / 99 m²'` — the part after the slash is the area
+       * the organizer authored. Plenty of booths carry no size at all.
+       */
+      function areaOf(booth) {
+        const match = /\/\s*([\d.,]+)\s*m/.exec(booth.size || "");
+        return match ? Number.parseFloat(match[1].replace(/,/g, "")) : null;
+      }
+
+      /**
+       * The floor area of a set of booths, or null if any of them has no size.
+       *
+       * All or nothing, unlike the money: a partial sum under the words "total
+       * area" would simply be wrong, and the figure is a supporting one — better
+       * absent than misleading.
+       */
+      function totalArea(booths) {
+        const areas = booths.map(areaOf);
+        return areas.every(a => a !== null) ? areas.reduce((sum, a) => sum + a, 0) : null;
+      }
+
       /** Whatever symbol the plan's own prices carry, so the total matches the rows. */
-      function currencySymbol() {
-        const priced = selection.find(priceOf);
+      function currencySymbol(booths) {
+        const priced = booths.find(priceOf);
         return priced ? (priced.price.match(/^\D+/) ?? [""])[0].trim() : "";
       }
 
-      const money = value => `${currencySymbol()}${value.toLocaleString("en-US", { maximumFractionDigits: 2 })}`;
+      // Takes the booths it is pricing rather than reading the selection: the
+      // confirmation screen prices a booking the selection no longer holds.
+      const money = (value, booths) =>
+        `${currencySymbol(booths)}${value.toLocaleString("en-US", { maximumFractionDigits: 2 })}`;
+
+      /** What a set of booths costs: the sum that could be priced, and how many could not. */
+      function totalOf(booths) {
+        const priced = booths.map(priceOf).filter(price => price !== null);
+        return {
+          amount: priced.reduce((sum, price) => sum + price, 0),
+          pricedCount: priced.length,
+          unpricedCount: booths.length - priced.length,
+        };
+      }
+
+      /** "plus 2 booths priced on request", or "" — the rest of the total's truth. */
+      function unpricedNote(count) {
+        return count ? `plus ${count} ${count === 1 ? "booth" : "booths"} priced on request` : "";
+      }
+
+      /** How many booths, in words a sentence or a button can carry. */
+      const boothCount = n => `${n} ${n === 1 ? "booth" : "booths"}`;
 
       /** The key to address a booth by — the same one `setReservationSelection` takes. */
       const keyOf = booth => booth.externalId || booth.name;
 
+      /**
+       * The three cells every booth row shares: what it is called, what it is,
+       * and what it costs.
+       *
+       * Type and size travel together in one cell rather than a column each —
+       * four columns fit a phone, six do not, and on a narrow screen this cell
+       * simply drops onto a second line under the booth number.
+       * @param booth - The booth.
+       * @param pricedAgainst - The booths whose currency the price is shown in.
+       * @param lead - An optional first detail, e.g. the floor.
+       */
+      function boothCells(booth, pricedAgainst, lead) {
+        const price = priceOf(booth);
+        const badge = booth.type ? `<span class="badge">${booth.type}</span>` : "";
+        const details = [lead, booth.size].filter(Boolean).join(" · ");
+        return `<td class="booth">${booth.name}${badge}</td>
+              <td class="meta muted">${details}</td>
+              ${
+                price === null
+                  ? '<td class="price muted">on request</td>'
+                  : `<td class="price">${money(price, pricedAgainst)}</td>`
+              }`;
+      }
+
       function render() {
-        el("selection-heading").textContent = selection.length
-          ? `Your selection (${selection.length})`
-          : "Your selection";
+        const count = selection.length;
 
-        el("reserve").disabled = selection.length === 0;
+        el("selection-count").textContent = count;
+        el("summary-count").textContent = count;
+        el("clear").hidden = count === 0;
+        el("reserve").disabled = count === 0;
+        el("reserve").textContent = count ? `Reserve ${boothCount(count)}` : "Reserve";
 
-        if (!selection.length) {
+        const area = totalArea(selection);
+        el("summary-text").textContent = count
+          ? [boothCount(count), area === null ? null : `${area.toLocaleString("en-US")} m²`]
+              .filter(Boolean)
+              .join(" · ")
+          : "No booths selected";
+        const { amount, pricedCount } = totalOf(selection);
+        el("summary-price").textContent = pricedCount ? money(amount, selection) : "";
+
+        if (!count) {
           el("selection").innerHTML = '<p class="empty">Click a booth on the plan to add it here.</p>';
+          el("totals").innerHTML = "";
           return;
         }
 
-        const rows = selection.map(booth => {
-          const price = priceOf(booth);
-          const cell =
-            price === null ? '<td class="price muted">on request</td>' : `<td class="price">${money(price)}</td>`;
-          return `<tr>
-              <td class="booth">${booth.name}</td>
-              <td class="muted">${booth.layer.name}</td>
-              <td class="muted">${booth.type}</td>
-              <td class="muted">${booth.size}</td>
-              ${cell}
+        const rows = selection.map(
+          booth =>
+            `<tr>${boothCells(booth, selection, `Floor ${booth.layer.name}`)}
               <td class="remove"><button type="button" data-key="${keyOf(booth)}" aria-label="Remove ${booth.name}">×</button></td>
-            </tr>`;
-        });
+            </tr>`,
+        );
 
-        const priced = selection.map(priceOf).filter(price => price !== null);
-        const unpriced = selection.length - priced.length;
-        const total = priced.reduce((sum, price) => sum + price, 0);
+        el("selection").innerHTML = `<table><tbody>${rows.join("")}</tbody></table>`;
+        // Written outside the scrolling list, in the panel's foot, so it stays
+        // put however far the list is scrolled.
+        el("totals").innerHTML = totalsMarkup(selection);
+      }
 
-        // The sum covers the rows that carry a price, and the note names the rest.
-        // Hiding the total whenever one row is unpriced would hide it most of the
-        // time on this plan — a whole floor of it is quoted on request.
-        const note = unpriced
-          ? `<span class="note">plus ${unpriced} ${unpriced === 1 ? "booth" : "booths"} priced on request</span>`
-          : "";
+      /**
+       * The total line: the sum of what could be priced, and a note naming what
+       * could not.
+       *
+       * Hiding the total whenever one row is unpriced would hide it most of the
+       * time on this plan — a whole floor of it is quoted on request.
+       * @param booths - The booths being totalled.
+       */
+      function totalsMarkup(booths) {
+        const { amount, pricedCount, unpricedCount } = totalOf(booths);
+        const note = unpricedCount ? `<span class="note">${unpricedNote(unpricedCount)}</span>` : "";
+        const area = totalArea(booths);
+        const areaLine =
+          area === null
+            ? ""
+            : `<div class="totals-line muted"><span>Total area</span><span>${area.toLocaleString("en-US")} m²</span></div>`;
 
-        el("selection").innerHTML = `
-          <table>
-            <thead>
-              <tr>
-                <th>Booth</th><th>Floor</th><th>Type</th><th>Size</th>
-                <th class="price">Price</th><th class="remove"></th>
-              </tr>
-            </thead>
-            <tbody>${rows.join("")}</tbody>
-          </table>
-          <div class="totals"><span>Total</span>${note}<span>${priced.length ? money(total) : "—"}</span></div>`;
+        // "Estimated": the sum is of published prices, and a request still goes
+        // to the organizer — nothing here is a quote.
+        return `${areaLine}
+          <div class="totals-line totals-line--sum">
+            <span>Estimated total</span>${note}<span>${pricedCount ? money(amount, booths) : "—"}</span>
+          </div>`;
       }
 
       // Removing a row hands the plan the booths that are left: the selection is
@@ -536,19 +1093,61 @@
         fp.setBoothOwners([...owned].map(([booth, holder]) => ({ booth, company: holder })));
         fp.clearReservationSelection();
 
-        const count = `${booths.length} ${booths.length === 1 ? "booth" : "booths"}`;
-        toast(`Reserved ${count} for ${company}`);
+        showConfirmation(booths);
       }
 
-      let toastTimer;
-      function toast(text) {
-        el("toast").textContent = text;
-        el("toast").classList.add("shown");
-        clearTimeout(toastTimer);
-        toastTimer = setTimeout(() => el("toast").classList.remove("shown"), 3200);
+      /**
+       * The order number a real back office would return. Made up here, and the
+       * screen says so — a number that looks plausible is what makes the step
+       * read as the end of a transaction rather than a message.
+       */
+      const requestId = () => `RSV-${Math.floor(1000 + Math.random() * 9000)}`;
+
+      function showConfirmation(booths) {
+        el("request-id").textContent = requestId();
+
+        // "Sent", not "confirmed": a booth request goes to the organizer, who
+        // reviews it. The booths are held meanwhile — which is what the plan now
+        // shows, with the company's name on them.
+        const area = totalArea(booths);
+        const { amount, pricedCount } = totalOf(booths);
+        const facts = [
+          boothCount(booths.length),
+          area === null ? null : `${area.toLocaleString("en-US")} m²`,
+          pricedCount ? money(amount, booths) : null,
+        ].filter(Boolean);
+        el("confirmation-lede").textContent =
+          `${facts.join(" · ")} — held for 48 hours while the organizer reviews the request.`;
+
+        const rows = booths.map(booth => `<tr>${boothCells(booth, booths)}</tr>`);
+
+        el("confirmation-booths").innerHTML = `
+          <table><tbody>${rows.join("")}</tbody></table>
+          <div class="totals">${totalsMarkup(booths)}</div>`;
+
+        el("confirmation").hidden = false;
+        // The plan underneath keeps its size and its scroll position; only this
+        // screen scrolls while it is up.
+        document.body.style.overflow = "hidden";
+        el("confirmation-heading").focus();
+      }
+
+      function backToPlan() {
+        el("confirmation").hidden = true;
+        document.body.style.overflow = "";
+        el("floorplan").scrollIntoView({ block: "center" });
       }
 
       el("reserve").addEventListener("click", reserve);
+      el("back-to-plan").addEventListener("click", backToPlan);
+      el("clear").addEventListener("click", () => fp.clearReservationSelection());
+
+      // The sheet only collapses on a phone; everywhere else the panel is open
+      // and this button is not rendered at all.
+      el("panel-summary").addEventListener("click", () => {
+        const open = el("panel").classList.toggle("open");
+        el("panel-summary").setAttribute("aria-expanded", String(open));
+      });
 
       render();
 
