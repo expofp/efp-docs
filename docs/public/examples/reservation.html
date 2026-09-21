@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>ExpoFP — Reservation Mode</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        height: 100%;
+      }
+
+      #floorplan {
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="floorplan"></div>
+    <script type="module">
+      // Preview build of the branch. After the merge: 'https://unpkg.com/@expofp/floorplan'.
+      const { load } =
+        await import("https://efp-runtime.expofp.com/branch/feat/map-mode-for-reservation/index.js");
+      load(
+        { $ref: "https://demo.expofp.com/manifest.json" },
+        {
+          element: document.querySelector("#floorplan"),
+          reservation: true,
+        },
+      );
+    </script>
+  </body>
+</html>
