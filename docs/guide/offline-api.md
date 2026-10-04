@@ -1,3 +1,7 @@
+---
+description: "Offline Data API: prepare and download versioned offline archives of an ExpoFP floor plan for mobile and offline apps. Endpoints, state object and caching."
+---
+
 # Offline Data API
 
 Prepare and retrieve versioned offline archives of an Expo floor plan for mobile/offline use.

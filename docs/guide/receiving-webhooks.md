@@ -1,3 +1,7 @@
+---
+description: "Build a receiver for ExpoFP webhooks step by step: keep the raw body, verify the signature, answer 2xx fast — there are no retries — and deduplicate."
+---
+
 # Receiving webhooks
 
 A build order for a receiver of ExpoFP webhooks: what to do, in which order, and what goes wrong

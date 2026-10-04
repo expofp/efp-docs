@@ -1,3 +1,7 @@
+---
+description: "Online, offline, preload and caching in the ExpoFP mobile SDK v5 for iOS, Android and React Native: what each mode means and how they combine."
+---
+
 # Online, Offline, Preload and Caching
 
 Four words come up in almost every mobile integration conversation, and they are

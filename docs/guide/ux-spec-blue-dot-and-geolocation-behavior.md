@@ -1,3 +1,7 @@
+---
+description: "UX specification for the blue dot on ExpoFP maps: geolocation permissions, initial viewport, floor awareness, movement, route snapping and visual states."
+---
+
 # UX specification: Blue dot and geolocation behavior
 
 ## 1. Initial map load & permissions

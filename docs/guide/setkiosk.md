@@ -1,3 +1,7 @@
+---
+description: "Set up a wayfinding kiosk on an ExpoFP floor plan in six steps with the setkiosk command: place the kiosk, adjust the view, save, edit or exit kiosk mode."
+---
+
 # Set Kiosk in 6 Steps
 
 ::: info

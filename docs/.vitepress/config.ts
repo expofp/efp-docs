@@ -3,6 +3,21 @@ import { defineConfig } from "vitepress";
 const base = process.env.BASE_PATH || "/";
 
 const year = new Date().getFullYear();
+
+/** Production origin. Canonical links always point here, whatever `base` a preview build uses. */
+const SITE_URL = "https://developer.expofp.com/";
+
+/**
+ * The page's one canonical URL. GitHub Pages serves every page under several addresses — the
+ * clean URL, its `.html` twin, the bare host with and without `/` — and inbound links add query
+ * noise (`?ref=blog.expofp.com`), so search engines indexed them as duplicate content. The clean
+ * form is the canonical one: it is what the nav and the sidebar link to.
+ */
+function canonicalUrl(relativePath: string): string {
+  const path = relativePath.replace(/\.md$/, "").replace(/(^|\/)index$/, "$1");
+  return SITE_URL + path;
+}
+
 // https://vitepress.dev/guide/getting-started#the-config-file
 // https://github.com/vuejs/vitepress/blob/main/docs/.vitepress/config.ts
 export default defineConfig({
@@ -21,6 +36,21 @@ export default defineConfig({
 
   // https://vitepress.dev/reference/site-config#cleanurls
   cleanUrls: true,
+
+  // https://vitepress.dev/reference/site-config#transformhead
+  // The 404 page answers for every unknown path, so it has no address of its own to declare.
+  transformHead: ({ page, pageData }) =>
+    page === "404.md"
+      ? []
+      : [["link", { rel: "canonical", href: canonicalUrl(pageData.relativePath) }]],
+
+  // Without its own `description`, a page inherits the site-wide one above, and every such page
+  // ships the same meta description. Flag the gap at build time rather than in an SEO audit.
+  transformPageData: (pageData) => {
+    if (pageData.relativePath !== "404.md" && typeof pageData.frontmatter.description !== "string") {
+      console.warn(`[seo] ${pageData.relativePath} has no frontmatter description`);
+    }
+  },
 
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-nav#site-title-and-logo
