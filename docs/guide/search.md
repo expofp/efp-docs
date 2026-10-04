@@ -1,3 +1,7 @@
+---
+description: "How search works on an ExpoFP floor plan: how results are ranked, fuzzy matching, highlighted matches, search in descriptions and finding a booth by number."
+---
+
 # Easy Guide to Using Search
 
 Our platform has a smart search tool to help you quickly find exhibitors, booths, and other things.

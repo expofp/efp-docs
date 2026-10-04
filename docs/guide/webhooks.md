@@ -1,3 +1,7 @@
+---
+description: "ExpoFP webhooks reference: delivery format, booth and exhibitor event payloads, signature headers, how to verify a delivery and how to manage your secret."
+---
+
 # [Webhooks](https://expofp.com/client/profile)
 
 When configured, ExpoFP will perform `HTTP POST` requests to the webhook URL with JSON payload.

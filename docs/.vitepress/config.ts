@@ -3,6 +3,15 @@ import { defineConfig } from "vitepress";
 const base = process.env.BASE_PATH || "/";
 
 const year = new Date().getFullYear();
+
+const SITE_URL = "https://developer.expofp.com/";
+
+// `guide/search.md` → `https://developer.expofp.com/guide/search`, `index.md` → the site root.
+function canonicalUrl(relativePath: string): string {
+  const path = relativePath.replace(/\.md$/, "").replace(/(^|\/)index$/, "$1");
+  return SITE_URL + path;
+}
+
 // https://vitepress.dev/guide/getting-started#the-config-file
 // https://github.com/vuejs/vitepress/blob/main/docs/.vitepress/config.ts
 export default defineConfig({
@@ -21,6 +30,19 @@ export default defineConfig({
 
   // https://vitepress.dev/reference/site-config#cleanurls
   cleanUrls: true,
+
+  // Canonical URL on every page except 404
+  transformHead: ({ page, pageData }) =>
+    page === "404.md"
+      ? []
+      : [["link", { rel: "canonical", href: canonicalUrl(pageData.relativePath) }]],
+
+  // A page without its own description falls back to the shared site-wide one
+  transformPageData: (pageData) => {
+    if (typeof pageData.frontmatter.description !== "string") {
+      console.warn(`[seo] ${pageData.relativePath} has no frontmatter description`);
+    }
+  },
 
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-nav#site-title-and-logo

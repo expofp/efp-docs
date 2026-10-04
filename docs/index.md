@@ -2,6 +2,7 @@
 layout: home
 title: ExpoFP Developer Portal
 titleTemplate: false
+description: "ExpoFP developer documentation hub — JSON API, webhooks, offline data API and guides, plus links to the JavaScript, iOS, Android and React Native SDK docs."
 
 # https://vitepress.dev/reference/default-theme-home-page#hero-section
 hero:

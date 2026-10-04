@@ -1,3 +1,7 @@
+---
+description: "Manage ExpoFP floor plans and exhibitor data over a REST API: what the JSON API covers, how to authenticate and where to find the full json-api-v1 reference."
+---
+
 # JSON API
 
 The ExpoFP JSON API is a REST API that lets you programmatically manage your event floor plans and exhibitor data. Use it to integrate ExpoFP with your existing event management platform, CRM, or registration system — keeping booth assignments, exhibitor profiles, and floor plan data in sync without manual imports.
