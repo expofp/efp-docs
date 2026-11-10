@@ -98,6 +98,7 @@ function sidebarGuide() {
         { text: "Easy Guide to Using Search", link: "/guide/search" },
         { text: "Set Kiosk", link: "/guide/setkiosk" },
         { text: "Blue dot & geolocation behavior", link: "/guide/ux-spec-blue-dot-and-geolocation-behavior" },
+        { text: "Collect SDK telemetry", link: "/guide/sdk-telemetry" },
       ],
     },
   ];
