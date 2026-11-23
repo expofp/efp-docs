@@ -6,7 +6,7 @@ description: "Turn on SDK telemetry on an ExpoFP floor plan to help ExpoFP suppo
 
 If the floor plan behaves unexpectedly on a device, ExpoFP support can ask you to turn on **SDK telemetry** on that device. Typical problems are with the blue dot or with a route from the current position at a venue.
 
-While telemetry is on, the floor plan sends ExpoFP everything that the page writes to the browser console, and the errors that no code on the page handled. It also writes each call to its methods to the console, with the values passed in. So ExpoFP gets each position update exactly as the floor plan received it. This shows us what the floor plan was given (coordinates, floor) and what it reported. This is usually enough to tell a positioning problem from a floor plan problem.
+While telemetry is on, the floor plan sends ExpoFP everything that the page writes to the browser console, and the errors that no code on the page handled. It also writes each call to its methods to the console, with the values passed in.
 
 ::: info
 Telemetry is **off by default** and is turned on **per device**: only the browser or app where you enabled it sends data. Other visitors are not affected.
